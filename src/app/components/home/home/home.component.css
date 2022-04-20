@@ -1,0 +1,29 @@
+.home-root-div {
+  margin-top: 5px;
+}
+
+img.user-profile-picture {
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
+  object-fit: cover;
+}
+
+img.user-profile-picture.active {
+  border-radius: 0px;
+  height: 0px;
+  width: 0px;
+  object-fit: cover;
+}
+
+a.collection-item {
+  display: flex;
+}
+span.secondary-content{
+  margin-left:10px;
+}
+
+.middle-content {
+  height: calc(100vh - 62px);
+  overflow: visible auto;
+}

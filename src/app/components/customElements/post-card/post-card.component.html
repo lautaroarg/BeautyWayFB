@@ -1,0 +1,107 @@
+<mat-card style="margin-bottom: 16px;">
+  <mat-card-header *ngIf="UserLoaded">
+    <img mat-card-avatar src="{{Owner.PhotoURL}}" [routerLink]="[ '/User', Owner.Id ]" class="MousePointer" />
+    <mat-card-title [routerLink]="[ '/User', Owner.Id ]" class="MousePointer">
+      {{Owner.DisplayName}}</mat-card-title>
+    <mat-card-subtitle>{{moment(PostData.PostedOn).calendar(null, DateTimeFormat)}}</mat-card-subtitle>
+    <button class="card-menu" align="end" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Open basic menu">
+      <i class="fal fa-ellipsis-v fa-lg"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngIf="Owner.Id != MyAuth.LoggedUser.Id">
+        <ng-container *ngIf="CheckFollowStatus$ | async as FollowStatus; else FollowStatusLoading">
+          <button *ngIf="FollowStatus == 'No'" mat-menu-item (click)="FollowOwner()">
+            <i class=""></i>Follow
+          </button>
+        </ng-container>
+        <ng-template #FollowStatusLoading>
+          <span mat-menu-item><i class="fal fa-spinner fa-spin"></i></span>
+        </ng-template>
+      </ng-container>
+      <button mat-menu-item [routerLink]="[ '/User', Owner.Id ]">
+        <i class="fal fa-user"></i>View
+      </button>
+      <button mat-menu-item *ngIf="Owner.Id == MyAuth.LoggedUser.Id" (click)="DeletePost()">
+        <i class="fal fa-trash-alt"></i> Delete
+      </button>
+    </mat-menu>
+  </mat-card-header>
+  <div *ngIf="!ImageLoaded" class="div-center" style="height: 60vh">
+    <element-my-loader></element-my-loader>
+  </div>
+
+  <img mat-card-image class="imgviewable" [ngStyle]="{'opacity': ImageOpacity}"
+    (load)="ImgLoaded(Image,PostData.ImageURL);" #Image src="{{PostData.ThumbURL}}">
+    
+  <mat-card-content *ngIf="PostData.Caption">
+    {{PostData.Caption}}
+  </mat-card-content>
+
+  <mat-card-actions class="card-actions">
+    <mat-expansion-panel [disabled]="true" class="w-100" [expanded]="ShowComments" hideToggle>
+      <mat-expansion-panel-header class="row">
+        <div class="col div-center">
+          <button mat-icon-button (click)="AddRemoveHeart()">
+            <ng-container *ngIf="IsHeartedByUser$ | async as IsHeartedByUser; else IsHeartLoading">
+              <span class="font-24px color-orangered">
+                <i [ngClass]="{'fas': IsHeartedByUser==1, 'fal': IsHeartedByUser==2}" class="fal fa-heart"></i>
+                <span class="fa-xs"> {{PostData.HeartsCount}}</span>
+              </span>
+            </ng-container>
+            <ng-template #IsHeartLoading>
+              <span><i class="fal fa-spinner fa-spin"></i></span>
+            </ng-template>
+          </button>
+        </div>
+
+        <div class="col div-center">
+          <button mat-icon-button (click)="PanelToggle()">
+            <span class="font-24px color-orangered">
+              <i class="fal fa-comment-alt"></i>
+              <span class="fa-xs"> {{PostData.CommentsCount}}</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="col div-center">
+          <button mat-icon-button>
+            <span class="font-24px color-orangered">
+              <i class="fal fa-share-alt"></i>
+            </span>
+          </button>
+        </div>
+      </mat-expansion-panel-header>
+
+      <!-- Comments section -->
+      <ng-container *ngIf="Comments$ | async as Comments; else CommentsLoading">
+        <mat-list dense>
+          <div>
+            <mat-list-item *ngFor="let comment of Comments; trackBy:TrackByCommentId">
+              <img mat-list-avatar [src]="comment.Commenter.PhotoURL">
+              <h4 mat-line (click)="MyAuth.NavTo('User/'+comment.Commenter.Id)" class="Commenter-Name MousePointer">
+                {{comment.Commenter.DisplayName}}</h4>
+              <p class="Comment-Date"> {{moment(comment.CommentedOn).calendar(null, DateTimeFormat)}} </p>
+              <p mat-line class="Comment-Message">{{comment.CommentMsg}} </p>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </ng-container>
+      <ng-template #CommentsLoading>
+        <element-my-loader></element-my-loader>
+      </ng-template>
+
+      <mat-action-row style="justify-content: space-between;">
+        <mat-form-field style="width:95%;">
+          <input matInput [(ngModel)]="CommentText" (keyup.enter)="PostAComment()"
+            placeholder="What do you say about this?" autocomplete="off">
+          <button matSuffix mat-icon-button style="align-self: center;">
+            <mat-icon matSuffix style="cursor: pointer;" (click)="PostAComment()">
+              <span *ngIf="!CommentUploading"><i class="fal fa-paper-plane fa-lg"></i></span>
+              <span *ngIf="CommentUploading"><i class="fal fa-spinner fa-spin"></i></span>
+            </mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-card-actions>
+</mat-card>

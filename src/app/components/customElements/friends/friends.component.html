@@ -1,0 +1,14 @@
+<mat-card>
+  <div class="row">
+    <ng-container *ngIf="FollowsItemsToDisplay$ | async as FollowsItems; else UsersLoading">
+      <div *ngFor="let FollowItem of FollowsItems" class="col-6 col-sm-6 col-md-4 col-lg-4">
+        <element-person-profile-card [Data]="FollowItem" [Who]="Who"></element-person-profile-card>
+      </div>
+    </ng-container>
+    <ng-template #UsersLoading>
+      <div class="div-center">
+        <element-my-loader></element-my-loader>
+      </div>
+    </ng-template>
+  </div>
+</mat-card>

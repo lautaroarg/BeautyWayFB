@@ -1,0 +1,10 @@
+  .controls-container{
+    width: 100%;
+  }
+  
+  #grid {
+    background: linear-gradient(to right, rgb(40, 60, 134), rgb(69, 162, 71));
+    padding: 64px 0;
+    height: calc(100% - 64px);
+  }
+  

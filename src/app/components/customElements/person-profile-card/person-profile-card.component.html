@@ -1,0 +1,13 @@
+<div style="padding-bottom: 10px;">
+  <mat-card>
+    <img mat-card-image [src]="UserToDisplay.PhotoURL" [routerLink]="[ '/User', UserToDisplay.Id ]" class="MousePointer">
+    <mat-card-title [routerLink]="[ '/User', UserToDisplay.Id ]" class="MousePointer">{{UserToDisplay.DisplayName}}</mat-card-title>
+    <mat-card-content>
+      <p>{{UserToDisplay.About}}</p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button [routerLink]="[ '/User', UserToDisplay.Id ]">View</button>
+      <button mat-button [routerLink]="[ '/Messages', UserToDisplay.Id ]">Message</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

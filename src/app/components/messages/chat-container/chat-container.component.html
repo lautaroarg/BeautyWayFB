@@ -1,0 +1,89 @@
+<ng-container *ngIf="User$ | async as User; else UserLoading">
+  <mat-card class="chat-card">
+    <mat-card-header class="chat-card-header">
+      <img mat-card-avatar src="{{User.PhotoURL}}" [routerLink]="[ '/User', User.Id ]" class="MousePointer" />
+      <mat-card-title [routerLink]="[ '/User', User.Id ]" class="MousePointer">
+        {{User.DisplayName}}
+      </mat-card-title>
+      <!-- <mat-card-subtitle>Last scene: </mat-card-subtitle> -->
+      <button class="btn-card-menu" align="end" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Open basic menu">
+        <i class="fal fa-ellipsis-v fa-lg"></i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="[ '/User', User.Id ]"><i class="fal fa-user"></i> View</button>
+        <button mat-menu-item (click)="DeleteChat()"><i class="fal fa-trash-alt"></i> Delete</button>
+      </mat-menu>
+    </mat-card-header>
+    <mat-card-content #MessageDiv class="chat-card-content">
+      <mat-list dense>
+        <div class="container">
+          <ng-container *ngIf="Messages$ | async as MessagesArr; else MessagesLoading">
+            <ng-container *ngIf="Messages.length; else NoMessages">
+              <div *ngFor="let Message of Messages; trackBy: Message?.DocId" class="row" [ngClass]="{'sent-message': Message.FromId == MyAuth.LoggedUser?.Id, 
+                'received-message': Message.FromId != MyAuth.LoggedUser?.Id}">
+                <div class="message-box col-9">
+                  <div class="row">
+                    <!-- <div class="col-3 col-lg-2 mt-sm-1 mb-sm-1 mt-lg-3 mb-lg-3 div-center from-pic">
+                      <img
+                        src="{{Message.FromId == MyAuth.LoggedUser?.Id ? MyAuth.LoggedUser?.PhotoURL : User.PhotoURL}}">
+                    </div> -->
+                    <div class="col message-textAndDate">
+                      <p class="message-text">{{Message.Text}}</p>
+                      <p class="message-time">
+                        <span *ngIf="Message.Status==0">
+                          <i class="fal fa-spinner fa-spin"></i>
+                        </span>
+                        <span *ngIf="Message.Status==1 && Message.FromId==MyAuth.LoggedUser?.Id">
+                          <i class="fal fa-check"></i>
+                        </span>
+                        <span *ngIf="Message.Status==2 && Message.FromId==MyAuth.LoggedUser?.Id">
+                          <i class="fal fa-check-double"></i>
+                        </span>
+                        <span style="color: blue" *ngIf="Message.Status==3 && Message.FromId==MyAuth.LoggedUser?.Id"><i
+                            class="fal fa-check-double"></i>
+                        </span>
+                        {{' '+moment(Message.SentOn).calendar(null, DateTimeFormat)}}
+                      </p>
+                    </div>
+                    <div *ngIf="Message.FromId==MyAuth.LoggedUser?.Id" class="delete-div MousePointer"
+                      (click)="DeleteAMessage(Message.DocId)">
+                      <span><i class="fal fa-trash"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #NoMessages>
+              No messages yet.
+            </ng-template>
+          </ng-container>
+          <ng-template #MessagesLoading>
+            <element-my-loader></element-my-loader>
+          </ng-template>
+        </div>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions class="chat-card-actions">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <mat-form-field [floatLabel]="'never'" style="width:95%;">
+              <input matInput [(ngModel)]="MessageText" (keyup.enter)="Send(MessageText)"
+                placeholder="Type a your message" autocomplete="off" aria-autocomplete="none">
+              <button matSuffix mat-icon-button style="align-self: center;" [disabled]="SendingMessage"
+                (click)="Send(MessageText)">
+                <mat-icon matSuffix style="cursor: pointer;">
+                  <span *ngIf="!SendingMessage"><i class="fal fa-paper-plane fa-lg"></i></span>
+                  <span *ngIf="SendingMessage"><i class="fal fa-spinner fa-spin"></i></span>
+                </mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+<ng-template #UserLoading>
+  <element-my-loader></element-my-loader>
+</ng-template>

@@ -1,0 +1,42 @@
+<div style="margin:0 15px;">
+  <mat-card style="margin-bottom: 16px;">
+    <mat-card-header>
+      <mat-card-title>Upload a post</mat-card-title>
+    </mat-card-header>
+    <input type="file" #InputImage (change)="OnChange($event)" style="display: none;" accept="image/*" required>
+    <mat-form-field style="width:95%;">
+      <input matInput [(ngModel)]="InputCaption" placeholder="Write a caption" autocomplete="off">
+      <button matSuffix mat-icon-button (click)="InputImage.click()">
+        <i class="fal fa-paperclip fa-lg"></i>
+      </button>
+      <button style="margin:0 3px;" matSuffix mat-icon-button [disabled]="!HasFile || !CompressingCompleted"
+        (click)="UploadThePost()" align="end">
+        <span *ngIf="!Uploading"><i class="fal fa-paper-plane fa-lg"></i></span>
+        <span *ngIf="Uploading"><i class="fal fa-circle-notch fa-spin"></i></span>
+      </button>
+    </mat-form-field>
+    <mat-card-content>
+      <mat-progress-bar mode="determinate" *ngIf="Uploading" style="margin-bottom: 2px;" color="warn"
+        [value]="(uploadPercent | async)">
+      </mat-progress-bar>
+      <img *ngIf="showImage && HasFile" (load)="PreviewLoaded($event)" style="margin-top:3px;" mat-card-image
+        src="{{OptimizedImage.compressedImage.imageDataUrl}}" alt="{{OptimizedImage.fileName}}">
+    </mat-card-content>
+  </mat-card>
+
+  <ng-container *ngIf="PostsToDisplay$ | async as Posts; else PostsLoading">
+    <ng-container *ngIf="Posts.length; else NoPosts">
+      <div *ngFor="let post of Posts; trackBy: TrackByPostId">
+        <element-post-card [PostData]="post"></element-post-card>
+      </div>
+    </ng-container>
+    <ng-template #NoPosts>
+      <mat-card style="margin: 20px 0;">
+        Add your first post!
+      </mat-card>
+    </ng-template>
+  </ng-container>
+  <ng-template #PostsLoading>
+    <element-my-loader></element-my-loader>
+  </ng-template>
+</div>

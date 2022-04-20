@@ -1,0 +1,101 @@
+<ng-container *ngIf="UserLoaded; else UserLoading">
+  <div class="container-fluid background-gradient">
+    <div class="col-12 col-lg-6 offset-lg-3">
+      <mat-card>
+        <form [formGroup]="AdditionalInfoForm" (submit)="OnSubmit()">
+          <mat-card-header>
+            <mat-card-title class="title">Hello {{MyAuth.LoggedUser.DisplayName}}, Welcome to {{MyAuth.AppTitle}}
+            </mat-card-title>
+            <mat-card-title class="second-title">Tell us something more about you!</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="controls-container">
+              <div class="col">
+                <mat-form-field>
+                  <input matInput formControlName="DisplayName" placeholder="DisplayName" type="text" required>
+                  <mat-error *ngIf="AdditionalInfoForm.controls.DisplayName.hasError('required')">
+                    Name is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput formControlName="Email" placeholder="Email" type="email" required>
+                  <mat-error *ngIf="AdditionalInfoForm.controls.Email.hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="AdditionalInfoForm.controls.Email.hasError('email')">
+                    Please enter a valid <strong>email address</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput formControlName="PhoneNumber" type="number" placeholder="PhoneNumber">
+                </mat-form-field>
+              </div>
+              <div class="col" style="margin: 5px 0;">
+                <mat-radio-group formControlName="Gender" aria-required="true">
+                  <mat-radio-button value="Male" name="Gender">Male</mat-radio-button>
+                  <mat-radio-button value="Female" name="Gender" style="margin-left: 32px;">Female</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="dp" placeholder="Date of birth" formControlName="DOB">
+                  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                  <mat-datepicker #dp></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-select formControlName="Status" placeholder="Status">
+                    <mat-option value="Single">Single</mat-option>
+                    <mat-option value="Engaged">Engaged</mat-option>
+                    <mat-option value="Married">Married</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <mat-label>City</mat-label>
+                  <mat-select formControlName="LivesIn">
+                    <mat-option>-- None --</mat-option>
+                    <mat-optgroup *ngFor="let State of CitiesAndStates.StatesCities" [label]="State.State">
+                      <mat-option *ngFor="let City of State.Cities" [value]="City">
+                        {{City}}
+                      </mat-option>
+                    </mat-optgroup>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput formControlName="Interests" placeholder="Interests">
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput formControlName="About" placeholder="About">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div style="margin:0 0 15px 15px;">
+              <button mat-raised-button [disabled]="AdditionalInfoForm.pristine || AdditionalInfoForm.invalid"
+                type="submit" color="accent">
+                <span *ngIf="!Loading">Complete</span>
+                <span *ngIf="Loading" style="margin:0 19px;"><i class="fal fa-spinner fa-spin"></i></span>
+              </button>
+              <button *ngIf="IsPasswordProvider" (click)="Skip()" mat-button>Skip</button>
+            </div>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>
+<ng-template #UserLoading>
+  <element-my-loader></element-my-loader>
+</ng-template>

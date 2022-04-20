@@ -1,0 +1,17 @@
+.mat-form-field, .mat-radio-group {
+    width:100%;
+}
+
+.second-title {
+    font-size: 12px;
+    color: #ff4081;
+}
+
+.title {
+    color:#3f51b5;
+}
+
+.background-gradient {
+    background: linear-gradient(to right, rgb(40, 60, 134), rgb(69, 162, 71));
+    padding: 64px 0;
+}

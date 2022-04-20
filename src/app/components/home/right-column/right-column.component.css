@@ -1,0 +1,9 @@
+.btn-menu {
+    position: absolute;
+    right: 5px;
+}
+
+.chat-heads-container {
+    height: calc(100vh - 211px);
+    overflow: auto;
+}

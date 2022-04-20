@@ -1,0 +1,11 @@
+.user-tab {
+    border-left: 5px solid transparent;
+}
+
+.active-route {
+    border-color: #db7093 !important;
+}
+
+.unread {
+    color:#fd0606;
+}

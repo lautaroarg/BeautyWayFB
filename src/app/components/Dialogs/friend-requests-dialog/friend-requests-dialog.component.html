@@ -1,0 +1,20 @@
+<!-- <mat-list dense>
+  <div *ngIf="Loading" style="text-align: center;">
+    <element-my-loader></element-my-loader>
+  </div>
+  <div *ngIf="!Loading && NoRequests">
+    No pending Requests!
+  </div>
+  <mat-list-item *ngFor="let Request of Requests; index as i">
+    <img mat-list-avatar [src]="Request.AspNetUserAction.ProfilePicThumbURL"
+      alt="Avatar of {{Request.AspNetUserAction.FirstName +' '+Request.AspNetUserAction.LastName}}">
+    <h4 mat-line class="Requester-Name">{{Request.AspNetUserAction.FirstName+' '+Request.AspNetUserAction.LastName}}</h4>
+    <button mat-icon-button (click)="RequestAction(Request.Id, true, Request.AspNetUserAction)">
+      <i style="margin-left: 8px;" class="fal fa-check-circle fa-2x"></i>
+    </button>
+    <button mat-icon-button (click)="RequestAction(Request.Id, false, Request.AspNetUserAction)">
+      <i style="margin-left: 8px;" class="fal fa-times-circle fa-2x"></i>
+    </button>
+    <p mat-line class="Request-Message">Wants to be your friend</p>
+  </mat-list-item>
+</mat-list> -->

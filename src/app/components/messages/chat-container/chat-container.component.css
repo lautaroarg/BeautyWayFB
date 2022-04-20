@@ -1,0 +1,65 @@
+.chat-card {
+    height: calc(100vh - 118px);
+    /* margin-top: 10px; */
+}
+
+.btn-card-menu {
+    position: absolute;
+    right: 5px;
+}
+
+.chat-card-content {
+    height: calc(100vh - 265px);
+    overflow: auto;
+}
+
+.sent-message {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.received-message {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.message-box {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.message-time {
+    font-size: 9px;
+    text-align: end;
+}
+
+.from-pic img {
+    width: inherit;
+    min-width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sent-message .message-box {
+    background: rgb(147, 248, 189);
+    margin-right: 10px;
+    margin-top: 3px;
+    padding: 0 10px;
+}
+
+.received-message .message-box {
+    background: antiquewhite;
+    margin-right: 10px;
+    margin-top: 3px;
+    padding: 0 10px;
+}
+
+.delete-div {
+    position: absolute;
+    right: 0;
+    padding-right: 5px;
+    padding-top: 5px;
+}

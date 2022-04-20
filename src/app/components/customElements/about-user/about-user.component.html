@@ -1,0 +1,147 @@
+<mat-card class="container about-user-container">
+  <div *ngIf="Edit; then EditMode else DisplayMode"></div>
+  <ng-template #DisplayMode>
+    <div class="row">
+      <div class="col-3"><b>Full name: </b></div>
+      <div class="col">{{User?.DisplayName}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>About: </b></div>
+      <div class="col">{{User?.About}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Email: </b></div>
+      <div class="col">{{User?.Email}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Phone: </b></div>
+      <div class="col">{{User?.PhoneNumber}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Gender: </b></div>
+      <div class="col">{{User?.Gender}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Date of birth: </b></div>
+      <div class="col">{{User?.DOB | date}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Status: </b></div>
+      <div class="col">{{User?.Status}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Lives In: </b></div>
+      <div class="col">{{User?.LivesIn}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Interests: </b></div>
+      <div class="col">{{User?.Interests}}</div>
+    </div>
+  </ng-template>
+
+  <!-- Edit mode -->
+  <ng-template #EditMode>
+    <div class="controls-container">
+      <div class="row">
+        <mat-form-field>
+          <input matInput [(ngModel)]="DisplayName" value="{{User?.DisplayName}}" placeholder="Full Name">
+          <button mat-button (click)="Update({DisplayName:DisplayName});"
+            *ngIf="DisplayName != User?.DisplayName && DisplayName!=''" matSuffix mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput [(ngModel)]="About" value="{{User?.About}}" placeholder="About">
+          <button mat-button (click)="Update({About:About});" *ngIf="About != User?.About && About!=''" matSuffix
+            mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput [(ngModel)]="Email" value="{{User?.Email}}" [readonly]="User?.Provider=='Password'" placeholder="Email">
+          <button mat-button (click)="Update({Email:Email});"
+            *ngIf="Email != User?.Email && Email!=''" matSuffix mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput [(ngModel)]="PhoneNumber" value="{{User?.PhoneNumber}}" type="tel" placeholder="Phone Number">
+          <button mat-button (click)="Update({PhoneNumber:PhoneNumber});"
+            *ngIf="PhoneNumber != User?.PhoneNumber && PhoneNumber!=''" matSuffix mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-select placeholder="Gender" [(ngModel)]="Gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+          <button mat-button (click)="Update({Gender:Gender});" *ngIf="Gender != User?.Gender" matSuffix mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput [matDatepicker]="dp" [(ngModel)]="DOB" value="{{User?.DOB}}" placeholder="Date of birth">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+          <button mat-button (click)="Update({DOB:DOB});" *ngIf="DOB != User?.DOB && DOB!=''" matSuffix mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="row form-align">
+        <mat-form-field>
+          <mat-select placeholder="Status" [(ngModel)]="Status">
+            <mat-option value="Single">Single</mat-option>
+            <mat-option value="Engaged">Engaged</mat-option>
+            <mat-option value="Married">Married</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button (click)="Update({Status:Status});"
+          *ngIf="Status != User?.Status && Status!=''" matSuffix mat-icon-button>
+          <i style="margin: 5px;" class="fal fa-check-circle"></i>
+        </button>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Lives in</mat-label>
+          <mat-select [(ngModel)]="LivesIn">
+            <mat-option>-- None --</mat-option>
+            <mat-optgroup *ngFor="let State of CitiesAndStates.StatesCities" [label]="State.State">
+              <mat-option *ngFor="let City of State.Cities" [value]="City">
+                {{City}}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button (click)="Update({LivesIn:LivesIn});"
+          *ngIf="LivesIn != User?.LivesIn && LivesIn!=''" matSuffix mat-icon-button>
+          <i style="margin: 5px;" class="fal fa-check-circle"></i>
+        </button>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <input matInput [(ngModel)]="Interests" placeholder="Interests">
+          <button mat-button (click)="Update({Interests:Interests});"
+            *ngIf="Interests != User?.Interests && Interests!=''" matSuffix mat-icon-button>
+            <i style="margin: 5px;" class="fal fa-check-circle"></i>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+  </ng-template>
+  <div *ngIf="MyAuth.LoggedUser?.Id === User?.Id" class="div-right">
+    <button (click)="Edit=!Edit;" mat-mini-fab><i class="fal fa-user-edit"></i></button>
+  </div>
+</mat-card>

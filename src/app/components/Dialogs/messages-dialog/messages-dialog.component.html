@@ -1,0 +1,10 @@
+<ng-container *ngIf="UserIdListToDisplay$ | async as UserIdList; else UserIdListLoading">
+    <mat-list dense>
+        <ng-container *ngFor="let UserId of UserIdList; let i=index">
+            <app-chat-head [UserId]="UserId"></app-chat-head>
+        </ng-container>
+    </mat-list>
+</ng-container>
+<ng-template #UserIdListLoading>
+    <element-my-loader></element-my-loader>
+</ng-template>

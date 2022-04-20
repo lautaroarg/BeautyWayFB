@@ -1,0 +1,63 @@
+<div class="container-fluid messages-main-box">
+  <div class="row div-center">
+    <element-mini-navbar></element-mini-navbar>
+  </div>
+  <div class="row">
+    <ng-container *ngIf="UserIdListToDisplay$ | async as UserIds; else UsersLoading">
+      <ng-container *ngIf="UserIds.length; else NoUsersToDisplay">
+        <ng-container *ngIf="IsHandset$ | async as isHandset; else NotHandset">
+          <!-- Mobile view -->
+          <div class="col-3 col-sm-2 chat-list-container-mobile">
+            <mat-list dense>
+              <h4>Chats</h4>
+              <mat-form-field class="w-100">
+                <input matInput [(ngModel)]="SearchTerm" placeholder="Search" autocomplete="off">
+              </mat-form-field>
+              <div class="chat-heads-container-mobile">
+                <app-chat-list *ngFor="let UserId of UserIds; trackBy:UserId" [SearchTerm]="SearchTerm" [IsForHandset]="true" [UserId]="UserId">
+                </app-chat-list>
+              </div>
+            </mat-list>
+          </div>
+          <div class="col-9 chat-card-container">
+            <router-outlet></router-outlet>
+          </div>
+        </ng-container>
+        <!-- Desktop view -->
+        <ng-template #NotHandset>
+          <div class="col-sm-4 col-xl-3 chat-list-container">
+            <mat-list>
+              <h3>Chats</h3>
+              <mat-form-field class="w-100">
+                <input matInput [(ngModel)]="SearchTerm" placeholder="Search" autocomplete="off">
+              </mat-form-field>
+              <div class="chat-heads-container">
+                <app-chat-list *ngFor="let UserId of UserIds; trackBy:UserId" [SearchTerm]="SearchTerm"
+                  [IsForHandset]="false" [UserId]="UserId"></app-chat-list>
+              </div>
+            </mat-list>
+          </div>
+          <div class="col-sm-8 col-md-7 chat-card-container">
+            <router-outlet></router-outlet>
+          </div>
+        </ng-template>
+      </ng-container>
+      <ng-template #NoUsersToDisplay>
+        <div class="col div-center my-container">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>No chats found.</mat-card-title>
+              <mat-card-subtitle>Try following some friends <a [routerLink]="[ '/Search' ]">here!</a>
+              </mat-card-subtitle>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </ng-template>
+    </ng-container>
+    <ng-template #UsersLoading>
+      <div class="col div-center my-container">
+        <element-my-loader></element-my-loader>
+      </div>
+    </ng-template>
+  </div>
+</div>

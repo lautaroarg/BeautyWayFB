@@ -1,0 +1,54 @@
+<div class="container-fluid" id="grid">
+  <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <form [formGroup]="FormLogin" (submit)="OnSubmit()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="controls-container">
+            <mat-form-field class="form-field">
+              <input matInput placeholder="Email" formControlName="Email" type="email" required>
+              <mat-hint>{{EmailErrorMessage}}</mat-hint>
+              <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="FormLogin.controls.Email.hasError('email')">
+                Please enter a valid <strong>email address</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field">
+              <input matInput placeholder="Contraseña" formControlName="Password" [type]="hide ? 'password' : 'text'"
+                required>
+              <mat-hint>{{PasswordErrorMessage}}</mat-hint>
+              <mat-error *ngIf="FormLogin.controls.Password.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="FormLogin.controls.Password.hasError('minlength')">
+                Password should contain <strong>minimum 6</strong> characters.
+              </mat-error>
+              <mat-icon matSuffix mat-icon-button (click)="hide = !hide" style="cursor: pointer;">
+                <span *ngIf="hide"><i class="fal fa-eye-slash"></i></span>
+                <span *ngIf="!hide"><i class="fal fa-eye"></i></span>
+              </mat-icon>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button [disabled]="FormLogin.pristine || FormLogin.invalid" type="submit">
+            <span *ngIf="!Loading">Login</span>
+            <span *ngIf="Loading" style="margin:0 10px;"><i class="fal fa-spinner fa-spin"></i></span>
+          </button>
+          <h6>Eres nuevo? <a [routerLink]="[ '/Auth/Register']">hace click</a> y registrate!</h6>
+          <!-- <button mat-raised-button [routerLink]="[ '/Register']" color="primary">Register</button> -->
+        </mat-card-actions>
+        <mat-card-actions>
+          <!--
+          <button mat-raised-button (click)="LoginWith('Google')" type="button" class="loginBtn loginBtn--google">
+            Login with Google
+          </button> -->
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

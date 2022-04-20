@@ -1,0 +1,22 @@
+.start-column {
+    
+}
+
+.LoaderDiv {
+    display:flex; 
+    justify-content: center; 
+    align-items: center;
+    /* height: 100%; */
+    padding: 20%
+}
+
+.posts-container {
+    
+}
+
+.post {
+    width: 65%;
+}
+.tab-title {
+    margin-left: 5px;
+}

@@ -1,0 +1,21 @@
+<div class="container-fluid home-root-div">
+  <div class="d-block d-md-none">
+    <element-mini-navbar></element-mini-navbar>
+  </div>
+  <div class="row" *ngIf="!MyAuth.LoggedUserLoading">
+    <div class="col" *ngIf="!MyAuth.LoggedUser">
+      <element-my-loader></element-my-loader>
+    </div>
+    <ng-container *ngIf="MyAuth.LoggedUser">
+      <div class="col-sm-1 col-lg-3 col-xl-2 offset-xl-1 d-none d-md-block start-content">
+        <app-left-column></app-left-column>
+      </div>
+      <div class="col col-xl-5 middle-content">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-4 col-lg-3 d-none d-md-block end-content">
+        <app-right-column></app-right-column>
+      </div>
+    </ng-container>
+  </div>
+</div>

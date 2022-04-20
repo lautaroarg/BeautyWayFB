@@ -1,0 +1,79 @@
+<div>
+  <element-mini-navbar></element-mini-navbar>
+</div>
+
+<ng-container *ngIf="!MyAuth.LoggedUserLoading; else iUserLoading">
+  <div *ngIf="UserToDisplay$ | async as User; else UserLoading" class="container-fluid">
+    <div class="row">
+      <div class="start-column col-sm-12 col-md-4 col-lg-3">
+        <element-user-profile [User]="User"></element-user-profile>
+      </div>
+      <div class="middle-content col-md-8 col-lg-6">
+        <mat-tab-group animationDuration="300ms" style="height: calc(100vh - 112px)" mat-align-tabs="center">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="far fa-info-circle"></i>
+              <p class="tab-title">Info</p>
+            </ng-template>
+            <ng-template matTabContent>
+              <element-about-user [User]="User"></element-about-user>
+            </ng-template>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="far fa-images"></i>
+              <p class="tab-title">Posts</p>
+            </ng-template>
+            <ng-template matTabContent>
+              <div *ngIf="UserPosts$ | async as Posts; else PostsLoading">
+                <ng-container *ngIf="Posts.length; else NoPostItems">
+                  <div class="posts-container" *ngFor="let Post of Posts">
+                    <element-post-card [PostData]="Post" class="post"></element-post-card>
+                  </div>
+                </ng-container>
+                <ng-template #NoPostItems>
+                  No posts yet!
+                </ng-template>
+              </div>
+              <ng-template #PostsLoading>
+                <element-my-loader></element-my-loader>
+              </ng-template>
+            </ng-template>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="far fa-users"></i>
+              <p class="tab-title">Following</p>
+            </ng-template>
+            <ng-template matTabContent>
+              <element-friends [Who]="'Following'" [UserId]="User.Id"></element-friends>
+            </ng-template>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="far fa-users"></i>
+              <p class="tab-title">Followers</p>
+            </ng-template>
+            <ng-template matTabContent>
+              <element-friends [Who]="'Followers'" [UserId]="User.Id"></element-friends>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="end-content col-lg-3 d-none d-lg-block">
+        <app-right-column></app-right-column>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #UserLoading>
+    <div class="LoaderDiv">
+      <element-my-loader></element-my-loader>
+    </div>
+  </ng-template>
+</ng-container>
+<ng-template #iUserLoading>
+  <div class="LoaderDiv">
+    <element-my-loader></element-my-loader>
+  </div>
+</ng-template>

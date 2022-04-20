@@ -1,0 +1,57 @@
+<div [hidden]="!Show">
+  <ng-container *ngIf="IsForHandset; else DesktopView">
+    <!-- Mobile view -->
+    <ng-container *ngIf="User$ | async as User; else UserLoading">
+      <mat-list-item [routerLink]="[ '/Messages', User.Id ]" routerLinkActive="active-route"
+        class="user-tab MousePointer">
+        <img mat-list-avatar [src]="User.PhotoURL">
+      </mat-list-item>
+    </ng-container>
+    <ng-template #UserLoading>
+      <mat-list-item>
+        <span mat-list-avatar class="div-center"><i class="fal fa-spinner fa-spin"></i></span>
+      </mat-list-item>
+    </ng-template>
+  </ng-container>
+  <ng-template #DesktopView>
+    <!-- Desktop view -->
+    <ng-container *ngIf="User$ | async as User; else UserLoading">
+      <mat-list-item [routerLink]="[ '/Messages', User.Id ]" routerLinkActive="active-route"
+        class="user-tab MousePointer">
+        <img mat-list-avatar [src]="User.PhotoURL">
+        <h4 mat-line>{{User.DisplayName}}</h4>
+        <p mat-line>
+          <ng-container *ngIf="LastMessage$ | async as LastMessage; else LastMessageLoading">
+            <ng-container *ngIf="LastMessage?.SentOn; else NoLastmessage">
+              <span *ngIf="LastMessage.Status==0"><i class="fal fa-spinner fa-spin"></i> </span>
+              <span *ngIf="LastMessage.Status==1 && LastMessage.FromId==MyAuth.LoggedUser?.Id">
+                <i class="fal fa-check"></i>
+              </span>
+              <span *ngIf="LastMessage.Status==2 && LastMessage.FromId==MyAuth.LoggedUser?.Id">
+                <i class="fal fa-check-double"></i>
+              </span>
+              <span style="color: blue" *ngIf="LastMessage.Status==3 && LastMessage.FromId==MyAuth.LoggedUser?.Id">
+                <i class="fal fa-check-double"></i>
+              </span>
+              <span>{{' '+LastMessage.Text}}</span>
+            </ng-container>
+            <ng-template #NoLastmessage>
+            </ng-template>
+          </ng-container>
+        </p>
+        <button mat-icon-button class="unread" *ngIf="HasUnreadMessages">
+          <i class="fal fa-exclamation-circle"></i>
+        </button>
+        <ng-template #LastMessageLoading>
+          Loading...
+        </ng-template>
+      </mat-list-item>
+    </ng-container>
+    <ng-template #UserLoading>
+      <mat-list-item>
+        <span mat-list-avatar class="div-center"><i class="fal fa-spinner fa-spin"></i></span>
+        <p mat-line>Loading...</p>
+      </mat-list-item>
+    </ng-template>
+  </ng-template>
+</div>

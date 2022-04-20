@@ -1,0 +1,165 @@
+.our-team {
+    width:250px;
+    padding: 30px 0 40px;
+    background: white;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.our-team .pic {
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    margin-bottom: 50px;
+    position: relative;
+}
+.our-team .pic::before {
+    content: "";
+    width: 100%;
+    background: #eb1768;
+    position: absolute;
+    border-radius: 40%;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
+}
+
+.our-team:hover .pic::before {
+    height: 100%;
+}
+
+.our-team .pic::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ee4266;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.our-team .pic img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+}
+
+.our-team:hover .pic img {
+    box-shadow: 0 0 0 14p;
+}
+
+.our-team .title{
+    font-size: 22px;
+    font-weight: 700;
+    color: #4e5052;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    font-variant: petite-caps;
+}
+
+.our-team .subtitle {
+    display: block;
+    font-size: 15px;
+    color: #4e5052;
+    text-transform: capitalize;
+}
+
+.our-team .action {
+    width: 100%;
+    padding: 4px;
+    margin: 0;
+    background: #eb1768;
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    bottom: 0;
+    transition: all 0.5s ease 0s;
+}
+
+.our-team .team-content {
+    margin-bottom: 20px;
+}
+
+.our-team:hover .action {
+    bottom: 0;
+}
+
+.our-team .action li {
+    display: inline-block;
+}
+
+.action-button {
+    display: block;
+    color: white;
+    transition: all 0.3s ease 0s;
+}
+ 
+.action-button:hover {
+    color: #eb1768;
+    background: #f7f5ec;
+    /* text-decoration: none; */
+}
+
+.btn-edit {
+    position: absolute;
+    z-index: 1;
+    right: 30px;
+}
+
+.card-mobile {
+    /* width: 445px; */
+}
+
+.card-mobile .profile-pic {
+    border-radius: 50%;
+    object-fit: cover;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: stretch;
+}
+
+.card-mobile .title {
+    margin-top: 30px;
+    font-variant: petite-caps;
+}
+
+.btn-edit-mobile {
+    margin-right: 10px;
+}
+
+.btn-counts-mobile {
+    line-height: 15px;
+}
+
+.btn-action-mobile {
+    line-height: 1.3;
+}
+
+.counts-container-mobile {
+    margin-top: 15px;
+}
+
+.follow-container-mobile {
+    margin-top: 32px;
+}
+
+.btn-message-mobile {
+    margin-top: 2px;
+} 
+
+.btn-message {
+    margin-left: 2px;
+}
+
+.btn-follow-count {
+    line-height: 15px;
+    padding: 0 0;
+}

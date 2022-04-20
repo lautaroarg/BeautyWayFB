@@ -1,0 +1,18 @@
+<mat-list class="d-none d-md-block">
+  <mat-list-item class="MousePointer" style="color:black" [routerLink]="[ '/Home']" routerLinkActive="active-route">
+    <i class="fal fa-home"></i>
+    <span class="d-none d-lg-block" mat-line>Feeds</span>
+  </mat-list-item>
+  <mat-list-item class="MousePointer" style="color:black" [routerLink]="[ '/User', MyAuth.LoggedUser?.Id ]" routerLinkActive="active-route">
+    <i class="fal fa-user"></i>
+    <span class="d-none d-lg-block" mat-line>Profile</span>
+  </mat-list-item>
+  <mat-list-item class="MousePointer" style="color:black" [routerLink]="[ '/Messages']" routerLinkActive="active-route">
+    <i class="fal fa-comment-alt-lines"></i>
+    <span class="d-none d-lg-block" mat-line>Messages</span>
+  </mat-list-item>
+  <mat-list-item class="MousePointer" style="color:black" [routerLink]="[ '/Search']" routerLinkActive="active-route">
+    <i class="fal fa-search"></i>
+    <span class="d-none d-lg-block" mat-line>Search</span>
+  </mat-list-item>
+</mat-list>

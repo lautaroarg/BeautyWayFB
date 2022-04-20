@@ -1,0 +1,25 @@
+.user-name-box {
+    margin: 3px 0;
+}
+
+.user-name {
+    
+}
+
+.user-box {
+    border: 1px transparent;
+    border-radius: 5px;
+    padding: 3px 0;
+}
+
+.user-pic {
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.btn-action-mobile {
+    line-height: 1.2;
+    margin-top: 3px;
+}

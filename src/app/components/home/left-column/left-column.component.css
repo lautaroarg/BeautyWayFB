@@ -1,0 +1,8 @@
+.ColorOnHover:hover {
+   background-color: #3f51b5; 
+}
+
+.active-route {
+   border-color: #db7093 !important;
+   border-left: 5px solid transparent;
+}

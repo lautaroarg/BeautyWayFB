@@ -1,0 +1,11 @@
+@media (min-width: 376px){
+.extra-small {
+    width: 200px;
+}
+}
+
+@media (min-width: 576px){
+.extra-small {
+   width: auto;
+  }
+}

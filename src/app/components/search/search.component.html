@@ -1,0 +1,35 @@
+<div style="margin: 0 15px;">
+  <mat-card>
+    <form [formGroup]="QueryForm">
+      <mat-form-field class="w-100">
+        <input matInput formControlName="Query" placeholder="Whom are you looking for?">
+        <button mat-icon-button matSuffix type="submit">
+          <i class="fal fa-search"></i>
+        </button>
+      </mat-form-field>
+    </form>
+  </mat-card>
+
+  <mat-card id="people-card">
+    <ng-container *ngIf="PeopleResults$ | async; else PeopleLoading">
+      <mat-card-header>
+        <mat-card-title>People</mat-card-title>
+        <mat-card-subtitle>Found: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container-fluidr">
+          <div class="row">
+            <ng-container *ngFor="let User of FilteredResults; trackBy:User?.Id">
+              <div class="col-6 users-container">
+                <element-mini-user-card [User]="User"></element-mini-user-card>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </mat-card-content>
+    </ng-container>
+    <ng-template #PeopleLoading>
+      PeopleLoading...
+    </ng-template>
+  </mat-card>
+</div>
