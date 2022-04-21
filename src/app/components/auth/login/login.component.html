@@ -3,18 +3,18 @@
     <form [formGroup]="FormLogin" (submit)="OnSubmit()">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
+          <mat-card-title>Ingreso</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <div class="controls-container">
             <mat-form-field class="form-field">
-              <input matInput placeholder="Email" formControlName="Email" type="email" required>
-              <mat-hint>{{EmailErrorMessage}}</mat-hint>
+              <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
+              <mat-hint>{{EmairrorMessalEge}}</mat-hint>
               <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
-                Email is <strong>required</strong>
+                Su corrreo es <strong>necesario</strong>
               </mat-error>
-              <mat-error *ngIf="FormLogin.controls.Email.hasError('email')">
-                Please enter a valid <strong>email address</strong>
+              <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
+                Por favor ingrese una <strong>direccion de correo</strong>
               </mat-error>
             </mat-form-field>
             <mat-form-field class="form-field">
@@ -22,10 +22,10 @@
                 required>
               <mat-hint>{{PasswordErrorMessage}}</mat-hint>
               <mat-error *ngIf="FormLogin.controls.Password.hasError('required')">
-                Password is <strong>required</strong>
+                Contraseña es <strong>requerida</strong>
               </mat-error>
               <mat-error *ngIf="FormLogin.controls.Password.hasError('minlength')">
-                Password should contain <strong>minimum 6</strong> characters.
+                La contrasenia deberia contener <strong>un minimo de 6</strong> caracteres.
               </mat-error>
               <mat-icon matSuffix mat-icon-button (click)="hide = !hide" style="cursor: pointer;">
                 <span *ngIf="hide"><i class="fal fa-eye-slash"></i></span>
@@ -36,7 +36,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button [disabled]="FormLogin.pristine || FormLogin.invalid" type="submit">
-            <span *ngIf="!Loading">Login</span>
+            <span *ngIf="!Loading">Ingresar</span>
             <span *ngIf="Loading" style="margin:0 10px;"><i class="fal fa-spinner fa-spin"></i></span>
           </button>
           <h6>Eres nuevo? <a [routerLink]="[ '/Auth/Register']">hace click</a> y registrate!</h6>
