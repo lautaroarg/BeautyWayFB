@@ -1,9 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from 'src/app/components/home/home/home.component';
-import { AuthGuard } from 'src/app/guards/auth.guard';
+// import { AuthGuard } from 'src/app/guards/auth.guard';
 import { MiddleColumnComponent } from 'src/app/components/home/middle-column/middle-column.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {

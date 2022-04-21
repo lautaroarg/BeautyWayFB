@@ -3,7 +3,7 @@
     <form [formGroup]="FormLogin" (submit)="OnSubmit()">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Ingreso</mat-card-title>
+          <mat-card-title>Ingresar</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <div class="controls-container">
@@ -11,10 +11,7 @@
               <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
               <mat-hint>{{EmairrorMessalEge}}</mat-hint>
               <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
-                Su corrreo es <strong>necesario</strong>
-              </mat-error>
-              <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
-                Por favor ingrese una <strong>direccion de correo</strong>
+                Su correo es <strong>necesario</strong>
               </mat-error>
             </mat-form-field>
             <mat-form-field class="form-field">
@@ -22,10 +19,10 @@
                 required>
               <mat-hint>{{PasswordErrorMessage}}</mat-hint>
               <mat-error *ngIf="FormLogin.controls.Password.hasError('required')">
-                Contraseña es <strong>requerida</strong>
+                Su contraseña es<strong> obligatoria</strong>
               </mat-error>
               <mat-error *ngIf="FormLogin.controls.Password.hasError('minlength')">
-                La contrasenia deberia contener <strong>un minimo de 6</strong> caracteres.
+                Su contraseña deberia contener <strong>un minimo de 6</strong> caracteres.
               </mat-error>
               <mat-icon matSuffix mat-icon-button (click)="hide = !hide" style="cursor: pointer;">
                 <span *ngIf="hide"><i class="fal fa-eye-slash"></i></span>
