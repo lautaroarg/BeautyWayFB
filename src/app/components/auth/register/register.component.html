@@ -10,29 +10,32 @@
             <div class="row" style="margin:0;">
               <div class="col-6">
                 <mat-form-field class="form-field w-100">
-                  <input matInput placeholder="First name" formControlName="FirstName" type="text" autocomplete="off"
+                  <input matInput placeholder="Nombre" formControlName="FirstName" type="text" autocomplete="off"
                     accept="FirstName" required>
                   <mat-error *ngIf="FormRegister.controls.FirstName.hasError('required')">
-                    FirstName is <strong>required</strong>
+                    Su nombre es <strong>obligatorio</strong>
                   </mat-error>
                 </mat-form-field>
               </div>
               <div class="col-6">
                 <mat-form-field class="form-field w-100">
-                  <input matInput placeholder="Last name" formControlName="LastName" type="text" autocomplete="off"
-                    accept="LastName">
+                  <input matInput placeholder="Apellido" formControlName="LastName" type="text" autocomplete="off"
+                    accept="LastName" required>
+                    <mat-error *ngIf="FormRegister.controls.LastName.hasError('required')">
+                      Su Apellido es <strong>obligatorio</strong>
+                    </mat-error>
                 </mat-form-field>
               </div>
             </div>
             <div class="col">
               <mat-radio-group formControlName="Gender" class="form-field w-100">
-                <mat-radio-button value="Male" name="Gender">Male</mat-radio-button>
-                <mat-radio-button value="Female" name="Gender" style="margin: 0 20px;">Female</mat-radio-button>
+                <mat-radio-button value="Male" name="Gender">Masculino</mat-radio-button>
+                <mat-radio-button value="Female" name="Gender" style="margin: 0 20px;">Femenino</mat-radio-button>
               </mat-radio-group>
             </div>
             <div class="col">
               <mat-form-field class="form-field w-100">
-                <input matInput [matDatepicker]="dp" placeholder="Date of birth" formControlName="DOB">
+                <input matInput [matDatepicker]="dp" placeholder="Fecha de Nacimiento" formControlName="DOB">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
               </mat-form-field>
@@ -42,19 +45,19 @@
                 <input matInput placeholder="Email" formControlName="Email" type="email" required>
                 <mat-hint>{{EmailErrorMessage}}</mat-hint>
                 <mat-error *ngIf="FormRegister.controls.Email.hasError('email')">
-                  Please enter a valid email address
+                  Por favor, Ingrese un correo electronico valido
                 </mat-error>
                 <mat-error *ngIf="FormRegister.controls.Email.hasError('required')">
-                  Email is <strong>required</strong>
+                  Su correo es <strong>obligatorio</strong>
                 </mat-error>
               </mat-form-field>
             </div>
             <div class="col">
               <mat-form-field class="form-field w-100">
-                <input matInput placeholder="Password" formControlName="Password" type="password" required>
+                <input matInput placeholder="Contraseña" formControlName="Password" type="password" required>
                 <mat-hint>{{PasswordErrorMessage}}</mat-hint>
                 <mat-error *ngIf="FormRegister.controls.Password.hasError('required')">
-                  Password is <strong>required</strong>
+                  Su contraseña es <strong>obligatoria</strong>
                 </mat-error>
               </mat-form-field>
             </div>
@@ -63,10 +66,10 @@
         <mat-card-actions>
           <div style="margin:0 0 15px 15px;">
             <button mat-raised-button [disabled]="!FormRegister.valid" type="submit" color="accent">
-              <span *ngIf="!Loading">Register</span>
+              <span *ngIf="!Loading">Registrarse</span>
               <span *ngIf="Loading" style="margin:0 19px;"><i class="fal fa-spinner fa-spin"></i></span>
             </button>
-            <button [routerLink]="[ '/Auth/Login']" color="primary" mat-button>Login</button>
+            <button [routerLink]="[ '/Auth/Login']" color="primary" mat-button>Ingresar</button>
           </div>
         </mat-card-actions>
       </mat-card>

@@ -26,7 +26,7 @@ import { ConfirmationDialogComponent } from './components/Dialogs/confirmation-d
 import { ProfilePicUpdateDialogComponent } from './components/Dialogs/profile-pic-update-dialog/profile-pic-update-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule2 } from './Modules/Material.module';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 
 firebase.initializeApp(environment.firebase);
