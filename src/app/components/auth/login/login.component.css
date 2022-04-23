@@ -7,7 +7,7 @@
 }
 
 #grid {
-  background: linear-gradient(#592F93, #00ACAC);
+  background: linear-gradient(#8B73FF, #E1A3FF);
   padding: 80px 0;
   height: calc(100% - 64px);
 }
@@ -43,7 +43,7 @@ body { padding: 2em; }
   outline: none;
 }
 .loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(236, 38, 203, 0.842);
+  box-shadow: inset 0 0 0 32px rgba(112, 13, 96, 0.842);
 }
 
 
