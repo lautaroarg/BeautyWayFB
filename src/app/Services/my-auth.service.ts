@@ -16,7 +16,7 @@ import { AngularFireFunctions } from '@angular/fire/functions';
   providedIn: 'root'
 })
 export class MyAuthService {
-  AppTitle = 'Tesis';
+  AppTitle = 'BeautyWay';
   ViewTitle = '';
   DefaultUserPicURL = 'https://firebasestorage.googleapis.com/v0/b/socially.appspot.com/o/Default%20Profile%20Picture%2FDefault%20Profile%20Picture.jpeg?alt=media&token=8dd77808-082e-4848-aede-a628e16fd80b';
   LoggedUser$: Observable<IUser>;

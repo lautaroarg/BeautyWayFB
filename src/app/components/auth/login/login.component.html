@@ -1,9 +1,10 @@
+
 <div class="container-fluid" id="grid">
   <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
     <form [formGroup]="FormLogin" (submit)="OnSubmit()">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Ingresar</mat-card-title>
+          <mat-card-title>INGRESAR</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <div class="controls-container">
@@ -16,7 +17,7 @@
             </mat-form-field>
             <mat-form-field class="form-field">
               <input matInput placeholder="Contraseña" formControlName="Password" [type]="hide ? 'password' : 'text'"
-                required>
+              required>
               <mat-hint>{{PasswordErrorMessage}}</mat-hint>
               <mat-error *ngIf="FormLogin.controls.Password.hasError('required')">
                 Su contraseña es<strong> obligatoria</strong>
@@ -40,6 +41,7 @@
           <!-- <button mat-raised-button [routerLink]="[ '/Register']" color="primary">Register</button> -->
         </mat-card-actions>
         <mat-card-actions>
+
           <!--
           <button mat-raised-button (click)="LoginWith('Google')" type="button" class="loginBtn loginBtn--google">
             Login with Google

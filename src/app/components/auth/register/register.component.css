@@ -3,7 +3,7 @@
   }
   
   #grid {
-    background: linear-gradient(to right, rgb(40, 60, 134), rgb(69, 162, 71));
+    background: linear-gradient(#592F93, #00ACAC);
     padding: 64px 0;
     height: calc(100% - 64px);
   }
