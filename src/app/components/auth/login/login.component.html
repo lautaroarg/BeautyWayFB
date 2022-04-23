@@ -10,7 +10,7 @@
           <div class="controls-container">
             <mat-form-field class="form-field">
               <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
-              <mat-hint>{{EmairrorMessalEge}}</mat-hint>
+              <!-- <mat-hint>{{EmairrorMessalEge}}</mat-hint> -->
               <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
                 Su correo es <strong>necesario</strong>
               </mat-error>
