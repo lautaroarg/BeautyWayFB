@@ -14,6 +14,7 @@
    position: sticky;
    top: 0;
    z-index: 2;
+   background-color:#8B73FF ;
  }
 
 .fill-remaining-space {
@@ -25,6 +26,7 @@
 .toolbar {
   margin-bottom: 0px;
   height: 56px;
+  font-size: 50px;
 }
 
 .btn-profile-menu {
@@ -39,7 +41,9 @@
 }
 
 .logo-image {
-  width: 60px;
-  border-radius: 0px 50% 50% 50%;
+  width: 400px;
+  border-radius: 0;
   object-fit: cover;
+  position: fixed;
+  margin-top: 35px;
 }

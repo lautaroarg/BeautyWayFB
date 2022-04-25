@@ -5,6 +5,11 @@
 .controls-container * {
   width: 100%;
 }
+.FullCard{
+  border-radius: 14px;
+  background-color: rgba(0, 0, 0, 0.2);
+
+}
 
 #grid {
   background: linear-gradient(#8B73FF, #E1A3FF);
