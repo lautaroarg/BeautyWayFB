@@ -22,7 +22,7 @@
                   <input matInput placeholder="Apellido" formControlName="LastName" type="text" autocomplete="off"
                     accept="LastName" required>
                     <mat-error *ngIf="FormRegister.controls.LastName.hasError('required')">
-                      Por favor ingrese un apellido<strong>, es necesario</strong>
+                      Su apellido es<strong> obligatorio</strong>
                     </mat-error>
                 </mat-form-field>
               </div>
@@ -57,7 +57,7 @@
                 <input matInput placeholder="Contraseña" formControlName="Password" type="password" required>
                 <mat-hint>{{PasswordErrorMessage}}</mat-hint>
                 <mat-error *ngIf="FormRegister.controls.Password.hasError('required')">
-                  Contraseña es <strong>necesaria</strong>
+                  Contraseña <strong>obligatoria</strong>
                 </mat-error>
               </mat-form-field>
             </div>
