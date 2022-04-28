@@ -16,8 +16,32 @@
                     <mat-option value="option3">Profesional</mat-option>
                   </mat-select>
                 </mat-form-field> -->
-               
-                <div class="row" style="margin:0;">
+                <div class="row" style="margin:2%;">
+                  <div class = "col-6">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Tipo de documento</mat-label>
+                      <mat-select>
+                        <mat-option [value]="DNI">
+                         DNI
+                        </mat-option>
+                        <mat-option [value]="Pasaporte">
+                         Pasaporte
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6" style="margin-top:2%;">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text" autocomplete="off"
+                        accept="nroDocumento" required>
+                      <mat-error *ngIf="FormRegister.controls.FirstName.hasError('required')">
+                        Su número de documento es <strong>obligatorio</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                  
+                  <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Nombre" formControlName="FirstName" type="text" autocomplete="off"
