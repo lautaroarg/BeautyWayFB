@@ -1,11 +1,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyB2IOgwElK7PRUVQDyED22XghQpEMivtO0",
-    authDomain: "facetest-fe341.firebaseapp.com",
-    projectId: "facetest-fe341",
-    storageBucket: "facetest-fe341.appspot.com",
-    messagingSenderId: "314027890924",
-    appId: "1:314027890924:web:1b34cf797450b48805adc9",
+    apiKey: "AIzaSyDpgslwSHEi13pn5VVF3o-T8iBHcSTcCm8",
+    authDomain: "beautyway-e27eb.firebaseapp.com",
+    projectId: "beautyway-e27eb",
+    storageBucket: "beautyway-e27eb.appspot.com",
+    messagingSenderId: "656870158086",
+    appId: "1:656870158086:web:322f90d26445ecdcce3887",
+    measurementId: "G-R69GDHNJTB"
   },
 };

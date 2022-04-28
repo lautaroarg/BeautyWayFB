@@ -74,6 +74,66 @@
                     <mat-datepicker #dp></mat-datepicker>
                   </mat-form-field>
                 </div>
+                <div class="row" style="margin:0;">
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Calle" formControlName="Street" type="text" autocomplete="off"
+                      accept="Street" required>
+                      <mat-error *ngIf="FormRegister.controls.Street.hasError('required')">
+                        Su calle es<strong> obligatoria</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Altura" formControlName="Height" type="text" autocomplete="off"
+                      accept="Height" required>
+                      <mat-error *ngIf="FormRegister.controls.Height.hasError('required')">
+                        La altura de su domicilio es<strong> necesaria</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row" style="margin:0;">
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Piso" formControlName="Floor" type="text" autocomplete="off"
+                      accept="Floor" >
+                     
+                  </mat-form-field>
+                </div>
+
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Departamento" formControlName="Dpto" type="text" autocomplete="off"
+                      accept="Dpto" >
+                      
+                  </mat-form-field>
+                </div>
+              </div>
+                <div class="row" style="margin:0;">
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Barrio" formControlName="Neighborhood" type="text" autocomplete="off"
+                        accept="Neighborhood" required>
+                        <mat-error *ngIf="FormRegister.controls.Street.hasError('required')">
+                          Su barrio es<strong> obligatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Localidad" formControlName="City" type="text" autocomplete="off"
+                        accept="City" required>
+                        <mat-error *ngIf="FormRegister.controls.Height.hasError('required')">
+                          La localidad es<strong> obligatoria</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                
+                </div>
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>

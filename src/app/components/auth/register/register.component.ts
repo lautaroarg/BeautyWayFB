@@ -44,6 +44,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Gender: ['Male', new RequiredValidator],
       Password: ['', new RequiredValidator],
       nroDocumento: ['', new RequiredValidator],
+      Street: ['', new RequiredValidator],
+      Height: ['', new RequiredValidator],
+      Floor: ['', new RequiredValidator],
+      Dpto: ['', new RequiredValidator],
+      Neighborhood: ['', new RequiredValidator],
+      City: ['', new RequiredValidator],
+
       DOB: '',
     });
 
@@ -77,7 +84,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           FollowingCount: 0,
           FollowersCount: 0,
           PostsCount: 0,
-          Provider: 'Password',
+          Provider: 'Password',  
         }
         console.log(UserInfo)
         await this.MyAuth.afAuth.updateProfile({ displayName: UserInfo.DisplayName, photoURL: UserInfo.PhotoURL })
