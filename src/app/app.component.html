@@ -1,6 +1,10 @@
 <mat-toolbar class="toolbar" color="primary">
-  <img src="./assets/Image/logo.png" class="logo-image">
-  <span mat-button [routerLink]="[ '/Home']" class="MousePointer">{{MyAuth.AppTitle}}</span>
+  <img src="./assets/Image/logo.png" *ngIf=" !MyAuth.IsUserLoggedIn;" width="300"
+    class="logo-image">
+  <!-- <span mat-button [routerLink]="[ '/Home']" class="MousePointer">{{MyAuth.AppTitle}}</span> -->
+  <img
+    src="./assets/Image/logo.png" *ngIf="!MyAuth.LoggedUserLoading && MyAuth.IsUserLoggedIn;" width="100"
+    class="logo-image">
   <span class="fill-remaining-space"></span>
   <span class="align-center"></span>
   <span class="spacer"></span>

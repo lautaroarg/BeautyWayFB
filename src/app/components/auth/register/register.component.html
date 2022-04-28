@@ -87,9 +87,9 @@
 
                 <div class="col-6">
                   <mat-form-field class="form-field w-100">
-                    <input matInput placeholder="Altura" formControlName="Height" type="text" autocomplete="off"
-                      accept="Height" required>
-                      <mat-error *ngIf="FormRegister.controls.Height.hasError('required')">
+                    <input matInput placeholder="Altura" formControlName="Number" type="number" autocomplete="off"
+                      accept="Number" required>
+                      <mat-error *ngIf="FormRegister.controls.Number.hasError('required')">
                         La altura de su domicilio es<strong> necesaria</strong>
                       </mat-error>
                   </mat-form-field>
@@ -127,7 +127,7 @@
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Localidad" formControlName="City" type="text" autocomplete="off"
                         accept="City" required>
-                        <mat-error *ngIf="FormRegister.controls.Height.hasError('required')">
+                        <mat-error *ngIf="FormRegister.controls.City.hasError('required')">
                           La localidad es<strong> obligatoria</strong>
                         </mat-error>
                     </mat-form-field>

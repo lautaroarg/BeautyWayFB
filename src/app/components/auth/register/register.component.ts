@@ -8,6 +8,7 @@ import * as _moment from 'moment';
 import { MyAuthService } from 'src/app/Services/my-auth.service';
 import { IUser } from 'src/app/Models/i-user';
 import { Subscription } from 'rxjs';
+// import { format } from 'path';
 
 
 @Component({
@@ -41,13 +42,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
       FirstName: ['', new RequiredValidator],
       LastName: ['', new RequiredValidator],
       Email: ['', new RequiredValidator, new EmailValidator],
-      Gender: ['Male', new RequiredValidator],
+      Gender: ['Masculino', new RequiredValidator],
       Password: ['', new RequiredValidator],
       nroDocumento: ['', new RequiredValidator],
       Street: ['', new RequiredValidator],
-      Height: ['', new RequiredValidator],
-      Floor: ['', new RequiredValidator],
-      Dpto: ['', new RequiredValidator],
+      Number: ['', new RequiredValidator],
+      Floor: [''],
+      Dpto: [''],
       Neighborhood: ['', new RequiredValidator],
       City: ['', new RequiredValidator],
 
@@ -84,7 +85,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
           FollowingCount: 0,
           FollowersCount: 0,
           PostsCount: 0,
-          Provider: 'Password',  
+          Provider: 'Password',
+          nroDocumento: FormValues.nroDocumento, 
+          Street: FormValues.Street,
+          Number: FormValues.Number, 
+          Floor:FormValues.Floor,
+          Dpto: FormValues.Dpto,
+          Neighborhood:FormValues.Neighborhood,
+          City: FormValues.City,
+    
+
         }
         console.log(UserInfo)
         await this.MyAuth.afAuth.updateProfile({ displayName: UserInfo.DisplayName, photoURL: UserInfo.PhotoURL })

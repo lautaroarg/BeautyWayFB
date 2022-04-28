@@ -16,6 +16,13 @@ export interface IUser {
   FollowersCount?: number;
   PostsCount?: number;
   Provider?: string;
+  nroDocumento?: string;
+  Street?: string;
+  Number?: number;
+  Floor?: string;
+  Dpto?:string;
+  Neighborhood?: string;
+  City?:string;
 
   Followers?: {
     Id: string,
