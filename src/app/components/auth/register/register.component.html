@@ -158,7 +158,199 @@
               </div>
 
             </mat-tab>
-            <mat-tab label="Soy profesional"> </mat-tab>
+            <mat-tab label="Soy profesional"> 
+              <div class="controls-container">
+                <!-- <mat-form-field appearance="fill">
+                  <mat-label>Choose an option</mat-label>
+                  <mat-select [disabled]="disableSelect.value">
+                    <mat-option value="option1">Cliente</mat-option>
+                    <mat-option value="option3">Profesional</mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+                <div class="row" style="margin:2%;">
+                  <div class = "col-6">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Tipo de documento</mat-label>
+                      <mat-select>
+                        <mat-option [value]="DNI">
+                         DNI
+                        </mat-option>
+                        <mat-option [value]="Pasaporte">
+                         Pasaporte
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6" style="margin-top:2%;">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text" autocomplete="off"
+                        accept="nroDocumento" required>
+                      <mat-error *ngIf="FormRegister.controls.FirstName.hasError('required')">
+                        Su número de documento es <strong>obligatorio</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                  
+                  <div class="row" style="margin:0;">
+                  <div class="col-3">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Nombre" formControlName="FirstName" type="text" autocomplete="off"
+                        accept="FirstName" required>
+                      <mat-error *ngIf="FormRegister.controls.FirstName.hasError('required')">
+                        Su nombre es <strong>obligatorio</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Apellido" formControlName="LastName" type="text" autocomplete="off"
+                        accept="LastName" required>
+                        <mat-error *ngIf="FormRegister.controls.LastName.hasError('required')">
+                          Su apellido es<strong> obligatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Nombre del local" formControlName="Proname" type="text" autocomplete="off"
+                        accept="Proname" required>
+                        <mat-error *ngIf="FormRegister.controls.Proname.hasError('required')">
+                          El nombre del local es<strong> obligatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              <div class="row" style="margin:0;">
+                <div class="col-3">
+                 
+                  <mat-form-field appearance="fill">
+                    <mat-label>Modalidad de trabajo</mat-label>
+                    <mat-select>
+                      <mat-option [value]="Domicilio">
+                       Domicilio
+                      </mat-option>
+                      <mat-option [value]="Local">
+                       Local
+                      </mat-option>
+                      <mat-option [value]="Hibrido">
+                        Hibrido
+                       </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                
+                </div>
+                <div class="col-3">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Tipo de servicio</mat-label>
+                    <mat-select>
+                      <mat-option [value]="Peluqueria">
+                       Peluqueria
+                      </mat-option>
+                      <mat-option [value]="Barberia">
+                       Barberia
+                      </mat-option>
+                      <mat-option [value]="Manicuria">
+                        Manicuria
+                       </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Servicio" formControlName="Service" type="text" autocomplete="off"
+                      accept="Service" required>
+                    <mat-error *ngIf="FormRegister.controls.Service.hasError('required')">
+                      Su servicio es <strong>obligatorio</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+                <div class="row" style="margin:0;">
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Calle" formControlName="Street" type="text" autocomplete="off"
+                      accept="Street" required>
+                      <mat-error *ngIf="FormRegister.controls.Street.hasError('required')">
+                        Su calle es<strong> obligatoria</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Altura" formControlName="Number" type="number" autocomplete="off"
+                      accept="Number" required>
+                      <mat-error *ngIf="FormRegister.controls.Number.hasError('required')">
+                        La altura de su domicilio es<strong> necesaria</strong>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row" style="margin:0;">
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Piso" formControlName="Floor" type="text" autocomplete="off"
+                      accept="Floor" >
+                     
+                  </mat-form-field>
+                </div>
+
+                <div class="col-6">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Departamento" formControlName="Dpto" type="text" autocomplete="off"
+                      accept="Dpto" >
+                      
+                  </mat-form-field>
+                </div>
+              </div>
+                <div class="row" style="margin:0;">
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Barrio" formControlName="Neighborhood" type="text" autocomplete="off"
+                        accept="Neighborhood" required>
+                        <mat-error *ngIf="FormRegister.controls.Street.hasError('required')">
+                          Su barrio es<strong> obligatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100">
+                      <input matInput placeholder="Localidad" formControlName="City" type="text" autocomplete="off"
+                        accept="City" required>
+                        <mat-error *ngIf="FormRegister.controls.City.hasError('required')">
+                          La localidad es<strong> obligatoria</strong>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                
+                </div>
+                <div class="col">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
+                    <mat-hint>{{EmailErrorMessage}}</mat-hint>
+                    <mat-error *ngIf="FormRegister.controls.Email.hasError('email')">
+                      Por favor, Ingrese un correo electronico valido
+                    </mat-error>
+                    <mat-error *ngIf="FormRegister.controls.Email.hasError('required')">
+                      Su correo es <strong>obligatorio</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field class="form-field w-100">
+                    <input matInput placeholder="Contraseña" formControlName="Password" type="password" required>
+                    <mat-hint>{{PasswordErrorMessage}}</mat-hint>
+                    <mat-error *ngIf="FormRegister.controls.Password.hasError('required')">
+                      Contraseña <strong>obligatoria</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-tab>
+            
           </mat-tab-group>
           
         </mat-card-content>

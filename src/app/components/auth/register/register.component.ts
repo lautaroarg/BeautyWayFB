@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Dpto: [''],
       Neighborhood: ['', new RequiredValidator],
       City: ['', new RequiredValidator],
-
+      Service:['',new RequiredValidator],
+      Proname:['', new RequiredValidator],
       DOB: '',
     });
 
@@ -93,6 +94,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
           Dpto: FormValues.Dpto,
           Neighborhood:FormValues.Neighborhood,
           City: FormValues.City,
+          Service:FormValues.Service,
+
     
 
         }

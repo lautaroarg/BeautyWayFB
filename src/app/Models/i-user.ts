@@ -23,6 +23,9 @@ export interface IUser {
   Dpto?:string;
   Neighborhood?: string;
   City?:string;
+  Service?:string;
+  Proname?:string;
+
 
   Followers?: {
     Id: string,
