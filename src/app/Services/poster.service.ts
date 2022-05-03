@@ -18,10 +18,11 @@ export class PosterService {
     public afStore: AngularFirestore,
     public afFunctions: AngularFireFunctions) { }
 
-  public AddAPost(p: INewPost): Observable<any> {
-    const AddAPost = this.afFunctions.httpsCallable('AddAPost');
+  public AddAPost(p: INewPost): Promise<any> {
+    // const AddAPost = this.afFunctions.httpsCallable('AddAPost');
 
-    return AddAPost(p)
+    // return AddAPost(p)
+    return this.afStore.collection('Posts').add(p)
   }
 
   public DeleteAPost(PostId: string): Observable<any> {

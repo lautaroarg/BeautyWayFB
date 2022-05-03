@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   OnSubmit() {
+    debugger;
     this.Loading = true;
     this.Login();
   }

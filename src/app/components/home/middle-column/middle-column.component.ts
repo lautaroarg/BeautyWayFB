@@ -57,6 +57,7 @@ export class MiddleColumnComponent implements OnInit {
     private imageOptSrvc: ImageOptimizationService) { }
 
   ngOnInit() {
+    debugger;
     this.PostsToDisplay$ = this.poster.GetAllPosts().pipe(share())
   }
 
@@ -87,6 +88,7 @@ export class MiddleColumnComponent implements OnInit {
   }
 
   UploadThePost() {
+    debugger
     this.Uploading = true;
     this.DisablePostBtn = true;
     const Cap: string = this.InputCaption;
@@ -115,9 +117,11 @@ export class MiddleColumnComponent implements OnInit {
                 Width: this.ImageCords.Width
               }
             }
-            this.poster.AddAPost(newPost).subscribe(res => {
+            this.poster.AddAPost(newPost).then(res => {
+              debugger;
 
-              if (res.Code == 200) {
+              // if (res.Code == 200) {
+              if (res != null) {
                 this.MyAuth.Notify.openSnackBar(res.Message, '');
                 this.DisablePostBtn = false;
                 this.clearUploadItems()
