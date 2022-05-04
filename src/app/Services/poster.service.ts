@@ -18,11 +18,11 @@ export class PosterService {
     public afStore: AngularFirestore,
     public afFunctions: AngularFireFunctions) { }
 
-  public AddAPost(p: INewPost): Promise<any> {
+  public AddAPost(p: IPost): Promise<any> {
     // const AddAPost = this.afFunctions.httpsCallable('AddAPost');
 
     // return AddAPost(p)
-    return this.afStore.collection('Posts').add(p)
+    return this.afStore.collection('Posts').add(p);
   }
 
   public DeleteAPost(PostId: string): Observable<any> {
@@ -32,8 +32,10 @@ export class PosterService {
   }
 
   public GetAllPosts(): Observable<IPost[]> {
+    
     return this.afStore.collection<IPost>('Posts').valueChanges({ idField: 'Id' }).pipe(
       map(res => {
+        
         const ret = res.sort((a, b) => b.PostedOn - a.PostedOn)
         return ret;
       }),

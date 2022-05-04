@@ -13,38 +13,39 @@ import { tap } from 'rxjs/operators';
 })
 export class ChatListComponent implements OnInit, OnChanges {
   @Input() UserId: string;
-  @Input() SearchTerm: string = '';
+  @Input() SearchTerm = '';
   @Input() IsForHandset: boolean;
-  HasUnreadMessages: boolean = false;
+  HasUnreadMessages = false;
 
   User$: Observable<IUser>;
   LastMessage$: Observable<IMessage>;
 
   User: IUser;
-  Show: boolean = true;
+  Show = true;
 
   constructor(
     public MyAuth: MyAuthService,
     public ChatSrv: ChatsService, ) { }
 
   ngOnInit() {
+    debugger;
     this.LastMessage$ = this.ChatSrv.GetLastMessage(this.UserId).pipe(
       tap(r => {
-        if (r.Status !== 3 && r.ToId === this.MyAuth.LoggedUser.Id)
+        if (r.Status !== 3 && r.ToId === this.MyAuth.LoggedUser.Id) {
           this.HasUnreadMessages = true;
-        else
+        } else {
           this.HasUnreadMessages = false;
+        }
       })
-    )
+    );
     this.User$ = this.MyAuth.GetAUserInfoFromStore(this.UserId).pipe(tap(r => {
       if (!r) {
         this.Show = false;
-        this.MyAuth.NavTo('Messages')
-      }
-      else {
+        this.MyAuth.NavTo('Messages');
+      } else {
         this.User = r;
       }
-    }))
+    }));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -55,9 +56,9 @@ export class ChatListComponent implements OnInit, OnChanges {
 
         if (!DisplayName.includes(changes.SearchTerm.currentValue.toLowerCase())) {
           this.Show = false;
-        }
-        else
+        } else {
           this.Show = true;
+        }
       }
   }
 }

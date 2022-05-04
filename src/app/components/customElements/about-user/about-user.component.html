@@ -22,7 +22,7 @@
       <div class="col">{{User?.Gender}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Date of birth: </b></div>
+      <div class="col-3"><b>Fecha Nacimiento: </b></div>
       <div class="col">{{User?.DOB | date}}</div>
     </div>
     <div class="row">
@@ -92,7 +92,7 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <input matInput [matDatepicker]="dp" [(ngModel)]="DOB" value="{{User?.DOB}}" placeholder="Date of birth">
+          <input matInput [matDatepicker]="dp" [(ngModel)]="DOB" value="{{User?.DOB}}" placeholder="Fecha Nacimiento">
           <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
           <mat-datepicker #dp></mat-datepicker>
           <button mat-button (click)="Update({DOB:DOB});" *ngIf="DOB != User?.DOB && DOB!=''" matSuffix mat-icon-button>
