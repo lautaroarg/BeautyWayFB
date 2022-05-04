@@ -14,7 +14,7 @@
 #grid {
   background: linear-gradient(#8B73FF, #E1A3FF);
   padding: 80px 0;
-  height: calc(100% - 64px);
+  /* height: calc(100% - 64px); */
 }
 
 body { padding: 2em; }

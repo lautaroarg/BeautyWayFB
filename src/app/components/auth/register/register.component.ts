@@ -1,3 +1,4 @@
+import { IProfesional } from './../../../Models/i-user';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, RequiredValidator, EmailValidator } from '@angular/forms';
 // import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
@@ -24,21 +25,23 @@ import { Subscription } from 'rxjs';
   ]
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  FormRegister: FormGroup;
+  FormRegisterUsuario: FormGroup;
+  FormRegisterProfesional: FormGroup;
 
-  Loading: boolean = false;
-
-  EmailErrorMessage: string = '';
-  PasswordErrorMessage: string = '';
-
+  Loading = false;
+  isUsuario = true;
+  EmailErrorMessage = '';
+  PasswordErrorMessage = '';
+  TipoDocumentoSeleccionado='';
   FormValueChangesSub: Subscription;
 
   constructor(
     public MyAuth: MyAuthService,
-    private fb: FormBuilder) { }
+    private fbUsuario: FormBuilder,
+    private fbProfesional: FormBuilder) { }
 
   ngOnInit() {
-    this.FormRegister = this.fb.group({
+    this.FormRegisterUsuario = this.fbUsuario.group({
       FirstName: ['', new RequiredValidator],
       LastName: ['', new RequiredValidator],
       Email: ['', new RequiredValidator, new EmailValidator],
@@ -49,22 +52,23 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Number: ['', new RequiredValidator],
       Floor: [''],
       Dpto: [''],
+      TipoDocumento: ['', new RequiredValidator],
       Neighborhood: ['', new RequiredValidator],
       City: ['', new RequiredValidator],
-      Service:['',new RequiredValidator],
-      Proname:['', new RequiredValidator],
+      Service: ['', new RequiredValidator],
+      Proname: ['', new RequiredValidator],
       DOB: '',
     });
 
-    this.FormValueChangesSub = this.FormRegister.valueChanges.subscribe(obs => {
+    this.FormValueChangesSub = this.FormRegisterUsuario.valueChanges.subscribe(obs => {
       this.EmailErrorMessage = '';
       this.PasswordErrorMessage = '';
-    })
+    });
   }
 
   ngOnDestroy() {
     try {
-      this.FormValueChangesSub.unsubscribe()
+      this.FormValueChangesSub.unsubscribe();
     } catch (error) {
 
     }
@@ -72,10 +76,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   OnSubmit() {
     this.Loading = true;
-    this.MyAuth.Register(this.FormRegister.value.Email, this.FormRegister.value.Password)
+    // debugger;
+    // console.log(this.TipoDocumentoSeleccionado);
+    this.MyAuth.Register(this.FormRegisterUsuario.value.Email, this.FormRegisterUsuario.value.Password)
       .then(async (user) => {
-        console.log(user)
-        const FormValues = this.FormRegister.value;
+        console.log(user);
+        
+
+        const FormValues = this.FormRegisterUsuario.value;
         const UserInfo: IUser = {
           Id: user.user.uid,
           DisplayName: FormValues.FirstName + ' ' + FormValues.LastName,
@@ -87,30 +95,39 @@ export class RegisterComponent implements OnInit, OnDestroy {
           FollowersCount: 0,
           PostsCount: 0,
           Provider: 'Password',
-          nroDocumento: FormValues.nroDocumento, 
+          IsProfesional: false,
+          nroDocumento: FormValues.nroDocumento,
+          TipoDocumento: this.TipoDocumentoSeleccionado,
           Street: FormValues.Street,
-          Number: FormValues.Number, 
-          Floor:FormValues.Floor,
+          Number: FormValues.Number,
+          Floor: FormValues.Floor,
           Dpto: FormValues.Dpto,
-          Neighborhood:FormValues.Neighborhood,
+          Neighborhood: FormValues.Neighborhood,
           City: FormValues.City,
-          Service:FormValues.Service,
+          Service: FormValues.Service,
 
-    
 
-        }
-        console.log(UserInfo)
-        await this.MyAuth.afAuth.updateProfile({ displayName: UserInfo.DisplayName, photoURL: UserInfo.PhotoURL })
-        await this.MyAuth.afStore.collection('Users').doc(user.user.uid).set(UserInfo)
+
+        };
+
+
+
+        console.log(UserInfo);
+        await this.MyAuth.afAuth.updateProfile({ displayName: UserInfo.DisplayName, photoURL: UserInfo.PhotoURL });
+        await this.MyAuth.afStore.collection('Users').doc(user.user.uid).set(UserInfo);
+       
+      //  aca mismo agregar la funcion de this.MyAuth para enviar email de verificacion
+      
+       
         this.Loading = false;
-        this.MyAuth.NavTo('Home')
+        this.MyAuth.NavTo('Home');
       })
       .catch((error) => {
         // Handle Errors here.
         this.Loading = false;
 
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        let errorCode = error.code;
+        let errorMessage = error.message;
 
         console.log(error);
         switch (errorCode) {
@@ -121,7 +138,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             this.EmailErrorMessage = errorMessage;
             break;
           case 'auth/operation-not-allowed':
-            console.log(errorMessage)
+            console.log(errorMessage);
             this.EmailErrorMessage = errorMessage;
             break;
           case 'auth/weak-password':
@@ -129,7 +146,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             break;
 
           default:
-            this.MyAuth.Notify.openSnackBar('An error occur, please try again later', '')
+            this.MyAuth.Notify.openSnackBar('An error occur, please try again later', '');
             break;
         }
       });

@@ -87,8 +87,10 @@ export class LoginComponent implements OnInit, OnDestroy {
               PostsCount: 0,
               FollowersCount: 0,
               FollowingCount: 0,
+              IsProfesional: false,
               Provider: User.user.providerId
             };
+
             this.MyAuth.afAuth.updateProfile({ 'displayName': props.DisplayName, 'photoURL': props.PhotoURL });
             this.MyAuth.afStore.doc('Users/' + User.user.uid).set(props).then(() => {
               this.MyAuth.NavTo('/Home');
@@ -139,9 +141,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         switch (errorCode) {
           case 'auth/invalid-email':
             this.EmailErrorMessage = errorMessage;
+            this.EmailErrorMessage = "Su email es invalido, por favor verifique";
             break;
           case 'auth/user-disabled':
             this.EmailErrorMessage = errorMessage;
+            this.EmailErrorMessage = "usuario deshabilitado"
             break;
           case 'auth/user-not-found':
             console.log(errorMessage);

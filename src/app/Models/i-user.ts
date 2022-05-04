@@ -1,4 +1,4 @@
-import { StatesCitiesType } from './c-states-cities';
+import { StatesCitiesType } from "./c-states-cities";
 
 export interface IUser {
   Id?: string;
@@ -17,25 +17,27 @@ export interface IUser {
   PostsCount?: number;
   Provider?: string;
   nroDocumento?: string;
+  TipoDocumento?: string;
   Street?: string;
   Number?: number;
   Floor?: string;
-  Dpto?:string;
+  Dpto?: string;
   Neighborhood?: string;
-  City?:string;
-  Service?:string;
-  Proname?:string;
-
+  City?: string;
+  Service?: string;
+  Proname?: string;
+  IsProfesional: boolean;
+  Profesional?: IProfesional;
 
   Followers?: {
-    Id: string,
-    DisplayName: string,
-    PhotoURL: string
+    Id: string;
+    DisplayName: string;
+    PhotoURL: string;
   };
   Following?: {
-    Id: string,
-    DisplayName: string,
-    PhotoURL: string
+    Id: string;
+    DisplayName: string;
+    PhotoURL: string;
   };
 }
 
@@ -55,3 +57,12 @@ export interface IFollow {
 //  1	  Accepted
 //  2	  Declined
 //  3	  Blocked
+
+export interface IProfesional {
+  TipoServicio: string;
+
+
+
+
+
+}
