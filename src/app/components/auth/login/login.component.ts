@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.MyAuth.Logout();
-    debugger;
+    
     this.FormLogin = this.fb.group({
       Email: ['', [Validators.required, Validators.email]],
       Password: ['', [Validators.required, Validators.minLength(6)]],
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   OnSubmit() {
-    debugger;
+    
     this.Loading = true;
     this.Login();
   }

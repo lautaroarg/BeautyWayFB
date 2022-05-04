@@ -8,16 +8,16 @@
       <i class="fal fa-ellipsis-v fa-lg"></i>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="openProfilePicUpdateDialog()">Update profile pic</button>
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item (click)="MyAuth.Logout();">Logout</button>
+      <button mat-menu-item (click)="openProfilePicUpdateDialog()">Sube una foto de perfil</button>
+      <button mat-menu-item>Configuracion</button>
+      <button mat-menu-item (click)="MyAuth.Logout();">Salir</button>
     </mat-menu>
   </mat-card-header>
 </mat-card>
 
 <mat-card style="margin-top: 8px;">
   <mat-card-header>
-    <mat-card-title (click)="MyAuth.NavTo('/Messages')" class="MousePointer">Messages</mat-card-title>
+    <mat-card-title (click)="MyAuth.NavTo('/Messages')" class="MousePointer">Mensajes</mat-card-title>
   </mat-card-header>
   <mat-card-content class="chat-heads-container">
     <app-messages-dialog></app-messages-dialog>

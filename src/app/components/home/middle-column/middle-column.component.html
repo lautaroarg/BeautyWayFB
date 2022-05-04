@@ -1,11 +1,11 @@
 <div style="margin:0 15px;">
   <mat-card style="margin-bottom: 16px;">
     <mat-card-header>
-      <mat-card-title>Upload a post</mat-card-title>
+      <mat-card-title>Subir una publicacion</mat-card-title>
     </mat-card-header>
     <input type="file" #InputImage (change)="OnChange($event)" style="display: none;" accept="image/*" required>
     <mat-form-field style="width:95%;">
-      <input matInput [(ngModel)]="InputCaption" placeholder="Write a caption" autocomplete="off">
+      <input matInput [(ngModel)]="InputCaption" placeholder="Escribe la descripcion" autocomplete="off">
       <button matSuffix mat-icon-button (click)="InputImage.click()">
         <i class="fal fa-paperclip fa-lg"></i>
       </button>
@@ -32,7 +32,7 @@
     </ng-container>
     <ng-template #NoPosts>
       <mat-card style="margin: 20px 0;">
-        agregar tu primer post!
+        Agrega tu primer post
       </mat-card>
     </ng-template>
   </ng-container>
