@@ -44,10 +44,11 @@ export class MyAuthService {
         this.LoggedUserLoading = true;
         this.BasicUserInfo = user;
         this.IsUserLoggedIn = true;
-        this.Notify.openSnackBar(`Bienvenido, ${user.displayName}`, '');
+        
         this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
           this.LoggedUser = UserInfoFromStore;
           this.LoggedUserLoading = false;
+          this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
           if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
             this.NavTo('Auth/AdditionInfo');
           }

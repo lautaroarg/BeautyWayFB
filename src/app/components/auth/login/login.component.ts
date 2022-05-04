@@ -4,6 +4,7 @@ import { MyAuthService } from 'src/app/Services/my-auth.service';
 import * as firebase from 'firebase/app';
 import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/Models/i-user';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.MyAuth.Logout();
-    debugger;
     this.FormLogin = this.fb.group({
       Email: ['', [Validators.required, Validators.email]],
       Password: ['', [Validators.required, Validators.minLength(6)]],
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   OnSubmit() {
-    debugger;
+  
     this.Loading = true;
     this.Login();
   }
@@ -141,30 +141,34 @@ export class LoginComponent implements OnInit, OnDestroy {
         switch (errorCode) {
           case 'auth/invalid-email':
             this.EmailErrorMessage = errorMessage;
-            this.EmailErrorMessage = "Su email es invalido, por favor verifique";
+            this.EmailErrorMessage = 'email invalido, por favor verifique'
             break;
           case 'auth/user-disabled':
             this.EmailErrorMessage = errorMessage;
-            this.EmailErrorMessage = "usuario deshabilitado"
+            this.EmailErrorMessage= 'Usuario deshabilitado'
+            
             break;
           case 'auth/user-not-found':
             console.log(errorMessage);
             this.EmailErrorMessage = errorMessage;
+            this.EmailErrorMessage = 'Usuario no encontrado'
             break;
           case 'auth/wrong-password':
             this.PasswordErrorMessage = errorMessage;
+            this.PasswordErrorMessage = 'La contraseña introducida es incorrecta, por favor verifique';
+          
             break;
 
           default:
-            this.MyAuth.Notify.openSnackBar('An error occur, please try again later', '');
+            this.MyAuth.Notify.openSnackBar('Ocurrio un error, inténtelo de nuevo mas tarde', '');
             break;
         }
 
         if (err.code == 'auth/network-request-failed') {
-          this.MyAuth.Notify.openSnackBar('There is problem with network, please check your network connection', '', () => { }, () => { }, 3500)
+          this.MyAuth.Notify.openSnackBar('Existe un problema con su conexion de red, por favor verifique', '', () => { }, () => { }, 3500)
         }
         else {
-          this.MyAuth.Notify.openSnackBar(err.message, '')
+          this.MyAuth.Notify.openSnackBar(this.EmailErrorMessage, '')
         }
       });
   }

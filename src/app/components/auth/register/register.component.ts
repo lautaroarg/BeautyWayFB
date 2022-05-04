@@ -120,14 +120,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
       
        
         this.Loading = false;
-        this.MyAuth.NavTo('Home');
-      })
+        this.MyAuth.NavTo('Home')
+      }) 
+      
       .catch((error) => {
         // Handle Errors here.
         this.Loading = false;
-
-        let errorCode = error.code;
-        let errorMessage = error.message;
+        debugger;
+        var errorCode = error.code;
+        var errorMessage = error.message;
 
         console.log(error);
         switch (errorCode) {
@@ -146,7 +147,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             break;
 
           default:
-            this.MyAuth.Notify.openSnackBar('An error occur, please try again later', '');
+            this.MyAuth.Notify.openSnackBar('A ocurrido un error, porfavor intente mas tarde', '')
             break;
         }
       });

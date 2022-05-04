@@ -28,7 +28,7 @@ export class ChatListComponent implements OnInit, OnChanges {
     public ChatSrv: ChatsService, ) { }
 
   ngOnInit() {
-    debugger;
+    
     this.LastMessage$ = this.ChatSrv.GetLastMessage(this.UserId).pipe(
       tap(r => {
         if (r.Status !== 3 && r.ToId === this.MyAuth.LoggedUser.Id) {

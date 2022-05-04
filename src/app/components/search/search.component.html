@@ -2,7 +2,7 @@
   <mat-card>
     <form [formGroup]="QueryForm">
       <mat-form-field class="w-100">
-        <input matInput formControlName="Query" placeholder="Whom are you looking for?">
+        <input matInput formControlName="Query" placeholder="A quien estas buscando?">
         <button mat-icon-button matSuffix type="submit">
           <i class="fal fa-search"></i>
         </button>
@@ -13,8 +13,8 @@
   <mat-card id="people-card">
     <ng-container *ngIf="PeopleResults$ | async; else PeopleLoading">
       <mat-card-header>
-        <mat-card-title>People</mat-card-title>
-        <mat-card-subtitle>Found: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>
+        <mat-card-title>Usuarios</mat-card-title>
+        <mat-card-subtitle>Encontrados: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <div class="container-fluidr">

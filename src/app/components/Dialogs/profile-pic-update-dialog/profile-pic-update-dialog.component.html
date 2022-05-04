@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Update your profile picture</h1>
+<h1 mat-dialog-title>Actualiza tu foto de pérfil</h1>
 <form [formGroup]="UpdatePPForm" (submit)="OnSubmit()">
   <div mat-dialog-content>
     <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
       (change)="onChange($event)" required>
     <mat-form-field>
-      <input matInput formControlName="ProfileCaption" autofocus placeholder="Write a caption">
+      <input matInput formControlName="ProfileCaption" autofocus placeholder="Titulo de tu publicacion">
     </mat-form-field>
     <button mat-icon-button type="button" (click)="InputFile.click()">
       <i class="fal fa-paperclip fa-lg"></i>
@@ -16,8 +16,8 @@
   <div mat-dialog-actions>
     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
     </mat-progress-bar>
-    <button mat-raised-button type="reset" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
     <button mat-raised-button color="primary" type="submit" [disabled]="!UpdatePPForm.valid || !processingImageComplete"
-      [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Update</button>
+      [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
   </div>
 </form>

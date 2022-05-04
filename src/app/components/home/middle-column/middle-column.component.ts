@@ -57,7 +57,7 @@ export class MiddleColumnComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    debugger;
+    
     this.PostsToDisplay$ = this.poster.GetAllPosts().pipe(share());
   }
 
@@ -106,7 +106,7 @@ export class MiddleColumnComponent implements OnInit {
   }
 
   UploadThePost() {
-    debugger;
+  
     this.Uploading = true;
     this.DisablePostBtn = true;
     const Cap: string = this.InputCaption;
@@ -175,7 +175,7 @@ export class MiddleColumnComponent implements OnInit {
 
               this.poster.AddAPost(unPost).then(
                 (res) => {
-                  debugger;
+                  
 
                   // if (res.Code == 200) {
                   if (res != null) {

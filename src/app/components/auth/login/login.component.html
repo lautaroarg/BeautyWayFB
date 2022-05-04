@@ -12,7 +12,7 @@
               <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
               <!-- <mat-hint>{{EmairrorMessalEge}}</mat-hint> -->
               <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
-                Su correo es <strong>necesario</strong>
+                Su correo es <strong>obligatorio</strong>
               </mat-error>
             </mat-form-field>
             <mat-form-field class="form-field">
@@ -23,7 +23,7 @@
                 Su contraseña es<strong> obligatoria</strong>
               </mat-error>
               <mat-error *ngIf="FormLogin.controls.Password.hasError('minlength')">
-                Su contraseña deberia contener <strong>un minimo de 6</strong> caracteres.
+                Su contraseña deberia contener <strong>un mínimo de 6</strong> caracteres.
               </mat-error>
               <mat-icon matSuffix mat-icon-button (click)="hide = !hide" style="cursor: pointer;">
                 <span *ngIf="hide"><i class="fal fa-eye-slash"></i></span>
