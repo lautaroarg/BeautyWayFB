@@ -93,7 +93,7 @@
       <mat-action-row style="justify-content: space-between;">
         <mat-form-field style="width:95%;">
           <input matInput [(ngModel)]="CommentText" (keyup.enter)="PostAComment()"
-            placeholder="What do you say about this?" autocomplete="off">
+            placeholder="¿Qué piensas acerca de esto?" autocomplete="off">
           <button matSuffix mat-icon-button style="align-self: center;">
             <mat-icon matSuffix style="cursor: pointer;" (click)="PostAComment()">
               <span *ngIf="!CommentUploading"><i class="fal fa-paper-plane fa-lg"></i></span>

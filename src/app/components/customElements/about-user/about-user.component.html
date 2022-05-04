@@ -2,23 +2,23 @@
   <div *ngIf="Edit; then EditMode else DisplayMode"></div>
   <ng-template #DisplayMode>
     <div class="row">
-      <div class="col-3"><b>Full name: </b></div>
+      <div class="col-3"><b>Nombre completo: </b></div>
       <div class="col">{{User?.DisplayName}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>About: </b></div>
+      <div class="col-3"><b>Acerca de: </b></div>
       <div class="col">{{User?.About}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Email: </b></div>
+      <div class="col-3"><b>Direccion de correo: </b></div>
       <div class="col">{{User?.Email}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Phone: </b></div>
+      <div class="col-3"><b>Telefono: </b></div>
       <div class="col">{{User?.PhoneNumber}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Gender: </b></div>
+      <div class="col-3"><b>Genero: </b></div>
       <div class="col">{{User?.Gender}}</div>
     </div>
     <div class="row">
@@ -26,15 +26,15 @@
       <div class="col">{{User?.DOB | date}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Status: </b></div>
+      <div class="col-3"><b>Estado: </b></div>
       <div class="col">{{User?.Status}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Lives In: </b></div>
+      <div class="col-3"><b>Vive en: </b></div>
       <div class="col">{{User?.LivesIn}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Interests: </b></div>
+      <div class="col-3"><b>Intereses: </b></div>
       <div class="col">{{User?.Interests}}</div>
     </div>
   </ng-template>
@@ -44,7 +44,7 @@
     <div class="controls-container">
       <div class="row">
         <mat-form-field>
-          <input matInput [(ngModel)]="DisplayName" value="{{User?.DisplayName}}" placeholder="Full Name">
+          <input matInput [(ngModel)]="DisplayName" value="{{User?.DisplayName}}" placeholder="Nombre completo">
           <button mat-button (click)="Update({DisplayName:DisplayName});"
             *ngIf="DisplayName != User?.DisplayName && DisplayName!=''" matSuffix mat-icon-button>
             <i style="margin: 5px;" class="fal fa-check-circle"></i>
@@ -53,7 +53,7 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <input matInput [(ngModel)]="About" value="{{User?.About}}" placeholder="About">
+          <input matInput [(ngModel)]="About" value="{{User?.About}}" placeholder="Acerca de">
           <button mat-button (click)="Update({About:About});" *ngIf="About != User?.About && About!=''" matSuffix
             mat-icon-button>
             <i style="margin: 5px;" class="fal fa-check-circle"></i>
@@ -72,7 +72,7 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <input matInput [(ngModel)]="PhoneNumber" value="{{User?.PhoneNumber}}" type="tel" placeholder="Phone Number">
+          <input matInput [(ngModel)]="PhoneNumber" value="{{User?.PhoneNumber}}" type="tel" placeholder="Telefono">
           <button mat-button (click)="Update({PhoneNumber:PhoneNumber});"
             *ngIf="PhoneNumber != User?.PhoneNumber && PhoneNumber!=''" matSuffix mat-icon-button>
             <i style="margin: 5px;" class="fal fa-check-circle"></i>
@@ -81,7 +81,7 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <mat-select placeholder="Gender" [(ngModel)]="Gender">
+          <mat-select placeholder="Genero" [(ngModel)]="Gender">
             <mat-option value="Male">Male</mat-option>
             <mat-option value="Female">Female</mat-option>
           </mat-select>
@@ -102,10 +102,10 @@
       </div>
       <div class="row form-align">
         <mat-form-field>
-          <mat-select placeholder="Status" [(ngModel)]="Status">
-            <mat-option value="Single">Single</mat-option>
-            <mat-option value="Engaged">Engaged</mat-option>
-            <mat-option value="Married">Married</mat-option>
+          <mat-select placeholder="Estado civil" [(ngModel)]="Status">
+            <mat-option value="Single">Solter@</mat-option>
+            <mat-option value="Engaged">En relacion</mat-option>
+            <mat-option value="Married">Comprometid@</mat-option>
           </mat-select>
         </mat-form-field>
         <button mat-button (click)="Update({Status:Status});"
@@ -115,7 +115,7 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <mat-label>Lives in</mat-label>
+          <mat-label>Vive en</mat-label>
           <mat-select [(ngModel)]="LivesIn">
             <mat-option>-- None --</mat-option>
             <mat-optgroup *ngFor="let State of CitiesAndStates.StatesCities" [label]="State.State">
@@ -132,7 +132,7 @@
       </div>
       <div class="row">
         <mat-form-field>
-          <input matInput [(ngModel)]="Interests" placeholder="Interests">
+          <input matInput [(ngModel)]="Interests" placeholder="Intereses">
           <button mat-button (click)="Update({Interests:Interests});"
             *ngIf="Interests != User?.Interests && Interests!=''" matSuffix mat-icon-button>
             <i style="margin: 5px;" class="fal fa-check-circle"></i>
