@@ -13,17 +13,17 @@
       <div class="subtitle">
         <span>
           <button mat-button class="btn-follow-count" style="padding: 0 10px;">
-            {{User.FollowersCount}}<br>Followers
+            {{User.FollowersCount}}<br>Seguidores
           </button>
         </span>
         <span>
           <button mat-button class="btn-follow-count">
-            {{User.FollowingCount}}<br>Following
+            {{User.FollowingCount}}<br>Seguidos
           </button>
         </span>
         <span>
           <button mat-button class="btn-follow-count">
-            {{User.PostsCount}}<br>Posts
+            {{User.PostsCount}}<br>Publicaciones
           </button>
         </span>
       </div>
@@ -33,7 +33,7 @@
         <ng-container *ngIf="Following$ | async as Following; else FollowLoading">
           <ng-container *ngIf="Following.DocId; else NotFollowing">
             <button mat-stroked-button class="action-button" (click)="UnfollowAUser()">
-              <span><i class="fal fa-user-check"></i> Following</span>
+              <span><i class="fal fa-user-check"></i> Seguidos</span>
             </button>
           </ng-container>
           <ng-template #NotFollowing>
@@ -67,13 +67,13 @@
       <div class="col-9">
         <div class="div-center counts-container-mobile">
           <button mat-button class="btn-counts-mobile">
-            {{User.FollowersCount}}<br>Followers
+            {{User.FollowersCount}}<br>Seguidores
           </button>
           <button mat-button class="btn-counts-mobile">
-            {{User.FollowingCount}}<br>Following
+            {{User.FollowingCount}}<br>Seguidos
           </button>
           <button mat-button class="btn-counts-mobile">
-            {{User.PostsCount}}<br>Posts
+            {{User.PostsCount}}<br>Publicaciones
           </button>
         </div>
   
@@ -82,7 +82,7 @@
             <ng-container *ngIf="Following$ | async as Following; else FollowLoading">
               <ng-container *ngIf="Following.DocId; else NotFollowing">
                 <button mat-stroked-button class="btn-action-mobile" color="primary" (click)="UnfollowThisUser()">
-                  <span><i class="fal fa-user-check"></i> Following</span>
+                  <span><i class="fal fa-user-check"></i> Seguidos</span>
                 </button>
               </ng-container>
               <ng-template #NotFollowing>

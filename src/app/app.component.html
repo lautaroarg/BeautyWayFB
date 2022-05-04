@@ -42,13 +42,13 @@
     <mat-menu #menu="matMenu">
       <h3 class="user-name">{{MyAuth.LoggedUser?.DisplayName}}</h3>
       <button mat-menu-item (click)="MyAuth.NavTo('User/'+MyAuth.LoggedUser?.Id)">
-        <span><i class="fal fa-id-card"></i> View profile</span>
+        <span><i class="fal fa-id-card"></i> Ver perfil</span>
       </button>
       <button mat-menu-item (click)="openProfilePicUpdateDialog()">
-        <span><i class="fal fa-edit"></i> Update profile pic</span>
+        <span><i class="fal fa-edit"></i> Actualizar foto de perfil</span>
       </button>
       <button mat-menu-item (click)="Logout()">
-        <span><i class="fal fa-sign-out-alt"></i> Logout</span>
+        <span><i class="fal fa-sign-out-alt"></i> Desconectar</span>
       </button>
     </mat-menu>
   </ng-container>

@@ -104,11 +104,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
         await this.MyAuth.afStore.collection('Users').doc(user.user.uid).set(UserInfo)
         this.Loading = false;
         this.MyAuth.NavTo('Home')
-      })
+      }) 
+      
       .catch((error) => {
         // Handle Errors here.
         this.Loading = false;
-
+        debugger;
         var errorCode = error.code;
         var errorMessage = error.message;
 
@@ -129,7 +130,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             break;
 
           default:
-            this.MyAuth.Notify.openSnackBar('An error occur, please try again later', '')
+            this.MyAuth.Notify.openSnackBar('A ocurrido un error, porfavor intente mas tarde', '')
             break;
         }
       });

@@ -4,7 +4,7 @@
     <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
       (change)="onChange($event)" required>
     <mat-form-field>
-      <input matInput formControlName="ProfileCaption" autofocus placeholder="Escribe un comentario">
+      <input matInput formControlName="ProfileCaption" autofocus placeholder="Titulo de tu publicacion">
     </mat-form-field>
     <button mat-icon-button type="button" (click)="InputFile.click()">
       <i class="fal fa-paperclip fa-lg"></i>
