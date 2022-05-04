@@ -22,7 +22,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-images"></i>
-              <p class="tab-title">Posts</p>
+              <p class="tab-title">Publicaciones</p>
             </ng-template>
             <ng-template matTabContent>
               <div *ngIf="UserPosts$ | async as Posts; else PostsLoading">
@@ -32,7 +32,7 @@
                   </div>
                 </ng-container>
                 <ng-template #NoPostItems>
-                  No posts yet!
+                  Aun no hay publicaciones!
                 </ng-template>
               </div>
               <ng-template #PostsLoading>
@@ -43,7 +43,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-users"></i>
-              <p class="tab-title">Following</p>
+              <p class="tab-title">Seguidos</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Following'" [UserId]="User.Id"></element-friends>
@@ -52,7 +52,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-users"></i>
-              <p class="tab-title">Followers</p>
+              <p class="tab-title">Seguidores</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Followers'" [UserId]="User.Id"></element-friends>

@@ -57,7 +57,6 @@ export class MiddleColumnComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    debugger;
     this.PostsToDisplay$ = this.poster.GetAllPosts().pipe(share());
   }
 

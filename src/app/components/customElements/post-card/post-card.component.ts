@@ -48,7 +48,6 @@ export class PostCardComponent implements OnInit {
     public followSrv: FollowService, ) { }
 
   ngOnInit() {
-    debugger;
     this.MyAuth.GetAUserInfoFromStore(this.PostData.OwnerId).pipe(take(1))
       .subscribe(User => {
         this.Owner = User;
