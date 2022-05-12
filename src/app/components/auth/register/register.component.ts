@@ -33,6 +33,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   EmailErrorMessage = '';
   PasswordErrorMessage = '';
   TipoDocumentoSeleccionado='';
+  TipoDocumentoProfesionalSeleccionado='';
+  TipoModalidadTrabajoProfesionalSeleccionado='';
+  TipoDeServicioSeleccionado='';
   FormValueChangesSub: Subscription;
 
   constructor(
@@ -58,7 +61,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Service: ['', new RequiredValidator],
       Proname: ['', new RequiredValidator],
       DOB: '',
+
     });
+
+    this.FormRegisterProfesional= this.fbProfesional.group({
+      FirstName: ['', new RequiredValidator],
+      LastName: ['', new RequiredValidator],
+      Email: ['', new RequiredValidator, new EmailValidator],
+      Gender: ['Masculino', new RequiredValidator],
+      Password: ['', new RequiredValidator],
+      nroDocumento: ['', new RequiredValidator],
+      Street: ['', new RequiredValidator],
+      Number: ['', new RequiredValidator],
+      Floor: [''],
+      Dpto: [''],
+      TipoDocumentoProfesionalSeleccionado: ['', new RequiredValidator],
+      TipoDeServicioSeleccionado: ['', new RequiredValidator],
+      TipoModalidadTrabajoProfesionalSeleccionado: ['', new RequiredValidator],
+      Neighborhood: ['', new RequiredValidator],
+      City: ['', new RequiredValidator],
+      Service: ['', new RequiredValidator],
+      Proname: ['', new RequiredValidator],
+      DOB: '',
+
+    }
+    )
 
     this.FormValueChangesSub = this.FormRegisterUsuario.valueChanges.subscribe(obs => {
       this.EmailErrorMessage = '';
