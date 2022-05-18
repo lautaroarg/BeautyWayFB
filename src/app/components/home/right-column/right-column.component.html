@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card style=" background: #f4f2f5; color: #a2a2a3" >
   <mat-card-header>
     <img mat-card-avatar src="{{MyAuth.LoggedUser?.PhotoURL}}">
     <mat-card-title (click)="MyAuth.NavTo('/User/'+MyAuth.LoggedUser?.Id)" class="MousePointer">
@@ -15,7 +15,7 @@
   </mat-card-header>
 </mat-card>
 
-<mat-card style="margin-top: 8px;">
+<mat-card style="margin-top: 8px; background: #f4f2f5; color: #a2a2a3">
   <mat-card-header>
     <mat-card-title (click)="MyAuth.NavTo('/Messages')" class="MousePointer">Mensajes</mat-card-title>
   </mat-card-header>

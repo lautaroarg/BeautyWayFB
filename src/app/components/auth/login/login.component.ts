@@ -88,7 +88,8 @@ export class LoginComponent implements OnInit, OnDestroy {
               FollowersCount: 0,
               FollowingCount: 0,
               IsProfesional: false,
-              Provider: User.user.providerId
+              Provider: User.user.providerId,
+              TipoServicio: ''
             };
 
             this.MyAuth.afAuth.updateProfile({ 'displayName': props.DisplayName, 'photoURL': props.PhotoURL });

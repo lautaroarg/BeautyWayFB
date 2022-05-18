@@ -1,5 +1,5 @@
-<mat-card style="margin-bottom: 16px;">
-  <mat-card-header *ngIf="UserLoaded">
+<mat-card style="margin-bottom: 16px; background: #f4f2f5; color: #a2a2a3">
+  <mat-card-header *ngIf="UserLoaded"  >
     <img mat-card-avatar src="{{Owner.PhotoURL}}" [routerLink]="[ '/User', Owner.Id ]" class="MousePointer" /> -->
      <mat-card-title [routerLink]="[ '/User', Owner.Id ]" class="MousePointer">
       {{Owner.DisplayName}}</mat-card-title>
@@ -37,26 +37,26 @@
     {{PostData.Caption}}
   </mat-card-content>
 
-  <mat-card-actions class="card-actions">
+  <mat-card-actions class="card-actions"  >
     <mat-expansion-panel [disabled]="true" class="w-100" [expanded]="ShowComments" hideToggle>
-      <mat-expansion-panel-header class="row">
+      <mat-expansion-panel-header class="row" style="background: #f4f2f5;">
         <div class="col div-center">
           <button mat-icon-button (click)="AddRemoveHeart()">
             <ng-container *ngIf="IsHeartedByUser$ | async as IsHeartedByUser; else IsHeartLoading">
-              <span class="font-24px color-orangered">
+              <span class="font-24px color-orangered" style="color:#8b73ff">
                 <i [ngClass]="{'fas': IsHeartedByUser==1, 'fal': IsHeartedByUser==2}" class="fal fa-heart"></i>
                 <span class="fa-xs"> {{PostData.HeartsCount}}</span>
               </span>
             </ng-container>
             <ng-template #IsHeartLoading>
-              <span><i class="fal fa-spinner fa-spin"></i></span>
+              <span><i class="fal fa-spinner fa-spin" ></i></span>
             </ng-template>
           </button>
         </div>
 
         <div class="col div-center">
           <button mat-icon-button (click)="PanelToggle()">
-            <span class="font-24px color-orangered">
+            <span class="font-24px color-orangered" style="color:#8b73ff">
               <i class="fal fa-comment-alt"></i>
               <span class="fa-xs"> {{PostData.CommentsCount}}</span>
             </span>
@@ -65,7 +65,7 @@
 
         <div class="col div-center">
           <button mat-icon-button>
-            <span class="font-24px color-orangered">
+            <span class="font-24px color-orangered" style="color:#8b73ff">
               <i class="fal fa-share-alt"></i>
             </span>
           </button>
