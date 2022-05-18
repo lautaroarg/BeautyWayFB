@@ -105,7 +105,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
           Neighborhood: FormValues.Neighborhood,
           City: FormValues.City,
           Service: FormValues.Service,
-
+          TipoServicio: FormValues.TipoServicio,
+          // Proname: string;
+          // ModServicio:string;
 
 
         };

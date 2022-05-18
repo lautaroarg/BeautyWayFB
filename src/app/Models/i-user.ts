@@ -24,8 +24,8 @@ export interface IUser {
   Dpto?: string;
   Neighborhood?: string;
   City?: string;
+  TipoServicio: string;
   Service?: string;
-  Proname?: string;
   IsProfesional: boolean;
   Profesional?: IProfesional;
 
@@ -59,10 +59,10 @@ export interface IFollow {
 //  3	  Blocked
 
 export interface IProfesional {
-  TipoServicio: string;
-
-
-
+  // TipoServicio: string;
+  // Service?: string;
+  // Proname?: string;
+  // ModServicio?:string;
 
 
 }
