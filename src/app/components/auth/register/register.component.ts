@@ -137,9 +137,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           ModalidadTrabajoProfesional: null,
           TipoDeUsuario: 'usuario',
           NombreComercial: null,
-
-
-
+          TipoServicio: ''
         };
 
 
@@ -221,9 +219,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           Service: FormValues.TipoDeServicioSeleccionado,
           TipoDeUsuario: 'profesional',
           NombreComercial: '',
-
-
-
+          TipoServicio: ''
         };
 
 
