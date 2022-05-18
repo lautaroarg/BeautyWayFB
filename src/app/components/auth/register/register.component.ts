@@ -106,6 +106,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   OnSubmit() {
+    
+    debugger;
     this.Loading = true;
     // debugger;
     // console.log(this.TipoDocumentoSeleccionado);
@@ -126,7 +128,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
           FollowersCount: 0,
           PostsCount: 0,
           Provider: 'Password',
-          IsProfesional: false,
           nroDocumento: FormValues.nroDocumento,
           TipoDocumento: this.TipoDocumentoSeleccionado,
           Street: FormValues.Street,
@@ -135,12 +136,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
           Dpto: FormValues.Dpto,
           Neighborhood: FormValues.Neighborhood,
           City: FormValues.City,
-          Service: FormValues.Service,
+          
           TipoServicioProfesional: null,
           ModalidadTrabajoProfesional: null,
           TipoDeUsuario: 'usuario',
           NombreComercial: null,
-          TipoServicio: ''
         };
 
 
@@ -196,6 +196,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   }
   OnSubmitProfesional() {
+    debugger;
     this.Loading = true;
     // debugger;
     // console.log(this.TipoDocumentoSeleccionado);
@@ -210,27 +211,24 @@ export class RegisterComponent implements OnInit, OnDestroy {
           DisplayName: FormValues.FirstName + ' ' + FormValues.LastName,
           Email: user.user.email,
           Gender: FormValues.Gender,
-          DOB: new Date(FormValues.DOB).valueOf(),
+          DOB:  new Date(FormValues.DOB).valueOf(),
           PhotoURL: this.MyAuth.DefaultUserPicURL,
           FollowingCount: 0,
           FollowersCount: 0,
           PostsCount: 0,
           Provider: 'Password',
-          IsProfesional: false,
           nroDocumento: FormValues.nroDocumento,
           TipoDocumento: this.TipoDocumentoProfesionalSeleccionado,
-          ModalidadTrabajoProfesional: FormValues.TipoModalidadTrabajoProfesionalSeleccionado,
-          TipoServicioProfesional: FormValues.TipoDocumentoProfesionalSeleccionado,
+          ModalidadTrabajoProfesional: this.TipoModalidadTrabajoProfesionalSeleccionado,
+          TipoServicioProfesional: this.TipoDocumentoProfesionalSeleccionado,
           Street: FormValues.Street,
           Number: FormValues.Number,
           Floor: FormValues.Floor,
           Dpto: FormValues.Dpto,
           Neighborhood: FormValues.Neighborhood,
           City: FormValues.City,
-          Service: FormValues.TipoDeServicioSeleccionado,
           TipoDeUsuario: 'profesional',
-          NombreComercial: '',
-          TipoServicio: ''
+          NombreComercial: FormValues.NombreComercial,
         };
 
 

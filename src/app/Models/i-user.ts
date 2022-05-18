@@ -24,9 +24,6 @@ export interface IUser {
   Dpto?: string;
   Neighborhood?: string;
   City?: string;
-  TipoServicio: string;
-  Service?: string;
-  IsProfesional: boolean;
   Profesional?: IProfesional;
   ModalidadTrabajoProfesional?: string;
   TipoServicioProfesional?: string; 

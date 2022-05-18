@@ -6,10 +6,9 @@
           <mat-card-title>Registrarse</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <div>Propiedad de prueba {{isUsuario}}</div>
           <mat-tab-group (selectedTabChange)="cambiarEstado($event)">
             <mat-tab label="Soy usuario" (model)="isUsuario" >
-              <form class="example-form" [formGroup]="FormRegisterUsuario" (submit)="OnSubmit()">
+              <form class="example-form" [formGroup]="FormRegisterUsuario">
               <div class="controls-container">
                 <div class="row" style="margin:2%;">
                   <div class = "col-6">
@@ -29,7 +28,7 @@
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text" autocomplete="off"
                         accept="nroDocumento" required>
-                      <mat-error *ngIf="FormRegisterUsuario.controls.FirstName.hasError('required')">
+                      <mat-error *ngIf="FormRegisterUsuario.controls.nroDocumento.hasError('required')">
                         Su número de documento es <strong>obligatorio</strong>
                       </mat-error>
                     </mat-form-field>
@@ -154,7 +153,7 @@
             </form>
             </mat-tab>
             <mat-tab label="Soy profesional" (model)="isUsuario!"> 
-              <form class="example-form" [formGroup]="FormRegisterProfesional" (submit)="OnSubmit()">
+              <form class="example-form" [formGroup]="FormRegisterProfesional">
               <div class="controls-container">
                 <div class="row" style="margin:2%;">
                   <div class = "col-6">
@@ -174,7 +173,7 @@
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text" autocomplete="off"
                         accept="nroDocumento" required>
-                      <mat-error *ngIf="FormRegisterProfesional.controls.FirstName.hasError('required')">
+                      <mat-error *ngIf="FormRegisterProfesional.controls.nroDocumento.hasError('required')">
                         Su número de documento es <strong>obligatorio</strong>
                       </mat-error>
                     </mat-form-field>
@@ -265,6 +264,15 @@
 
                 </div>
                 
+  
+              </div>
+
+              <div>
+                <mat-form-field class="form-field w-100">
+                  <input matInput [matDatepicker]="dpp" placeholder="Fecha de Nacimiento" formControlName="DOB">
+                  <mat-datepicker-toggle matSuffix [for]="dpp"></mat-datepicker-toggle>
+                  <mat-datepicker #dpp></mat-datepicker>
+                </mat-form-field>
               </div>
                 <div class="row" style="margin:0;">
                 <div class="col-6">
@@ -356,14 +364,13 @@
         </mat-card-content>
         <mat-card-actions>
           <div style="margin:0 0 15px 15px;">
-            <button mat-raised-button [disabled]="isUsuario ? !FormRegisterUsuario.valid : !FormRegisterProfesional.valid" type="submit" color="accent">
+            <button mat-raised-button [disabled]="isUsuario ? !FormRegisterUsuario.valid : !FormRegisterProfesional.valid" type="submit" color="accent" (click)= "isUsuario ? OnSubmit() : OnSubmitProfesional()">
               <span *ngIf="!Loading">Registrar</span>
               <span *ngIf="Loading" style="margin:0 19px;"><i class="fal fa-spinner fa-spin"></i></span>
             </button>
-            <button [routerLink]="[ '/Auth/Login']" color="primary" mat-button>Ingresar</button>
+            <button [routerLink]="['/Auth/Login']" color="primary" mat-button>Ingresar</button>
           </div>
         </mat-card-actions>
       </mat-card>
-    
   </div>
 </div>

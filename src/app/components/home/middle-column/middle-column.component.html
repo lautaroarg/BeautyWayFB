@@ -1,5 +1,5 @@
 <div style="margin:0 15px;">
-  <mat-card style="margin-bottom: 16px;">
+  <mat-card *ngIf="MyAuth.LoggedUser.TipoDeUsuario =='profesional'" style="margin-bottom: 16px;">
     <mat-card-header>
       <mat-card-title>Realizar una publicación</mat-card-title>
     </mat-card-header>
