@@ -43,6 +43,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private fbUsuario: FormBuilder,
     private fbProfesional: FormBuilder) { }
 
+  
+
   ngOnInit() {
     this.FormRegisterUsuario = this.fbUsuario.group({
       FirstName: ['', new RequiredValidator],
@@ -63,6 +65,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       DOB: '',
 
     });
+    
 
     this.FormRegisterProfesional = this.fbProfesional.group({
       FirstName: ['', new RequiredValidator],
@@ -83,7 +86,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Proname: ['', new RequiredValidator],
       DOB: '',
       NombreComercial: '',
-      
+
 
     }
     )
@@ -184,6 +187,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
         }
       });
   }
+  cambiarEstado(event:any){       
+    if(event.tab.textLabel == "Soy usuario"){
+      this.isUsuario = true;
+    }
+    else{
+      this.isUsuario = false;
+    }
+  }
   OnSubmitProfesional() {
     this.Loading = true;
     // debugger;
@@ -221,6 +232,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           NombreComercial: '',
           TipoServicio: ''
         };
+
 
 
 
