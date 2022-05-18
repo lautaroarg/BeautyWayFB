@@ -28,6 +28,11 @@ export interface IUser {
   Service?: string;
   IsProfesional: boolean;
   Profesional?: IProfesional;
+  ModalidadTrabajoProfesional?: string;
+  TipoServicioProfesional?: string; 
+  TipoDeUsuario?:string;
+  NombreComercial?: string;
+
 
   Followers?: {
     Id: string;
