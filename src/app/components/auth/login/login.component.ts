@@ -141,7 +141,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         switch (errorCode) {
           case 'auth/invalid-email':
             this.EmailErrorMessage = errorMessage;
-            this.EmailErrorMessage = 'email invalido, por favor verifique'
+            this.EmailErrorMessage = 'Email invalido, por favor verifique'
             break;
           case 'auth/user-disabled':
             this.EmailErrorMessage = errorMessage;

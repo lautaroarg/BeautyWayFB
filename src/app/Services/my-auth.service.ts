@@ -57,7 +57,7 @@ export class MyAuthService {
         this.LoggedUserLoading = false;
         this.IsUserLoggedIn = false;
         this.LoggedUser = null;
-        this.Notify.openSnackBar('Ingreso requerido, Por favor ingrese', 'Ingresar', () => {
+        this.Notify.openSnackBar('Por favor ingrese a sistema con su correo y contraseña.',':)', () => {
           this.NavTo('/Auth/Login');
         });
       }

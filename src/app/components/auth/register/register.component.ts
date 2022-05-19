@@ -43,14 +43,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private fbUsuario: FormBuilder,
     private fbProfesional: FormBuilder) { }
 
-  
+
 
   ngOnInit() {
     this.FormRegisterUsuario = this.fbUsuario.group({
       FirstName: ['', new RequiredValidator],
       LastName: ['', new RequiredValidator],
       Email: ['', new RequiredValidator, new EmailValidator],
-      Gender: ['Masculino', new RequiredValidator],
+      Gender: ['', new RequiredValidator],
       Password: ['', new RequiredValidator],
       nroDocumento: ['', new RequiredValidator],
       Street: ['', new RequiredValidator],
@@ -65,13 +65,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
       DOB: '',
 
     });
-    
+
 
     this.FormRegisterProfesional = this.fbProfesional.group({
       FirstName: ['', new RequiredValidator],
       LastName: ['', new RequiredValidator],
       Email: ['', new RequiredValidator, new EmailValidator],
-      Gender: ['Masculino'],
+      Gender: [''],
       Password: ['', new RequiredValidator],
       nroDocumento: ['', new RequiredValidator],
       Street: ['', new RequiredValidator],
@@ -106,8 +106,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   OnSubmit() {
+
     
-    debugger;
     this.Loading = true;
     // debugger;
     // console.log(this.TipoDocumentoSeleccionado);
@@ -136,10 +136,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
           Dpto: FormValues.Dpto,
           Neighborhood: FormValues.Neighborhood,
           City: FormValues.City,
-          
+
           TipoServicioProfesional: null,
           ModalidadTrabajoProfesional: null,
-          TipoDeUsuario: 'usuario',
+          TipoDeUsuario: 'Usuario',
           NombreComercial: null,
         };
 
@@ -161,7 +161,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       .catch((error) => {
         // Handle Errors here.
         this.Loading = false;
-        debugger;
         var errorCode = error.code;
         var errorMessage = error.message;
 
@@ -187,16 +186,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
         }
       });
   }
-  cambiarEstado(event:any){       
-    if(event.tab.textLabel == "Soy usuario"){
+  cambiarEstado(event: any) {
+    if (event.tab.textLabel == "Soy usuario") {
       this.isUsuario = true;
     }
-    else{
+    else {
       this.isUsuario = false;
     }
   }
   OnSubmitProfesional() {
-    debugger;
     this.Loading = true;
     // debugger;
     // console.log(this.TipoDocumentoSeleccionado);
@@ -211,7 +209,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           DisplayName: FormValues.FirstName + ' ' + FormValues.LastName,
           Email: user.user.email,
           Gender: FormValues.Gender,
-          DOB:  new Date(FormValues.DOB).valueOf(),
+          DOB: new Date(FormValues.DOB).valueOf(),
           PhotoURL: this.MyAuth.DefaultUserPicURL,
           FollowingCount: 0,
           FollowersCount: 0,
@@ -220,14 +218,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
           nroDocumento: FormValues.nroDocumento,
           TipoDocumento: this.TipoDocumentoProfesionalSeleccionado,
           ModalidadTrabajoProfesional: this.TipoModalidadTrabajoProfesionalSeleccionado,
-          TipoServicioProfesional: this.TipoDocumentoProfesionalSeleccionado,
+          TipoServicioProfesional: this.TipoDeServicioSeleccionado,
           Street: FormValues.Street,
           Number: FormValues.Number,
           Floor: FormValues.Floor,
           Dpto: FormValues.Dpto,
           Neighborhood: FormValues.Neighborhood,
           City: FormValues.City,
-          TipoDeUsuario: 'profesional',
+          TipoDeUsuario: 'Profesional',
           NombreComercial: FormValues.NombreComercial,
         };
 
@@ -250,7 +248,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       .catch((error) => {
         // Handle Errors here.
         this.Loading = false;
-        debugger;
         var errorCode = error.code;
         var errorMessage = error.message;
 
