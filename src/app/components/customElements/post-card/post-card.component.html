@@ -1,4 +1,4 @@
-<mat-card style="margin-bottom: 16px; background: #f4f2f5; color: #0c0c0c;">
+<mat-card style="margin-bottom: 16px; background: #efe7ff; color: #0c0c0c;">
   <mat-card-header *ngIf="UserLoaded"  >
     <img mat-card-avatar src="{{Owner.PhotoURL}}" [routerLink]="[ '/User', Owner.Id ]" class="MousePointer" /> -->
      <mat-card-title [routerLink]="[ '/User', Owner.Id ]" class="MousePointer">
@@ -39,7 +39,7 @@
 
   <mat-card-actions class="card-actions"  >
     <mat-expansion-panel [disabled]="true" class="w-100" [expanded]="ShowComments" hideToggle>
-      <mat-expansion-panel-header class="row" style="background: #f4f2f5;">
+      <mat-expansion-panel-header class="row" style="background: #efe7ff;;">
         <div class="col div-center">
           <button mat-icon-button (click)="AddRemoveHeart()">
             <ng-container *ngIf="IsHeartedByUser$ | async as IsHeartedByUser; else IsHeartLoading">

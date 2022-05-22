@@ -2,14 +2,13 @@
     margin: 3px 0;
 }
 
-.user-name {
-    
-}
+.user-name {}
 
 .user-box {
     border: 1px transparent;
     border-radius: 5px;
     padding: 3px 0;
+    color: black;
 }
 
 .user-pic {

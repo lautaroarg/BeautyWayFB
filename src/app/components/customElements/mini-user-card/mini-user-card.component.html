@@ -8,12 +8,12 @@
       <ng-container *ngIf="Following$ | async as Following; else FollowLoading">
         <ng-container *ngIf="Following.DocId; else NotFollowing">
           <button mat-stroked-button class="btn-action-mobile" color="primary" (click)="UnfollowThisUser()">
-            <span><i class="fal fa-user-check"></i> Seguidos</span>
+            <span><i class="fal fa-user-check"></i> Dejar de seguir</span>
           </button>
         </ng-container>
         <ng-template #NotFollowing>
-          <button mat-stroked-button class="btn-action-mobile" (click)="FollowThisUser()" style="padding: 0 26px;">
-            <span><i class="fal far fa-user-plus"></i> Seguir</span>
+          <button mat-stroked-button class="btn-action-mobile" (click)="FollowThisUser()" style="padding: 0 26px; background: #c3ff73">
+            <span><i class="fal far fa-user-plus" ></i> Seguir</span>
           </button>
         </ng-template>
       </ng-container>
