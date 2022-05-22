@@ -6,7 +6,7 @@ export interface IUser {
   DisplayName: string;
   Gender?: string;
   DOB?: number;
-  PhoneNumber?: number;
+  NumeroTelefonoProfesional?: number;
   PhotoURL?: string;
   Status?: string;
   LivesIn?: StatesCitiesType;
