@@ -86,7 +86,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Proname: ['', new RequiredValidator],
       DOB: '',
       NombreComercial: '',
-      NumeroTelefonoProfesional:[''],
+      PhoneNumber:[''],
 
 
     }
@@ -142,7 +142,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           ModalidadTrabajoProfesional: null,
           TipoDeUsuario: 'usuario',
           NombreComercial: null,
-          NumeroTelefonoProfesional:null,
+          PhoneNumber:null,
         };
 
 
@@ -229,7 +229,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           City: FormValues.City,
           TipoDeUsuario: 'profesional',
           NombreComercial: FormValues.NombreComercial,
-          NumeroTelefonoProfesional: FormValues.NumeroTelefonoProfesional,
+          PhoneNumber: FormValues.PhoneNumber,
         };
 
 

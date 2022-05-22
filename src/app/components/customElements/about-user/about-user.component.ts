@@ -47,7 +47,7 @@ export class AboutUserComponent implements OnInit {
     this.DisplayName = this.User.DisplayName;
     this.About = this.User.About;
     this.Email = this.User.Email;
-    this.PhoneNumber = this.User.PhoneNumber;
+    // this.PhoneNumber = this.User.PhoneNumber;
     this.Gender = this.User.Gender;
     this.DOB = this.User.DOB ? this.User.DOB.valueOf() : null;
     this.Status = this.User.Status;
