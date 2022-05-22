@@ -13,7 +13,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-info-circle"></i>
-              <p class="tab-title" style="color:black">Info</p>
+              <p class="tab-title" style="color:#5c4ca2">Info</p>
             </ng-template>
             <ng-template matTabContent>
               <element-about-user [User]="User"></element-about-user>
@@ -22,7 +22,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-images"></i>
-              <p class="tab-title" style="color:black">Publicaciones</p>
+              <p class="tab-title" style="color:#5c4ca2">Publicaciones</p>
             </ng-template>
             <ng-template matTabContent>
               <div *ngIf="UserPosts$ | async as Posts; else PostsLoading">
@@ -43,7 +43,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-users"></i>
-              <p class="tab-title" style="color:black ">Seguidos</p>
+              <p class="tab-title" style="color:#5c4ca2 ">Seguidos</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Following'" [UserId]="User.Id"></element-friends>
@@ -52,7 +52,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-users"></i>
-              <p class="tab-title" style="color:black">Seguidores</p>
+              <p class="tab-title" style="color:#5c4ca2">Seguidores</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Followers'" [UserId]="User.Id"></element-friends>

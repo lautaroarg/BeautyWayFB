@@ -17,7 +17,7 @@
 .our-team .pic::before {
     content: "";
     width: 100%;
-    background: #8b73ff;
+    background: #5c4ca2;
     position: absolute;
     border-radius: 40%;
     bottom: 135%;
@@ -36,7 +36,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: #8b73ff;
+    background: #5c4ca2;
     position: absolute;
     top: 0;
     left: 0;
@@ -76,7 +76,7 @@
     width: 100%;
     padding: 4px;
     margin: 0;
-    background: #8b73ff;
+    background: #5c4ca2;
     position: absolute;
     bottom: -100%;
     left: 0;
@@ -103,7 +103,7 @@
 }
  
 .action-button:hover {
-    color: #8b73ff;
+    color:#5c4ca2;
     background: #f7f5ec;
     /* text-decoration: none; */
 }
@@ -113,7 +113,7 @@
     z-index: 1;
     right: 30px;
     background: #c3ff73;
-    color:black;
+    color:#5c4ca2;
 }
 
 .card-mobile {

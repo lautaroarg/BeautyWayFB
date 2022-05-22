@@ -1,12 +1,12 @@
 .about-user-container {
     background: #efe7ff;; 
-    color: black;
+    color: #5c4ca2;
 }
 
 .controls-container{
     width: 100%;
-    background: red;
-    color: black;
+    background: #5c4ca2;
+    color: white;
     text-align: right;
     
 } 

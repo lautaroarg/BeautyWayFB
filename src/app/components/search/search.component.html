@@ -1,5 +1,5 @@
 <div style="margin: 0 15px;">
-  <mat-card style="background: #efe7ff; ">
+  <mat-card style="background: #5c4ca2; ">
     <form [formGroup]="QueryForm">
       <mat-form-field class="w-100">
         <input matInput formControlName="Query" placeholder="A quien estas buscando?">
@@ -10,11 +10,11 @@
     </form>
   </mat-card>
 
-  <mat-card id="people-card" style="background: #efe7ff; color: black">
+  <mat-card id="people-card" style="background: #efe7ff; color: #5c4ca2">
     <ng-container *ngIf="PeopleResults$ | async; else PeopleLoading">
       <mat-card-header>
         <mat-card-title>Usuarios</mat-card-title>
-        <mat-card-subtitle style="color: black">Encontrados: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>
+        <mat-card-subtitle style="color: #5c4ca2">Encontrados: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <div class="container-fluidr">

@@ -8,21 +8,21 @@
       <img [src]="User.PhotoURL">
     </div>
     <div class="team-content">
-      <h3 class="title">{{User.DisplayName}}</h3>
+      <h3 class="title" style="color:#5c4ca2">{{User.DisplayName}}</h3>
       <span class="subtitle">{{User.About}}</span>
       <div class="subtitle">
         <span>
-          <button mat-button class="btn-follow-count" style="padding: 0 10px;">
+          <button mat-button class="btn-follow-count" style="padding: 0 10px; color:#5c4ca2">
             {{User.FollowersCount}}<br>Seguidores
           </button>
         </span>
         <span>
-          <button mat-button class="btn-follow-count">
+          <button mat-button class="btn-follow-count" style="color:#5c4ca2">
             {{User.FollowingCount}}<br>Seguidos
           </button>
         </span>
         <span>
-          <button mat-button class="btn-follow-count">
+          <button mat-button class="btn-follow-count" style="color:#5c4ca2">
             {{User.PostsCount}}<br>Publicaciones
           </button>
         </span>

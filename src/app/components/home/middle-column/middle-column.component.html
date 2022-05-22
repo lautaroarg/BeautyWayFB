@@ -1,11 +1,11 @@
 <div style="margin:0 15px;">
   <mat-card *ngIf="MyAuth.LoggedUser.TipoDeUsuario =='profesional'"
-    style="margin-bottom: 16px; background: #efe7ff;; color: black">
+    style="margin-bottom: 16px; background: #735fd0; color: WHITE">
     <mat-card-header>
       <mat-card-title>Realizar una publicación</mat-card-title>
     </mat-card-header>
     <input type="file" #InputImage (change)="OnChange($event)" style="display: none;" accept="image/*" required>
-    <mat-form-field style="width:95%; color: #383636">
+    <mat-form-field style="width:95%; color: white">
       <input matInput [(ngModel)]="InputCaption" style="color:black" placeholder="Título de tu publicación"
         autocomplete="off">
       <button matSuffix mat-icon-button (click)="InputImage.click()">
