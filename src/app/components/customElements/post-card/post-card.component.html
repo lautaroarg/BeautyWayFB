@@ -11,7 +11,7 @@
       <ng-container *ngIf="Owner.Id != MyAuth.LoggedUser.Id">
         <ng-container *ngIf="CheckFollowStatus$ | async as FollowStatus; else FollowStatusLoading">
           <button *ngIf="FollowStatus == 'No'" mat-menu-item (click)="FollowOwner()">
-            <i class=""></i>Follow
+            <i class=""></i>Seguir
           </button>
         </ng-container>
         <ng-template #FollowStatusLoading>

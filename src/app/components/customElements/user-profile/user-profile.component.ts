@@ -41,7 +41,7 @@ export class UserProfileComponent implements OnInit {
     const confirmationDialogRef = this.MyAuth.Dialogs.open(ConfirmationDialogComponent, {
       data: {
         Title: 'Unfollow',
-        Message: `Are you sure? you want to unfollow ${this.User.DisplayName}?`
+        Message: `¿Dejar de seguir? ${this.User.DisplayName}?`
       }
     })
 

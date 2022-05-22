@@ -38,7 +38,7 @@
           </ng-container>
           <ng-template #NotFollowing>
             <button mat-stroked-button class="action-button" (click)="FollowAUser()" style="padding: 0 26px;">
-              <span><i class="fal far fa-user-plus"></i> Follow</span>
+              <span><i class="fal far fa-user-plus"></i> Seguir</span>
             </button>
           </ng-template>
         </ng-container>
@@ -50,7 +50,7 @@
       </li>
       <li>
         <button class="action-button btn-message" (click)="MyAuth.NavTo('Messages/'+User.Id)" mat-stroked-button>
-          <span><i class="fal fa-comment-lines"></i> Message</span>
+          <span><i class="fal fa-comment-lines"></i> Mensaje</span>
         </button>
       </li>
     </ul>
@@ -82,12 +82,12 @@
             <ng-container *ngIf="Following$ | async as Following; else FollowLoading">
               <ng-container *ngIf="Following.DocId; else NotFollowing">
                 <button mat-stroked-button class="btn-action-mobile" color="primary" (click)="UnfollowThisUser()">
-                  <span><i class="fal fa-user-check"></i> Seguidos</span>
+                  <span><i class="fal fa-user-check"></i> Dejar de seguir</span>
                 </button>
               </ng-container>
               <ng-template #NotFollowing>
                 <button mat-stroked-button class="btn-action-mobile" (click)="FollowThisUser()" style="padding: 0 26px;">
-                  <span><i class="fal far fa-user-plus"></i> Follow</span>
+                  <span><i class="fal far fa-user-plus"></i> Seguir</span>
                 </button>
               </ng-template>
             </ng-container>
@@ -98,7 +98,7 @@
             </ng-template>
             <button class="btn-message-mobile btn-action-mobile" (click)="MyAuth.NavTo('Messages/'+User.Id)"
               mat-stroked-button>
-              <span><i class="fal fa-comment-lines"></i> Message</span>
+              <span><i class="fal fa-comment-lines"></i> Mensaje</span>
             </button>
           </div>
         </div>
