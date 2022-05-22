@@ -1,7 +1,7 @@
 .our-team {
     width:250px;
     padding: 30px 0 40px;
-    background: white;
+    background: #f4f2f5;
     text-align: center;
     overflow: hidden;
     position: relative;
@@ -17,7 +17,7 @@
 .our-team .pic::before {
     content: "";
     width: 100%;
-    background: #eb1768;
+    background: #8b73ff;
     position: absolute;
     border-radius: 40%;
     bottom: 135%;
@@ -112,6 +112,8 @@
     position: absolute;
     z-index: 1;
     right: 30px;
+    background: #c3ff73;
+    color:black;
 }
 
 .card-mobile {

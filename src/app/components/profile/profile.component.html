@@ -5,15 +5,15 @@
 <ng-container *ngIf="!MyAuth.LoggedUserLoading; else iUserLoading">
   <div *ngIf="UserToDisplay$ | async as User; else UserLoading" class="container-fluid">
     <div class="row">
-      <div class="start-column col-sm-12 col-md-4 col-lg-3">
+      <div class="start-column col-sm-12 col-md-4 col-lg-3" align ="right">
         <element-user-profile [User]="User"></element-user-profile>
       </div>
-      <div class="middle-content col-md-8 col-lg-6">
+      <div class="middle-content col-md-8 col-lg-6" >
         <mat-tab-group animationDuration="300ms" style="height: calc(100vh - 112px)" mat-align-tabs="center">
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-info-circle"></i>
-              <p class="tab-title">Info</p>
+              <p class="tab-title" style="color:black">Info</p>
             </ng-template>
             <ng-template matTabContent>
               <element-about-user [User]="User"></element-about-user>
@@ -22,7 +22,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-images"></i>
-              <p class="tab-title">Publicaciones</p>
+              <p class="tab-title" style="color:black">Publicaciones</p>
             </ng-template>
             <ng-template matTabContent>
               <div *ngIf="UserPosts$ | async as Posts; else PostsLoading">
@@ -43,7 +43,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-users"></i>
-              <p class="tab-title">Seguidos</p>
+              <p class="tab-title" style="color:black ">Seguidos</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Following'" [UserId]="User.Id"></element-friends>
@@ -52,7 +52,7 @@
           <mat-tab>
             <ng-template mat-tab-label>
               <i class="far fa-users"></i>
-              <p class="tab-title">Seguidores</p>
+              <p class="tab-title" style="color:black">Seguidores</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Followers'" [UserId]="User.Id"></element-friends>

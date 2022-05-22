@@ -1,10 +1,15 @@
 .about-user-container {
-    /* height: calc(100vh - 162px); */
+    background: #f4f2f5; 
+    color: black;
 }
 
 .controls-container{
     width: 100%;
-}
+    background: red;
+    color: black;
+    text-align: right;
+    
+} 
 
 .row {
     padding: 15px;
@@ -15,3 +20,5 @@
     display: flex;
     align-items: center;
 }
+
+

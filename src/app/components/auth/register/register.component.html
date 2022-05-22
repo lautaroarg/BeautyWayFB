@@ -12,7 +12,7 @@
               <div class="controls-container">
 
                 <div class="row" style="margin:0%;">
-                  <div class="col-6" align = right style="margin-top: 1%;">
+                  <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
                       <mat-label>Tipo de documento</mat-label>
                       <mat-select [(value)]="TipoDocumentoSeleccionado" required>
@@ -24,7 +24,7 @@
                         </mat-option>
                         <!-- <mat-error *ngIf="FormRegisterUsuario.controls.TipoDocumento.hasError('required')"> //Preguntarle a tito como añadir
                           Su tipo de documento es <strong>obligatorio</strong>                                   //mensaje de error a box de opciones
-                        </mat-error> -->                                                                         
+                        </mat-error> -->
                       </mat-select>
                     </mat-form-field>
                   </div>
@@ -60,7 +60,7 @@
                   </div>
                 </div>
 
-                <div class="col" align = center>
+                <div class="col" align=center>
                   <mat-radio-group formControlName="Gender" class="form-field w-100">
                     <mat-radio-button value="Masculino" name="Gender">Masculino</mat-radio-button>
                     <mat-radio-button value="Femenino" name="Gender" style="margin: 0 20px;">Femenino</mat-radio-button>
@@ -162,9 +162,9 @@
           <mat-tab label="Soy profesional" (model)="isUsuario!">
             <form class="example-form" [formGroup]="FormRegisterProfesional">
               <div class="controls-container">
-                
+
                 <div class="row" style="margin:0%;">
-                  <div class="col-6" align = right style="margin-top: 1%;">
+                  <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
                       <mat-label>Tipo de documento</mat-label>
                       <mat-select [(value)]="TipoDocumentoProfesionalSeleccionado" required>
@@ -209,7 +209,7 @@
                   </div>
                 </div>
 
-                <div class="col" align = center>
+                <div class="col" align=center>
                   <mat-radio-group formControlName="Gender" class="form-field w-100">
                     <mat-radio-button value="Masculino" name="Gender">Masculino</mat-radio-button>
                     <mat-radio-button value="Femenino" name="Gender" style="margin: 0 20px;">Femenino</mat-radio-button>
@@ -224,7 +224,7 @@
                   </mat-form-field>
                 </div>
 
-                <div class="row" style="margin:0;">
+                <div class="row" style="margin:0;" >
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Calle" formControlName="Street" type="text" autocomplete="off"
@@ -283,8 +283,15 @@
                   </div>
                 </div>
 
+                <div class="col-12">
+                  <mat-form-field class="form-field w-100" style="text-align: center">
+                    <input matInput placeholder="Nombre comercial/Nombre del local" formControlName="NombreComercial"
+                      type="text" autocomplete="off" accept="NombreComercial">
+                  </mat-form-field>
+                </div>
+
                 <div class="row" style="margin:0;">
-                  <div class="col-3">
+                  <div class="col-6" align="right">
                     <mat-form-field appearance="fill">
                       <mat-label>Modalidad de trabajo</mat-label>
                       <mat-select [(value)]="TipoModalidadTrabajoProfesionalSeleccionado">
@@ -300,14 +307,8 @@
                       </mat-select>
                     </mat-form-field>
                   </div>
-                  <div class="col-6">
-                    <mat-form-field class="form-field w-100">
-                      <input matInput placeholder="Nombre comercial/Nombre del local" formControlName="NombreComercial" type="text"
-                        autocomplete="off" accept="NombreComercial">
-                    </mat-form-field>
-                  </div>
-                  <div class="col-3" >
-                    <mat-form-field appearance="fill">
+                  <div class="col-3" align=right >
+                    <mat-form-field appearance="fill" >
                       <mat-label>Tipo de servicio</mat-label>
                       <mat-select [(value)]="TipoDeServicioSeleccionado">
                         <mat-option value="Peluqueria">

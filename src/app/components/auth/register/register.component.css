@@ -9,7 +9,7 @@
   #grid {
     background: linear-gradient(#8b73ff,#8a3788);
     padding: 80px 0;
-    height: 100vh;
+    /*height: 100vh*/;
     /* height: calc(100% - 64px); */
   }
   

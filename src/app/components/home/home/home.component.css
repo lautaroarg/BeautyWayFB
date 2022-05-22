@@ -1,5 +1,6 @@
 .home-root-div {
-  margin-top: 5px;
+  /*margin-top: 5px;*/
+  background: linear-gradient(#8b73ff, white);
 }
 
 img.user-profile-picture {
@@ -27,3 +28,4 @@ span.secondary-content{
   height: calc(100vh - 62px);
   overflow: visible auto;
 }
+

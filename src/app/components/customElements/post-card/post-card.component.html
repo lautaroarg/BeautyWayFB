@@ -1,9 +1,9 @@
-<mat-card style="margin-bottom: 16px; background: #f4f2f5; color: #a2a2a3">
+<mat-card style="margin-bottom: 16px; background: #f4f2f5; color: #0c0c0c;">
   <mat-card-header *ngIf="UserLoaded"  >
     <img mat-card-avatar src="{{Owner.PhotoURL}}" [routerLink]="[ '/User', Owner.Id ]" class="MousePointer" /> -->
      <mat-card-title [routerLink]="[ '/User', Owner.Id ]" class="MousePointer">
       {{Owner.DisplayName}}</mat-card-title>
-    <mat-card-subtitle>{{moment(PostData.PostedOn).calendar(null, DateTimeFormat)}}</mat-card-subtitle>
+    <mat-card-subtitle style="color: #463a77">{{moment(PostData.PostedOn).calendar(null, DateTimeFormat)}}</mat-card-subtitle>
     <button class="card-menu" align="end" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Open basic menu">
       <i class="fal fa-ellipsis-v fa-lg"></i>
     </button>

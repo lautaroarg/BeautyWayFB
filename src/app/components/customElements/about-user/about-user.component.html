@@ -6,42 +6,61 @@
       <div class="col">{{User?.DisplayName}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Acerca de: </b></div>
-      <div class="col">{{User?.About}}</div>
-    </div>
-    <div class="row">
       <div class="col-3"><b>Direccion de correo: </b></div>
       <div class="col">{{User?.Email}}</div>
-    </div>
-    <div class="row">
-      <div class="col-3"><b>Telefono: </b></div>
-      <div class="col">{{User?.PhoneNumber}}</div>
     </div>
     <div class="row">
       <div class="col-3"><b>Genero: </b></div>
       <div class="col">{{User?.Gender}}</div>
     </div>
     <div class="row">
+      <div class="col-3"><b>Calle: </b></div>
+      <div class="col">{{User?.Street}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Altura: </b></div>
+      <div class="col">{{User?.Number}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Piso: </b></div>
+      <div class="col">{{User?.Floor}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Departamento: </b></div>
+      <div class="col">{{User?.Dpto}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Barrio: </b></div>
+      <div class="col">{{User?.Neighborhood}}</div>
+    </div>
+    <div class="row">
+      <div class="col-3"><b>Ciudad: </b></div>
+      <div class="col">{{User?.City}}</div>
+    </div>
+    <div class="row">
       <div class="col-3"><b>Fecha Nacimiento: </b></div>
       <div class="col">{{User?.DOB | date}}</div>
     </div>
+    <!--Estos atributos corresponden a profesional, no deberian verse en el perfil de usuario
+    CONSULTAR CON TITO-->
     <div class="row">
-      <div class="col-3"><b>Estado: </b></div>
-      <div class="col">{{User?.Status}}</div>
+      <div class="col-3"><b> Tipo de Servicio: </b></div>
+      <div class="col">{{User?.TipoServicioProfesional}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Vive en: </b></div>
-      <div class="col">{{User?.LivesIn}}</div>
+      <div class="col-3"><b> Modalidad de Trabajo: </b></div>
+      <div class="col">{{User?.ModalidadTrabajoProfesional}}</div>
     </div>
     <div class="row">
-      <div class="col-3"><b>Intereses: </b></div>
-      <div class="col">{{User?.Interests}}</div>
+      <div class="col-3"><b> Nombre Comercial/ Local: </b></div>
+      <div class="col">{{User?.NombreComercial}}</div>
     </div>
   </ng-template>
 
   <!-- Edit mode -->
   <ng-template #EditMode>
     <div class="controls-container">
+
       <div class="row">
         <mat-form-field>
           <input matInput [(ngModel)]="DisplayName" value="{{User?.DisplayName}}" placeholder="Nombre completo">
@@ -51,6 +70,7 @@
           </button>
         </mat-form-field>
       </div>
+
       <div class="row">
         <mat-form-field>
           <input matInput [(ngModel)]="About" value="{{User?.About}}" placeholder="Acerca de">
@@ -60,11 +80,13 @@
           </button>
         </mat-form-field>
       </div>
+
       <div class="row">
         <mat-form-field>
-          <input matInput [(ngModel)]="Email" value="{{User?.Email}}" [readonly]="User?.Provider=='Password'" placeholder="Email">
-          <button mat-button (click)="Update({Email:Email});"
-            *ngIf="Email != User?.Email && Email!=''" matSuffix mat-icon-button>
+          <input matInput [(ngModel)]="Email" value="{{User?.Email}}" [readonly]="User?.Provider=='Password'"
+            placeholder="Email">
+          <button mat-button (click)="Update({Email:Email});" *ngIf="Email != User?.Email && Email!=''" matSuffix
+            mat-icon-button>
             <i style="margin: 5px;" class="fal fa-check-circle"></i>
           </button>
         </mat-form-field>
@@ -79,17 +101,20 @@
           </button>
         </mat-form-field>
       </div>
+
       <div class="row">
         <mat-form-field>
           <mat-select placeholder="Genero" [(ngModel)]="Gender">
-            <mat-option value="Male">Male</mat-option>
-            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Masculino">Masculino</mat-option>
+            <mat-option value="Femenino">Femenino</mat-option>
           </mat-select>
-          <button mat-button (click)="Update({Gender:Gender});" *ngIf="Gender != User?.Gender" matSuffix mat-icon-button>
+          <button mat-button (click)="Update({Gender:Gender});" *ngIf="Gender != User?.Gender" matSuffix
+            mat-icon-button>
             <i style="margin: 5px;" class="fal fa-check-circle"></i>
           </button>
         </mat-form-field>
       </div>
+
       <div class="row">
         <mat-form-field>
           <input matInput [matDatepicker]="dp" [(ngModel)]="DOB" value="{{User?.DOB}}" placeholder="Fecha Nacimiento">
@@ -100,6 +125,7 @@
           </button>
         </mat-form-field>
       </div>
+
       <div class="row form-align">
         <mat-form-field>
           <mat-select placeholder="Estado civil" [(ngModel)]="Status">
@@ -108,11 +134,12 @@
             <mat-option value="Married">Comprometid@</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-button (click)="Update({Status:Status});"
-          *ngIf="Status != User?.Status && Status!=''" matSuffix mat-icon-button>
+        <button mat-button (click)="Update({Status:Status});" *ngIf="Status != User?.Status && Status!=''" matSuffix
+          mat-icon-button>
           <i style="margin: 5px;" class="fal fa-check-circle"></i>
         </button>
       </div>
+
       <div class="row">
         <mat-form-field>
           <mat-label>Vive en</mat-label>
@@ -125,11 +152,12 @@
             </mat-optgroup>
           </mat-select>
         </mat-form-field>
-        <button mat-button (click)="Update({LivesIn:LivesIn});"
-          *ngIf="LivesIn != User?.LivesIn && LivesIn!=''" matSuffix mat-icon-button>
+        <button mat-button (click)="Update({LivesIn:LivesIn});" *ngIf="LivesIn != User?.LivesIn && LivesIn!=''"
+          matSuffix mat-icon-button>
           <i style="margin: 5px;" class="fal fa-check-circle"></i>
         </button>
       </div>
+
       <div class="row">
         <mat-form-field>
           <input matInput [(ngModel)]="Interests" placeholder="Intereses">
@@ -139,9 +167,10 @@
           </button>
         </mat-form-field>
       </div>
+      
     </div>
   </ng-template>
   <div *ngIf="MyAuth.LoggedUser?.Id === User?.Id" class="div-right">
-    <button (click)="Edit=!Edit;" mat-mini-fab><i class="fal fa-user-edit"></i></button>
+    <button (click)="Edit=!Edit;" mat-mini-fab style="background: #c3ff73;"><i class="fal fa-user-edit"></i></button>
   </div>
 </mat-card>

@@ -11,7 +11,7 @@
 }
 
 .posts-container {
-    
+   
 }
 
 .post {
@@ -19,4 +19,7 @@
 }
 .tab-title {
     margin-left: 5px;
+}
+.container-fluid{
+    background: linear-gradient(#8b73ff, white);
 }
