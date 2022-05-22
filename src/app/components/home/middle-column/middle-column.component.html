@@ -1,17 +1,17 @@
 <div style="margin:0 15px;">
   <mat-card *ngIf="MyAuth.LoggedUser.TipoDeUsuario =='profesional'"
-    style="margin-bottom: 16px; background: #735fd0; color: WHITE">
+    style="margin-bottom: 16px; background: #8b73ff">
     <mat-card-header>
       <mat-card-title>Realizar una publicación</mat-card-title>
     </mat-card-header>
     <input type="file" #InputImage (change)="OnChange($event)" style="display: none;" accept="image/*" required>
-    <mat-form-field style="width:95%; color: white">
-      <input matInput [(ngModel)]="InputCaption" style="color:black" placeholder="Título de tu publicación"
+    <mat-form-field style="width:95%;">
+      <input matInput [(ngModel)]="InputCaption" placeholder="Título de tu publicación"
         autocomplete="off">
-      <button matSuffix mat-icon-button (click)="InputImage.click()">
+      <button matSuffix mat-icon-button (click)="InputImage.click()" style="color: #c3ff73">
         <i class="fal fa-paperclip fa-lg"></i>
       </button>
-      <button style="margin:0 3px ;" matSuffix mat-icon-button [disabled]="!HasFile || !CompressingCompleted"
+      <button style="margin:0 3px ; color: #c3ff73" matSuffix mat-icon-button [disabled]="!HasFile || !CompressingCompleted"
         (click)="UploadThePost()" align="end">
         <span *ngIf="!Uploading"><i class="fal fa-paper-plane fa-lg"></i></span>
         <span *ngIf="Uploading"><i class="fal fa-circle-notch fa-spin"></i></span>

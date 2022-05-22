@@ -12,8 +12,8 @@
         <mat-tab-group animationDuration="300ms" style="height: calc(100vh - 112px)" mat-align-tabs="center">
           <mat-tab>
             <ng-template mat-tab-label>
-              <i class="far fa-info-circle"></i>
-              <p class="tab-title" style="color:#5c4ca2">Info</p>
+              <i class="far fa-info-circle" style="color: #c3ff73"></i>
+              <p class="tab-title" style="color: #efe7ff">Info</p>
             </ng-template>
             <ng-template matTabContent>
               <element-about-user [User]="User"></element-about-user>
@@ -21,8 +21,8 @@
           </mat-tab>
           <mat-tab>
             <ng-template mat-tab-label>
-              <i class="far fa-images"></i>
-              <p class="tab-title" style="color:#5c4ca2">Publicaciones</p>
+              <i class="far fa-images" style="color: #c3ff73"></i>
+              <p class="tab-title" style="color:#efe7ff">Publicaciones</p>
             </ng-template>
             <ng-template matTabContent>
               <div *ngIf="UserPosts$ | async as Posts; else PostsLoading">
@@ -42,8 +42,8 @@
           </mat-tab>
           <mat-tab>
             <ng-template mat-tab-label>
-              <i class="far fa-users"></i>
-              <p class="tab-title" style="color:#5c4ca2 ">Seguidos</p>
+              <i class="far fa-users" style="color: #c3ff73"></i>
+              <p class="tab-title" style="color:#efe7ff">Seguidos</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Following'" [UserId]="User.Id"></element-friends>
@@ -51,8 +51,8 @@
           </mat-tab>
           <mat-tab>
             <ng-template mat-tab-label>
-              <i class="far fa-users"></i>
-              <p class="tab-title" style="color:#5c4ca2">Seguidores</p>
+              <i class="far fa-users" style="color: #c3ff73"></i>
+              <p class="tab-title" style="color:#efe7ff">Seguidores</p>
             </ng-template>
             <ng-template matTabContent>
               <element-friends [Who]="'Followers'" [UserId]="User.Id"></element-friends>
