@@ -12,4 +12,8 @@
     /*height: 100vh*/;
     /* height: calc(100% - 64px); */
   }
+
+  .boton_ingresar{
+    color: rgb(88, 3, 88);
+  }
   
