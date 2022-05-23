@@ -33,11 +33,13 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
+          <h6>Olvide mi contraseña <a [routerLink]="['/Auth/recuperar']" >Recuperar</a></h6>
           <button mat-raised-button [disabled]="FormLogin.pristine || FormLogin.invalid" type="submit">
             <span *ngIf="!Loading">Ingresar</span>
             <span *ngIf="Loading" style="margin:0 10px;"><i class="fal fa-spinner fa-spin"></i></span>
           </button>
-          <h6>Eres nuevo? <a [routerLink]="[ '/Auth/Register']">hace click</a> y registrate!</h6>
+          
+          <h6>¿Eres nuevo? <a [routerLink]="[ '/Auth/Register']">hace click</a> y registrate!</h6>
           <!-- <button mat-raised-button [routerLink]="[ '/Register']" color="primary">Register</button> -->
         </mat-card-actions>
         <mat-card-actions>

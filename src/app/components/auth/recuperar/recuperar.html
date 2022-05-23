@@ -1,0 +1,29 @@
+<div class="container-fluid" id="grid">
+    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <form [formGroup]="FormRecuperar" (submit)="OnSubmit()">
+        <mat-card class="FullCard">
+          <mat-card-header>
+            <mat-card-title>Recuperar contraseña</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="controls-container">
+              <mat-form-field class="form-field">
+                <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
+                <mat-hint>{{EmairrorMessalEge}}</mat-hint> 
+                 <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
+                  Su correo es <strong>obligatorio</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button [disabled]="FormLogin.pristine || FormLogin.invalid" type="submit">
+              <span *ngIf="!Loading">Recuperar</span>
+              <span *ngIf="Loading" style="margin:0 10px;"><i class="fal fa-spinner fa-spin"></i></span>
+            </button>
+
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>

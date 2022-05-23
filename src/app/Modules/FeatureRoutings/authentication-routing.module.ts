@@ -5,6 +5,7 @@ import { LoginComponent } from 'src/app/components/auth/login/login.component';
 import { redirectLoggedInTo, redirectUnauthorizedTo, canActivate } from "@angular/fire/auth-guard";
 import { AdditionalUserInfoComponent } from 'src/app/components/auth/additional-user-info/additional-user-info.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { RecuperarComponent } from 'src/app/components/auth/recuperar/recuperar';
 
 const routes: Routes = [
   {
@@ -21,7 +22,9 @@ const routes: Routes = [
     component: AdditionalUserInfoComponent,
     canActivate: [AuthGuard]
   },
-  { path: '', redirectTo: 'Login' }
+  { path: '', redirectTo: 'Login' },
+  {path:'recuperar', component:RecuperarComponent}
+ 
 ];
 
 @NgModule({

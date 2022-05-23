@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule2 } from './Modules/Material.module';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
+import { RecuperarComponent } from './components/auth/recuperar/recuperar';
 
 firebase.initializeApp(environment.firebase);
 
@@ -36,6 +37,7 @@ firebase.initializeApp(environment.firebase);
     AppComponent,
     ProfilePicUpdateDialogComponent,
     ConfirmationDialogComponent,
+    RecuperarComponent,
   ],
   imports: [
     BrowserModule,
