@@ -10,14 +10,14 @@
               <mat-form-field class="form-field">
                 <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
                 <mat-hint>{{EmairrorMessalEge}}</mat-hint> 
-                 <mat-error *ngIf="FormLogin.controls.Email.hasError('required')">
+                 <mat-error *ngIf="FormRecuperar.controls.Email.hasError('required')">
                   Su correo es <strong>obligatorio</strong>
                 </mat-error>
               </mat-form-field>
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button [disabled]="FormLogin.pristine || FormLogin.invalid" type="submit">
+            <button mat-raised-button [disabled]="FormRecuperar.pristine || FormRecuperar.invalid" type="submit">
               <span *ngIf="!Loading">Recuperar</span>
               <span *ngIf="Loading" style="margin:0 10px;"><i class="fal fa-spinner fa-spin"></i></span>
             </button>
