@@ -70,6 +70,10 @@ export class MyAuthService {
     return this.afAuth.createUserWithEmailAndPassword(Email, Password);
   }
 
+  public SendEmail(Email: string): Promise<firebase.auth.UserCredential> {
+    return this.afAuth.sendPasswordResetEmail(Email);
+  }
+
   public GetAllUsersFromStore(): Observable<IUser[]> {
     return this.afStore.collection<IUser>('Users/').valueChanges().pipe(share());
   }
