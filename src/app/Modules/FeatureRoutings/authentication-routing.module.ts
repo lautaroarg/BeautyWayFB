@@ -6,6 +6,7 @@ import { redirectLoggedInTo, redirectUnauthorizedTo, canActivate } from "@angula
 import { AdditionalUserInfoComponent } from 'src/app/components/auth/additional-user-info/additional-user-info.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RecuperarComponent } from 'src/app/components/auth/recuperar/recuperar';
+import { UserPhotoComponent } from 'src/app/components/customElements/user-photo/user-photo.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes)],
   // exports: [RouterModule]
 })
 export class AuthenticationRoutingModule { }

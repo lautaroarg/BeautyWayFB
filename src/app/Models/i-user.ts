@@ -29,6 +29,9 @@ export interface IUser {
   TipoServicioProfesional?: string; 
   TipoDeUsuario?:string;
   NombreComercial?: string;
+  Activo?:boolean;
+
+
 
 
   Followers?: {

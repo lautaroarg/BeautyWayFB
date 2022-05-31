@@ -11,6 +11,21 @@
             <form class="example-form" [formGroup]="FormRegisterUsuario">
               <div class="controls-container">
 
+                <!-- <div mat-dialog-content>
+                  <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
+                    (change)="onChange($event)" required>
+                  <mat-form-field>
+                    <input matInput formControlName="ProfileCaption" autofocus placeholder="Título de tu publicación">
+                  </mat-form-field>
+                  <button mat-icon-button type="button" (click)="InputFile.click()">
+                    <i class="fal fa-paperclip fa-lg"></i>
+                  </button>
+                  <div>
+                    <img src="{{OutputImage.compressedImage.imageDataUrl}}" *ngIf="showImage" class="responsive-img" />
+                  </div>
+                </div> -->
+<!-- <app-profile-pic-update-dialog></app-profile-pic-update-dialog> -->
+                <!-- <element-user-photo></element-user-photo> -->
                 <div class="row" style="margin:0%;">
                   <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
@@ -224,7 +239,7 @@
                   </mat-form-field>
                 </div>
 
-                <div class="row" style="margin:0;" >
+                <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Calle" formControlName="Street" type="text" autocomplete="off"
@@ -284,19 +299,19 @@
                 </div>
 
                 <div class="row" style="margin:0;">
-                <div class="col-6">
-                  <mat-form-field class="form-field w-100" style="text-align: center">
-                    <input matInput placeholder="Nombre comercial/Nombre del local" formControlName="NombreComercial"
-                      type="text" autocomplete="off" accept="NombreComercial">
-                  </mat-form-field>
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100" style="text-align: center">
+                      <input matInput placeholder="Nombre comercial/Nombre del local" formControlName="NombreComercial"
+                        type="text" autocomplete="off" accept="NombreComercial">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6">
+                    <mat-form-field class="form-field w-100" style="text-align: center">
+                      <input matInput placeholder="Número Comercial" formControlName="PhoneNumber" type="text"
+                        autocomplete="off" accept="PhoneNumber">
+                    </mat-form-field>
+                  </div>
                 </div>
-                <div class="col-6">   
-                  <mat-form-field class="form-field w-100" style="text-align: center">
-                  <input matInput placeholder="Número Comercial" formControlName="PhoneNumber"
-                    type="text" autocomplete="off" accept="PhoneNumber">
-                </mat-form-field>
-              </div>
-              </div>
 
                 <div class="row" style="margin:0;">
                   <div class="col-6" align="right">
@@ -315,8 +330,8 @@
                       </mat-select>
                     </mat-form-field>
                   </div>
-                  <div class="col-3" align=right >
-                    <mat-form-field appearance="fill" >
+                  <div class="col-3" align=right>
+                    <mat-form-field appearance="fill">
                       <mat-label>Tipo de servicio</mat-label>
                       <mat-select [(value)]="TipoDeServicioSeleccionado">
                         <mat-option value="Peluqueria">
@@ -382,7 +397,7 @@
             <span *ngIf="!Loading">Registrar</span>
             <span *ngIf="Loading" style="margin:0 19px;"><i class="fal fa-spinner fa-spin"></i></span>
           </button>
-          <button [routerLink]="['/Auth/Login']"color="primary" mat-button class="boton_ingresar">Ingresar</button>
+          <button [routerLink]="['/Auth/Login']" color="primary" mat-button class="boton_ingresar">Ingresar</button>
         </div>
       </mat-card-actions>
     </mat-card>

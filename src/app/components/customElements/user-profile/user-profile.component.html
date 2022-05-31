@@ -32,12 +32,12 @@
       <li>
         <ng-container *ngIf="Following$ | async as Following; else FollowLoading">
           <ng-container *ngIf="Following.DocId; else NotFollowing">
-            <button mat-stroked-button class="action-button" (click)="UnfollowAUser()">
-              <span><i class="fal fa-user-check"></i> Seguidos</span>
+            <button mat-stroked-button class="action-button" (click)="UnfollowThisUser()">
+              <span><i class="fal fa-user-check"></i> Seguido</span>
             </button>
           </ng-container>
           <ng-template #NotFollowing>
-            <button mat-stroked-button class="action-button" (click)="FollowAUser()" style="padding: 0 26px;">
+            <button mat-stroked-button class="action-button" (click)="FollowThisUser()" style="padding: 0 26px;">
               <span><i class="fal far fa-user-plus"></i> Seguir</span>
             </button>
           </ng-template>

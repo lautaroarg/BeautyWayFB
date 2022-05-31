@@ -32,8 +32,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   FollowThisUser() {
-    this.followSrv.FollowAUser(this.User.Id, this.User.DisplayName, this.User.PhotoURL).subscribe(r => {
+  
+    this.followSrv.FollowAUser(this.User.Id, this.User.DisplayName, this.User.PhotoURL).then(r => {
       console.log(r)
+
+      this.MyAuth.Notify.openSnackBar('Ha empezado a seguir a '+ this.User.DisplayName , 'correctamente', () => { }, () => { }, 3500)
+
+
     })
   }
 
@@ -47,7 +52,7 @@ export class UserProfileComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.followSrv.UnfollowAUser(this.User.Id).subscribe(r => {
+        this.followSrv.UnfollowAUser(this.User.Id).then(r => {
         })
       }
     })

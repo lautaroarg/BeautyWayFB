@@ -27,6 +27,7 @@ export class RecuperarComponent implements OnInit {
       (response) => {
         // user.sendPasswordResetEmail(this.FormRecuperar.value.Email).then(() => {
         this.Loading = false;
+      
         this.myAuth.Notify.openSnackBar(
           "Correo enviado correctamente, revise su casilla",
           ""

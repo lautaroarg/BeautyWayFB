@@ -25,7 +25,7 @@ export class MiniUserCardComponent implements OnInit {
   }
 
   FollowThisUser() {
-    this.followSrv.FollowAUser(this.User.Id, this.User.DisplayName, this.User.PhotoURL).subscribe(r => {
+    this.followSrv.FollowAUser(this.User.Id, this.User.DisplayName, this.User.PhotoURL).then(r => {
       console.log(r)
     })
   }
@@ -33,14 +33,14 @@ export class MiniUserCardComponent implements OnInit {
   UnfollowThisUser() {
     const confirmationDialogRef = this.MyAuth.Dialogs.open(ConfirmationDialogComponent, {
       data: {
-        Title: 'Unfollow',
+        Title: 'Dejar de seguir',
         Message: `¿Dejar de seguir? ${this.User.DisplayName}?`
       }
     })
 
     confirmationDialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.followSrv.UnfollowAUser(this.User.Id).subscribe(r => {
+        this.followSrv.UnfollowAUser(this.User.Id).then(r => {
         })
       }
     })

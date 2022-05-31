@@ -84,7 +84,7 @@ export class PostCardComponent implements OnInit {
 
   FollowOwner() {
     this.followSrv.FollowAUser(this.Owner.Id, this.Owner.DisplayName, this.Owner.PhotoURL)
-      .subscribe(res => {
+      .then(res => {
         console.log(res)
       })
   }

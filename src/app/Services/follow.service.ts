@@ -16,23 +16,27 @@ export class FollowService {
     public afFunctions: AngularFireFunctions,
     public afStore: AngularFirestore) { }
 
-  FollowAUser(Id: string, DisplayName: string, PhotoURL: string): Observable<any> {
-    const FollowAUserFn = this.afFunctions.httpsCallable('FollowAUser')
-    const props = { Id, DisplayName, PhotoURL };
+  FollowAUser(Id: string, DisplayName: string, PhotoURL: string): Promise<any> {
+    // const FollowAUserFn = this.afFunctions.httpsCallable('FollowAUser')
+    // const props = { Id, DisplayName, PhotoURL };
 
-    return FollowAUserFn(props)
+   return this.afStore.collection('Follows').doc(this.MyAuth.LoggedUser.Id + "_" + Id).set({"DocId": Id});
+
+    
+    // return FollowAUserFn(props)
   }
 
-  UnfollowAUser(UserId: string): Observable<any> {
-    const UnfollowAUserFn = this.afFunctions.httpsCallable('UnfollowAUser');
-
-    return UnfollowAUserFn({ UserId })
+  UnfollowAUser(UserId: string): Promise<any> {
+    // const UnfollowAUserFn = this.afFunctions.httpsCallable('UnfollowAUser');
+    return this.afStore.collection('Follows').doc(this.MyAuth.LoggedUser.Id + "_" + UserId).delete();
+    // return UnfollowAUserFn({ UserId })
   }
-
+  
   GetFollowStatus(UserId: string): Observable<any> {
     return this.afStore.doc(`Follows/${this.MyAuth.LoggedUser.Id}_${UserId}`).valueChanges()
       .pipe(
         map(r => {
+       
           if (r == undefined)
             return 'No'
           else
