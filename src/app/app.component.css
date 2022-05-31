@@ -47,3 +47,9 @@
   position: fixed;
   margin-top: 35px;
 } */
+
+::ng-deep .mat-menu-content{
+  background-color:#8B73FF;
+  color: #efefef;
+  text-align: center;
+}

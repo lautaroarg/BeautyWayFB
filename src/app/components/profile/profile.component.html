@@ -5,7 +5,7 @@
 <ng-container *ngIf="!MyAuth.LoggedUserLoading; else iUserLoading">
   <div *ngIf="UserToDisplay$ | async as User; else UserLoading" class="container-fluid">
     <div class="row">
-      <div class="start-column col-sm-12 col-md-4 col-lg-3" align ="right">
+      <div class="start-column col-sm-12 col-md-4 col-lg-3" align ="right" style="margin-top: 3.5%;">
         <element-user-profile [User]="User"></element-user-profile>
       </div>
       <div class="middle-content col-md-8 col-lg-6" >
@@ -60,7 +60,7 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-      <div class="end-content col-lg-3 d-none d-lg-block">
+      <div class="end-content col-lg-3 d-none d-lg-block" style="margin-top:3.5% ;">
         <app-right-column></app-right-column>
       </div>
     </div>
