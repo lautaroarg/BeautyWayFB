@@ -1,6 +1,8 @@
+import { ImageOptimizationService } from './../../../Services/image-optimization.service';
+import { ImageCompressService } from 'ng2-image-compress';
 import { IProfesional } from './../../../Models/i-user';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, RequiredValidator, EmailValidator } from '@angular/forms';
+import { FormBuilder, FormGroup, RequiredValidator, EmailValidator, Validators } from '@angular/forms';
 // import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 
 // import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -8,7 +10,7 @@ import { FormBuilder, FormGroup, RequiredValidator, EmailValidator } from '@angu
 import * as _moment from 'moment';
 import { MyAuthService } from 'src/app/Services/my-auth.service';
 import { IUser } from 'src/app/Models/i-user';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 // import { format } from 'path';
 
 
@@ -28,6 +30,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
   FormRegisterUsuario: FormGroup;
   FormRegisterProfesional: FormGroup;
 
+  file;
+  thumbImage;
+  UpdatePPForm: FormGroup;
+  samplePic;
+  showImage = false;
+  processingImage: boolean = false;
+  processingImageComplete: boolean = false;
+  processingUpload: boolean = false;
+  uploadPercent$: Observable<number>;
+  downloadURL$: Observable<any>;
+  Uploading: boolean = false;
+  OutputImage;
+
+
   Loading = false;
   isUsuario = true;
   EmailErrorMessage = '';
@@ -41,11 +57,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     public MyAuth: MyAuthService,
     private fbUsuario: FormBuilder,
+    private fb: FormBuilder,
+    public imageOptSrvc: ImageOptimizationService,
     private fbProfesional: FormBuilder) { }
 
 
 
   ngOnInit() {
+    this.UpdatePPForm = this.fb.group({
+      InputImage: ['', Validators.required],
+      ProfileCaption: '',
+    });
+
     this.FormRegisterUsuario = this.fbUsuario.group({
       FirstName: ['', new RequiredValidator],
       LastName: ['', new RequiredValidator],
@@ -106,6 +129,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
     } catch (error) {
 
     }
+  }
+
+  async onChange(fileInput: any) {
+    this.processingImage = true;
+    this.file = fileInput.target.files[0];
+    //this.UpdatePPForm.value.InputImage = fileInput.target.files[0];
+    const optimizeOptions = await this.imageOptSrvc.AdjustImageHeightWidth(fileInput.target.files[0], 'ProfilePic').toPromise()
+    const observableImages = await ImageCompressService.filesToCompressedImageSourceEx(fileInput.target.files, optimizeOptions)
+    const image = await observableImages.toPromise()
+    this.OutputImage = image;
+    const blob = await this.imageOptSrvc.dataURItoBlob(this.OutputImage.compressedImage.imageDataUrl)
+    this.file = blob;
+    this.showImage = true;
+    this.processingImageComplete = true;
   }
 
   OnSubmit() {
