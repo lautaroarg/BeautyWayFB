@@ -135,16 +135,24 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.processingImage = true;
     this.file = fileInput.target.files[0];
     //this.UpdatePPForm.value.InputImage = fileInput.target.files[0];
-    const optimizeOptions = await this.imageOptSrvc.AdjustImageHeightWidth(fileInput.target.files[0], 'ProfilePic').toPromise()
-    const observableImages = await ImageCompressService.filesToCompressedImageSourceEx(fileInput.target.files, optimizeOptions)
-    const image = await observableImages.toPromise()
+    const optimizeOptions = await this.imageOptSrvc
+      .AdjustImageHeightWidth(fileInput.target.files[0], "ProfilePic")
+      .toPromise();
+    const observableImages =
+      await ImageCompressService.filesToCompressedImageSourceEx(
+        fileInput.target.files,
+        optimizeOptions
+      );
+    const image = await observableImages.toPromise();
     this.OutputImage = image;
-    const blob = await this.imageOptSrvc.dataURItoBlob(this.OutputImage.compressedImage.imageDataUrl)
+    const blob = await this.imageOptSrvc.dataURItoBlob(
+      this.OutputImage.compressedImage.imageDataUrl
+    );
     this.file = blob;
     this.showImage = true;
     this.processingImageComplete = true;
   }
-
+  
   OnSubmit() {
 
     
