@@ -38,11 +38,17 @@ export class MyAuthService {
     public Dialogs: MatDialog) {
 
     this.LoggedUserLoading = true;
-    afAuth.onAuthStateChanged(user => {
-      console.log('onAuthStateChanged: ', user);
+    afAuth.onAuthStateChanged((user: firebase.User) => {
+      // console.log('onAuthStateChanged: ', user);
       if (user) {
+        debugger;
+        if(!user.emailVerified){
+          user.sendEmailVerification();
+          this.NavTo('/Auth/Login');
+        }
+        
         this.LoggedUserLoading = true;
-        this.BasicUserInfo = user;
+        // this.BasicUserInfo = user;
         this.IsUserLoggedIn = true;
         
         this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
@@ -51,6 +57,8 @@ export class MyAuthService {
           this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
           if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
             this.NavTo('Auth/AdditionInfo');
+          }else{
+            this.NavTo('Home');
           }
         });
       } else { // signed out
@@ -88,9 +96,7 @@ export class MyAuthService {
   }
 
   public UpdateProfilePic(PhotoURL: string): Observable<void> {
-    const UpdateProfilePic = this.afFunctions.httpsCallable('UpdateProfilePic');
-
-    return UpdateProfilePic({ PhotoURL });
+    return from(this.afStore.doc(`Users/${this.LoggedUser.Id}`).update({ "PhotoURL": PhotoURL }));
   }
 
   public Logout() {

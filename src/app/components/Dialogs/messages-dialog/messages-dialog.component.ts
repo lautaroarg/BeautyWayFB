@@ -22,10 +22,10 @@ export class MessagesDialogComponent implements OnInit {
 
   ngOnInit() {
     this.UserIdListToDisplay$ = this.ChatSrv.GetActiveChatUsersList()
-      // .pipe(map(r => {
-      //   var Combined = [...new Set(r[1].concat(r[0]))];
-      //   return Combined;
-      // }))
+      .pipe(map(r => {
+        var Combined = [...new Set(r[1].concat(r[0]))];
+        return Combined;
+      }))
   }
 
   GetAUser(UserId: string): Observable<IUser> {
