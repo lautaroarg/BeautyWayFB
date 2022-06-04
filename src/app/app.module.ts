@@ -29,6 +29,7 @@ import { MaterialModule2 } from './Modules/Material.module';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 import { RecuperarComponent } from './components/auth/recuperar/recuperar';
+import { VerificarComponent } from './components/auth/verificar/verificar.component';
 // import { UserPhotoComponent } from './components/customElements/user-photo/user-photo.component';
 
 firebase.initializeApp(environment.firebase);
@@ -39,6 +40,7 @@ firebase.initializeApp(environment.firebase);
     ProfilePicUpdateDialogComponent,
     ConfirmationDialogComponent,
     RecuperarComponent,
+    VerificarComponent
     // UserPhotoComponent
   ],
   imports: [

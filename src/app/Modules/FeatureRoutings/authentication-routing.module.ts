@@ -7,6 +7,7 @@ import { AdditionalUserInfoComponent } from 'src/app/components/auth/additional-
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RecuperarComponent } from 'src/app/components/auth/recuperar/recuperar';
 import { UserPhotoComponent } from 'src/app/components/customElements/user-photo/user-photo.component';
+import { VerificarComponent } from 'src/app/components/auth/verificar/verificar.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'Login',
     component: LoginComponent,
+  },
+  {
+    path:'Verificar',
+    component:VerificarComponent
   },
   {
     path:'AdditionInfo',
