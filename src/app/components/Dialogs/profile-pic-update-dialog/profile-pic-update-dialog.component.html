@@ -1,23 +1,24 @@
-<h1 mat-dialog-title>Actualiza tu foto de pérfil</h1>
-<form [formGroup]="UpdatePPForm" (submit)="OnSubmit()">
-  <div mat-dialog-content>
-    <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
-      (change)="onChange($event)" required>
-    <mat-form-field>
-      <input matInput formControlName="ProfileCaption" autofocus placeholder="Título de tu publicación">
-    </mat-form-field>
-    <button mat-icon-button type="button" (click)="InputFile.click()">
-      <i class="fal fa-paperclip fa-lg"></i>
-    </button>
-    <div>
-      <img src="{{OutputImage.compressedImage.imageDataUrl}}" *ngIf="showImage" class="responsive-img" />
+
+  <h1 mat-dialog-title>Actualiza tu foto de pérfil</h1>
+  <form [formGroup]="UpdatePPForm" (submit)="OnSubmit()">
+    <div mat-dialog-content>
+      <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
+        (change)="onChange($event)" required>
+      <mat-form-field>
+        <input matInput formControlName="ProfileCaption" autofocus placeholder="Título de tu publicación">
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="InputFile.click()">
+        <i class="fal fa-paperclip fa-lg"></i>
+      </button>
+      <div>
+        <img src="{{OutputImage.compressedImage.imageDataUrl}}" *ngIf="showImage" class="responsive-img" />
+      </div>
     </div>
-  </div>
-  <div mat-dialog-actions>
-    <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
-    </mat-progress-bar>
-    <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!UpdatePPForm.valid || !processingImageComplete"
-      [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
-  </div>
-</form>
+    <div mat-dialog-actions>
+      <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
+      </mat-progress-bar>
+      <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!UpdatePPForm.valid || !processingImageComplete"
+        [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
+    </div>
+  </form>
