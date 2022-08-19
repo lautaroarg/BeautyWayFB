@@ -158,7 +158,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.showImage = true;
     this.processingImageComplete = true;
   }
-
+  
   OnSubmit() {
     this.Loading = true;
     // debugger;
