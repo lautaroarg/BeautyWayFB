@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*this.MyAuth.Logout()*/
+    // this.MyAuth.Logout();
   }
 }

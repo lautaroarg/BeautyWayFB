@@ -40,13 +40,14 @@ export class MyAuthService {
     this.LoggedUserLoading = true;
     afAuth.onAuthStateChanged((user: firebase.User) => {
       // console.log('onAuthStateChanged: ', user);
+      debugger;
       if (user) {
-        if(!user.emailVerified){
-          debugger;
-          this.NavTo('Auth/Verificar'); //Esto carga al iniciar el formulario logi, deberia ser solo cuando clickea en aceptar
-          user.sendEmailVerification();//Aveces anda aveces no, que esta pasando?
-        }
-        else{
+        // if(!user.emailVerified){
+        //   //debugger;
+        //   //this.NavTo('Auth/Verificar'); //Esto carga al iniciar el formulario logi, deberia ser solo cuando clickea en aceptar
+        //   user.sendEmailVerification();//Aveces anda aveces no, que esta pasando?
+        // }
+        // else{
           
           this.LoggedUserLoading = true;
           // this.BasicUserInfo = user;
@@ -63,7 +64,7 @@ export class MyAuthService {
             }
           });
 
-        }
+        // }
       } 
       else { // signed out
         this.LoggedUserLoading = false;
