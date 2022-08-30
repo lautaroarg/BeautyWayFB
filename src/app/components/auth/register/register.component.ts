@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   file;
   thumbImage;
   UpdatePPForm: FormGroup;
+  UpdateProProPicForm: FormGroup;
   samplePic;
   showImage = false;
   processingImage: boolean = false;
@@ -68,13 +69,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     public imageOptSrvc: ImageOptimizationService,
     private fbProfesional: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.UpdatePPForm = this.fb.group({
       InputImage: ["", Validators.required],
       ProfileCaption: "",
     });
+    this.UpdateProProPicForm = this.fb.group({
+      InputImage: ["", Validators.required],
+      ProfileCaption: "",
+    });
+
 
     this.FormRegisterUsuario = this.fbUsuario.group({
       FirstName: ["", new RequiredValidator()],
@@ -133,23 +139,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     try {
       this.FormValueChangesSub.unsubscribe();
-    } catch (error) {}
+    } catch (error) { }
   }
 
   // ESTE METODO PERMITE SELECCIONAR LA IMAGEN Y CARGARLA EN MEMORIA Y GUARDARLA EN LA VARIABLE FILE
   async onChange(fileInput: any) {
     this.processingImage = true;
-    this.file = fileInput.target.files[0];
-    //this.UpdatePPForm.value.InputImage = fileInput.target.files[0];
-    const optimizeOptions = await this.imageOptSrvc
-      .AdjustImageHeightWidth(fileInput.target.files[0], "ProfilePic")
-      .toPromise();
+    // this.file = fileInput.target.files[0];
+    
+    // const optimizeOptions = await this.imageOptSrvc
+    //   .AdjustImageHeightWidth(fileInput.target.files[0], "ProfilePic")
+    //   .toPromise();
     const observableImages =
       await ImageCompressService.filesToCompressedImageSourceEx(
         fileInput.target.files,
-        optimizeOptions
+        null
       );
+      
     const image = await observableImages.toPromise();
+    this.UpdateProProPicForm.value.InputImage = image;
     this.OutputImage = image;
     const blob = await this.imageOptSrvc.dataURItoBlob(
       this.OutputImage.compressedImage.imageDataUrl
@@ -158,7 +166,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.showImage = true;
     this.processingImageComplete = true;
   }
-  
+
   OnSubmit() {
     this.Loading = true;
     // debugger;
@@ -210,9 +218,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
           .set(UserInfo);
 
 
-          // aca mando la imagen a firebase storage
+        // aca mando la imagen a firebase storage
         const filePath =
-          user.user.uid + "/ProfilePictures/" + moment().format("D-M-YYYY");
+          "Usuarios" + user.user.uid + "/ProfilePictures/" + moment().format("D-M-YYYY");
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, this.file, {
           customMetadata: { caption: this.UpdatePPForm.value.ProfileCaption },
@@ -328,6 +336,32 @@ export class RegisterComponent implements OnInit, OnDestroy {
           .collection("Users")
           .doc(user.user.uid)
           .set(UserInfo);
+
+        const filePath =
+          "Profesional" + user.user.uid + "/ProfilePictures/" + moment().format("D-M-YYYY");
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, this.file, {
+          customMetadata: { caption: this.UpdatePPForm.value.ProfileCaption },
+        });
+        this.Uploading = true;
+        // observe percentage changes
+        this.uploadPercent$ = task.percentageChanges();
+
+        // get notified when the download URL is available
+        task
+          .snapshotChanges()
+          .pipe(
+            finalize(() => {
+              this.downloadURL$ = fileRef.getDownloadURL();
+              this.downloadURL$.pipe(take(1)).subscribe((URL: string) => {
+                this.MyAuth.UpdateProfilePic(URL).subscribe(() => {
+                  this.Loading = false;
+                  this.MyAuth.NavTo("Home");
+                });
+              });
+            })
+          )
+          .subscribe();
 
         //  aca mismo agregar la funcion de this.MyAuth para enviar email de verificacion
 
