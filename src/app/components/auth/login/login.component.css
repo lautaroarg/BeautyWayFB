@@ -88,3 +88,14 @@ body { padding: 2em; }
 .loginBtn--google:focus {
   background: #E74B37;
 }
+
+.link{
+  font-size: 120%;
+  padding-left: 3%;
+}
+
+.btn_ingresar{
+  width: 30%;
+  padding: 0.5%;
+  left: 35%;
+}

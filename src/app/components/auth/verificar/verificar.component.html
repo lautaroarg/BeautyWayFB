@@ -1,0 +1,53 @@
+<div class="container-fluid" id="grid">
+  <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <form [formGroup]="FormVerificar" (submit)="OnSubmit()">
+      <mat-card class="FullCard">
+        <mat-card-header>
+          <mat-card-title>Verificar cuenta</mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="controls-container">
+            
+            <p>
+              Felicitaciones, ya haz creado tu cuenta!
+              <br>
+              Ahora queda el ultimo paso, debes de verificar tu cuenta,
+              con el mail que te mandamos.
+              <br>
+            </p>
+            <i class="fal fa-comment-lines" style="width:300px"></i>
+            <!--Este icono debe de ser un signo de email, debe estar centrado y con un tamaño mas grande. -->  
+            <p>
+
+              <br>
+              Si ya confirmaste el email que te enviamos a tu casilla de correo
+              <br>
+              haz click en volver para acceder a tu cuenta  
+            </p>
+            
+            
+            
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+         
+          <button mat-raised-button type="submit">
+            <span *ngIf="!Loading">Volver</span>
+            <span *ngIf="Loading" style="margin:0 10px;"><i class="fal fa-spinner fa-spin"></i></span>
+          </button>
+          
+          
+          <!-- <button mat-raised-button [routerLink]="[ '/Register']" color="primary">Register</button> -->
+        </mat-card-actions>
+        <mat-card-actions>
+
+          <!--
+          <button mat-raised-button (click)="LoginWith('Google')" type="button" class="loginBtn loginBtn--google">
+            Login with Google
+          </button> -->
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

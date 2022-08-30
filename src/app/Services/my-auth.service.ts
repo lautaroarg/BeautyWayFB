@@ -40,28 +40,33 @@ export class MyAuthService {
     this.LoggedUserLoading = true;
     afAuth.onAuthStateChanged((user: firebase.User) => {
       // console.log('onAuthStateChanged: ', user);
+      debugger;
       if (user) {
-        debugger;
-        if(!user.emailVerified){
-          user.sendEmailVerification();
-          this.NavTo('/Auth/Login');
-        }
-        
-        this.LoggedUserLoading = true;
-        // this.BasicUserInfo = user;
-        this.IsUserLoggedIn = true;
-        
-        this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
-          this.LoggedUser = UserInfoFromStore;
-          this.LoggedUserLoading = false;
-          this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
-          if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
-            this.NavTo('Auth/AdditionInfo');
-          }else{
-            this.NavTo('Home');
-          }
-        });
-      } else { // signed out
+        // if(!user.emailVerified){
+        //   //debugger;
+        //   //this.NavTo('Auth/Verificar'); //Esto carga al iniciar el formulario logi, deberia ser solo cuando clickea en aceptar
+        //   user.sendEmailVerification();//Aveces anda aveces no, que esta pasando?
+        // }
+        // else{
+          
+          this.LoggedUserLoading = true;
+          // this.BasicUserInfo = user;
+          this.IsUserLoggedIn = true;
+          
+          this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
+            this.LoggedUser = UserInfoFromStore;
+            this.LoggedUserLoading = false;
+            this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
+            if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
+              this.NavTo('Auth/AdditionInfo');
+            }else{
+              this.NavTo('Home');
+            }
+          });
+
+        // }
+      } 
+      else { // signed out
         this.LoggedUserLoading = false;
         this.IsUserLoggedIn = false;
         this.LoggedUser = null;
