@@ -40,7 +40,7 @@ export class MyAuthService {
     this.LoggedUserLoading = true;
     afAuth.onAuthStateChanged((user: firebase.User) => {
       // console.log('onAuthStateChanged: ', user);
-      debugger;
+     
       if (user) {
         // if(!user.emailVerified){
         //   //debugger;
