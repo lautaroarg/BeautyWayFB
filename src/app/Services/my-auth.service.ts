@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { IUser } from '../Models/i-user';
+import { IUser, IProfesional } from '../Models/i-user';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -48,29 +48,29 @@ export class MyAuthService {
         //   user.sendEmailVerification();//Aveces anda aveces no, que esta pasando?
         // }
         // else{
-          
-          this.LoggedUserLoading = true;
-          // this.BasicUserInfo = user;
-          this.IsUserLoggedIn = true;
-          
-          this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
-            this.LoggedUser = UserInfoFromStore;
-            this.LoggedUserLoading = false;
-            this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
-            if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
-              this.NavTo('Auth/AdditionInfo');
-            }else{
-              this.NavTo('Home');
-            }
-          });
+
+        this.LoggedUserLoading = true;
+        // this.BasicUserInfo = user;
+        this.IsUserLoggedIn = true;
+
+        this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
+          this.LoggedUser = UserInfoFromStore;
+          this.LoggedUserLoading = false;
+          this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
+          if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
+            this.NavTo('Auth/AdditionInfo');
+          } else {
+            this.NavTo('Home');
+          }
+        });
 
         // }
-      } 
+      }
       else { // signed out
         this.LoggedUserLoading = false;
         this.IsUserLoggedIn = false;
         this.LoggedUser = null;
-        this.Notify.openSnackBar('Por favor ingrese a sistema con su correo y contraseña.',':)', () => {
+        this.Notify.openSnackBar('Por favor ingrese a sistema con su correo y contraseña.', ':)', () => {
           this.NavTo('/Auth/Login');
         });
       }
@@ -89,6 +89,9 @@ export class MyAuthService {
 
   public GetAllUsersFromStore(): Observable<IUser[]> {
     return this.afStore.collection<IUser>('Users/').valueChanges().pipe(share());
+  }
+  public GetAllProfesionalsFromStore(): Observable<IUser[]> {
+    return this.afStore.collection<IUser>('Users/', ref => ref.where('TipoDeUsuario', '==', 'profesional')).valueChanges().pipe(share());
   }
 
   public GetAUserInfoFromStore(UserId: string): Observable<IUser> {

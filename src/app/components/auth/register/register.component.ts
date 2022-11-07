@@ -20,6 +20,7 @@ import { IUser } from "src/app/Models/i-user";
 import { Subscription, Observable } from "rxjs";
 import * as moment from "moment";
 import { finalize, take } from "rxjs/operators";
+// import { userInfo } from "os";
 // import { format } from 'path';
 
 @Component({
@@ -197,13 +198,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
           NombreComercial: null,
           PhoneNumber: null,
           Activo: true,
+          
         };
-
+        debugger;
+        if(this.calcularEdad(UserInfo.DOB)==true)
+        {
+        
         console.log(UserInfo);
         await this.MyAuth.afAuth.updateProfile({
           displayName: UserInfo.DisplayName,
           photoURL: UserInfo.PhotoURL,
         });
+        
+        
         await this.MyAuth.afStore
           .collection("Users")
           .doc(user.user.uid)
@@ -236,7 +243,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
             })
           )
           .subscribe();
-        //  aca mismo agregar la funcion de this.MyAuth para enviar email de verificacion
+        
+          //  aca mismo agregar la funcion de this.MyAuth para enviar email de verificacion
+        }
+        
       })
 
       .catch((error) => {
@@ -276,6 +286,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.isUsuario = true;
     } else {
       this.isUsuario = false;
+    }
+  }
+  calcularEdad(dob: number){
+    var hoy = Date.now();
+    var fechaNacimiento = dob
+    var edadMilisegundos = hoy - dob
+    //anio resperensa a 1 año en milisegundos.
+    var anio = 31536000000
+    var edad = Math.round(edadMilisegundos/anio)
+    if(edad>=18){
+      return true;
+    }
+    else{
+      return false;
     }
   }
 

@@ -27,10 +27,11 @@ export class SearchComponent implements OnInit {
       //  ['', [Validators.minLength(3), Validators.required]]
     })
 
-    this.PeopleResults$ = this.MyAuth.GetAllUsersFromStore()
+    this.PeopleResults$ = this.MyAuth.GetAllProfesionalsFromStore()
       .pipe(
         map(r => {
           return r.filter(user => {
+            // return user.Id != this.MyAuth.LoggedUser.Id;
             return user.Id != this.MyAuth.LoggedUser.Id;
           })
         }),

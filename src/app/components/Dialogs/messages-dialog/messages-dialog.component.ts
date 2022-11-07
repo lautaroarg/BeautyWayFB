@@ -18,13 +18,16 @@ export class MessagesDialogComponent implements OnInit {
   constructor(
     public MyAuth: MyAuthService,
     public FollowSrv: FollowService,
-    public ChatSrv: ChatsService, ) { }
+    public ChatSrv: ChatsService,) { }
 
   ngOnInit() {
     this.UserIdListToDisplay$ = this.ChatSrv.GetActiveChatUsersList()
       .pipe(map(r => {
-        var Combined = [...new Set(r[1].concat(r[0]))];
-        return Combined;
+        if (r.length > 0) {
+          var Combined = [...new Set(r[1].concat(r[0]))];
+          return Combined;
+        }
+
       }))
   }
 

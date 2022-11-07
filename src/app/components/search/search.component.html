@@ -13,7 +13,7 @@
   <mat-card id="people-card" style="background: #efe7ff; color: #5c4ca2">
     <ng-container *ngIf="PeopleResults$ | async; else PeopleLoading">
       <mat-card-header>
-        <mat-card-title>Usuarios</mat-card-title>
+        <mat-card-title>Profesionales:</mat-card-title>
         <mat-card-subtitle style="color: #5c4ca2">Encontrados: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
