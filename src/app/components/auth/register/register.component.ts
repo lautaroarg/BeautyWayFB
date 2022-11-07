@@ -10,9 +10,7 @@ import {
   EmailValidator,
   Validators,
 } from "@angular/forms";
-// import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 
-// import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 
 import * as _moment from "moment";
 import { MyAuthService } from "src/app/Services/my-auth.service";
@@ -20,37 +18,36 @@ import { IUser } from "src/app/Models/i-user";
 import { Subscription, Observable } from "rxjs";
 import * as moment from "moment";
 import { finalize, take } from "rxjs/operators";
-// import { format } from 'path';
+
 
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.css"],
-  providers: [
-    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
-    // `MatMomentDateModule` in your applications root module. We provide it at the component level
-    // here, due to limitations of our example generation script.
-    // { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    // { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-  ],
+  providers: [],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   FormRegisterUsuario: FormGroup;
   FormRegisterProfesional: FormGroup;
 
   file;
+  fileProfesional;
   thumbImage;
   UpdatePPForm: FormGroup;
   UpdateProProPicForm: FormGroup;
   samplePic;
   showImage = false;
+  showImageProfesional = false;
   processingImage: boolean = false;
+  processingImageProgfesional: boolean = false;
   processingImageComplete: boolean = false;
+  processingImageCompleteProfesional: boolean = false;
   processingUpload: boolean = false;
   uploadPercent$: Observable<number>;
   downloadURL$: Observable<any>;
   Uploading: boolean = false;
   OutputImage;
+  OutputImageProfesional;
 
   Loading = false;
   isUsuario = true;
@@ -144,33 +141,50 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   // ESTE METODO PERMITE SELECCIONAR LA IMAGEN Y CARGARLA EN MEMORIA Y GUARDARLA EN LA VARIABLE FILE
   async onChange(fileInput: any) {
-    this.processingImage = true;
-    // this.file = fileInput.target.files[0];
-    
-    // const optimizeOptions = await this.imageOptSrvc
-    //   .AdjustImageHeightWidth(fileInput.target.files[0], "ProfilePic")
-    //   .toPromise();
-    const observableImages =
-      await ImageCompressService.filesToCompressedImageSourceEx(
-        fileInput.target.files,
-        null
+    if (this.isUsuario) {
+
+
+
+      this.processingImage = true;
+      const observableImages =
+        await ImageCompressService.filesToCompressedImageSourceEx(
+          fileInput.target.files,
+          null
+        );
+
+      const image = await observableImages.toPromise();
+      this.UpdateProProPicForm.value.InputImage = image;
+      this.OutputImage = image;
+      const blob = await this.imageOptSrvc.dataURItoBlob(
+        this.OutputImage.compressedImage.imageDataUrl
       );
-      
-    const image = await observableImages.toPromise();
-    this.UpdateProProPicForm.value.InputImage = image;
-    this.OutputImage = image;
-    const blob = await this.imageOptSrvc.dataURItoBlob(
-      this.OutputImage.compressedImage.imageDataUrl
-    );
-    this.file = blob;
-    this.showImage = true;
-    this.processingImageComplete = true;
+      this.file = blob;
+      this.showImage = true;
+      this.processingImageComplete = true;
+    }
+    else{
+      this.processingImageProgfesional = true;
+      const observableImages =
+        await ImageCompressService.filesToCompressedImageSourceEx(
+          fileInput.target.files,
+          null
+        );
+
+      const image = await observableImages.toPromise();
+      this.UpdateProProPicForm.value.InputImage = image;
+      this.OutputImageProfesional = image;
+      const blob = await this.imageOptSrvc.dataURItoBlob(
+        this.OutputImageProfesional.compressedImage.imageDataUrl
+      );
+      this.fileProfesional = blob;
+      this.showImageProfesional = true;
+      this.processingImageCompleteProfesional = true;
+    }
   }
+
 
   OnSubmit() {
     this.Loading = true;
-    // debugger;
-    // console.log(this.TipoDocumentoSeleccionado);
     this.MyAuth.Register(
       this.FormRegisterUsuario.value.Email,
       this.FormRegisterUsuario.value.Password
@@ -289,8 +303,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   OnSubmitProfesional() {
     this.Loading = true;
-    // debugger;
-    // console.log(this.TipoDocumentoSeleccionado);
     this.MyAuth.Register(
       this.FormRegisterProfesional.value.Email,
       this.FormRegisterProfesional.value.Password
@@ -344,7 +356,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
           customMetadata: { caption: this.UpdatePPForm.value.ProfileCaption },
         });
         this.Uploading = true;
-        // observe percentage changes
         this.uploadPercent$ = task.percentageChanges();
 
         // get notified when the download URL is available

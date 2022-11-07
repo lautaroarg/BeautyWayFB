@@ -1,6 +1,5 @@
 <div class="container-fluid" id="grid">
   <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-    <!-- <form class="example-form" [formGroup]="FormRegister" (submit)="OnSubmit()"> -->
     <mat-card class="FullCard">
       <mat-card-header>
         <mat-card-title>Registrarse</mat-card-title>
@@ -10,44 +9,27 @@
           <mat-tab label="Soy usuario" (model)="isUsuario">
             <form class="example-form" [formGroup]="FormRegisterUsuario">
               <div class="controls-container">
-
                 <form [formGroup]="UpdatePPForm" (submit)="OnSubmit()">
                   <div mat-dialog-content>
-                    <input type="file" style="display:none;"formControlName="InputImage" accept="image/*" #InputFile
+                    <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
                       (change)="onChange($event)" required>
-                    <!-- <mat-form-field>
-                      <input matInput formControlName="ProfileCaption" autofocus placeholder="Título de tu publicación">
-                    </mat-form-field> -->
-                    <button mat-icon-button type="button" (click)="InputFile.click()">
+                    <button mat-icon-button type="button" (click)="InputFile.click()" *ngIf="OutputImage == undefined">
                       <i class="fal fa-paperclip fa-lg"></i>
                     </button>
                     <div>
-                      <img src="{{OutputImage.compressedImage.imageDataUrl}}" width="" height="" *ngIf="showImage" class="responsive-img" />
+                      <img src="{{OutputImage.compressedImage.imageDataUrl}}" width="150" height="150" *ngIf="showImage"
+                        class="responsive-img" />
                     </div>
                   </div>
                   <div mat-dialog-actions>
                     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
                     </mat-progress-bar>
                     <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
-                    <button mat-raised-button color="primary" type="submit" [disabled]="!UpdatePPForm.valid || !processingImageComplete"
+                    <button mat-raised-button color="primary" (click)="InputFile.click()"
+                      [disabled]="!UpdatePPForm.valid || !processingImageComplete"
                       [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
                   </div>
                 </form>
-                <!-- <div mat-dialog-content>
-                  <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
-                    (change)="onChange($event)" required>
-                  <mat-form-field>
-                    <input matInput formControlName="ProfileCaption" autofocus placeholder="Título de tu publicación">
-                  </mat-form-field>
-                  <button mat-icon-button type="button" (click)="InputFile.click()">
-                    <i class="fal fa-paperclip fa-lg"></i>
-                  </button>
-                  <div>
-                    <img src="{{OutputImage.compressedImage.imageDataUrl}}" *ngIf="showImage" class="responsive-img" />
-                  </div>
-                </div> -->
-<!-- <app-profile-pic-update-dialog></app-profile-pic-update-dialog> -->
-                <!-- <element-user-photo></element-user-photo> -->
                 <div class="row" style="margin:0%;">
                   <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
@@ -59,9 +41,6 @@
                         <mat-option value="Pasaporte">
                           Pasaporte
                         </mat-option>
-                        <!-- <mat-error *ngIf="FormRegisterUsuario.controls.TipoDocumento.hasError('required')"> //Preguntarle a tito como añadir
-                          Su tipo de documento es <strong>obligatorio</strong>                                   //mensaje de error a box de opciones
-                        </mat-error> -->
                       </mat-select>
                     </mat-form-field>
                   </div>
@@ -75,7 +54,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -96,14 +74,12 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="col" align=center>
                   <mat-radio-group formControlName="Gender" class="form-field w-100">
                     <mat-radio-button value="Masculino" name="Gender">Masculino</mat-radio-button>
                     <mat-radio-button value="Femenino" name="Gender" style="margin: 0 20px;">Femenino</mat-radio-button>
                   </mat-radio-group>
                 </div>
-
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput [matDatepicker]="dp" placeholder="Fecha de Nacimiento" formControlName="DOB">
@@ -111,7 +87,6 @@
                     <mat-datepicker #dp></mat-datepicker>
                   </mat-form-field>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -132,7 +107,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -147,7 +121,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -168,7 +141,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
@@ -181,7 +153,6 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput placeholder="Contraseña" formControlName="Password" type="password" required>
@@ -191,39 +162,34 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-
               </div>
             </form>
           </mat-tab>
-
           <mat-tab label="Soy profesional" (model)="isUsuario!">
             <form class="example-form" [formGroup]="FormRegisterProfesional">
               <div class="controls-container">
-
                 <form [formGroup]="UpdateProProPicForm" (submit)="OnSubmit()">
-                  <div mat-dialog-content >
-                    <input type="file" style="display:none;"formControlName="InputImage" accept="image/*" #InputFile
-                      (change)="onChange($event)" required>
-                    <!-- <mat-form-field>
-                      <input matInput formControlName="ProfileCaption" autofocus placeholder="Título de tu publicación">
-                    </mat-form-field> -->
-                    <button mat-icon-button type="button" (click)="InputFile.click()">
-                      <i class="fa fa-user-circle fa-lg"></i>
+                  <div mat-dialog-content>
+                    <input type="file" style="display:none;" formControlName="InputImage" accept="image/*"
+                      #InputFileProfesional (change)="onChange($event)" required>
+                    <button mat-icon-button type="button" (click)="InputFileProfesional.click()"
+                      *ngIf="OutputImageProfesional== undefined">
+                      <i class="fal fa-paperclip fa-lg"></i>
                     </button>
                     <div>
-                      <img src="{{OutputImage.compressedImage.imageDataUrl}}" width="100px" height="100px" *ngIf="showImage" class="responsive-img" />
+                      <img src="{{OutputImageProfesional.compressedImage.imageDataUrl}}" width="100px" height="100px"
+                        *ngIf="showImageProfesional" class="responsive-img" />
                     </div>
                   </div>
                   <div mat-dialog-actions>
                     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
                     </mat-progress-bar>
                     <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
-                    <button mat-raised-button color="primary" type="submit" [disabled]="!UpdateProProPicForm.valid || !processingImageComplete"
-                      [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
+                    <button mat-raised-button color="primary" (click)="InputFileProfesional.click()"
+                      [disabled]="!UpdateProProPicForm.valid || !processingImageCompleteProfesional"
+                      [attr.cdkFocusInitial]="processingImageCompleteProfesional ? '' : null">Actualizar</button>
                   </div>
                 </form>
-                <!-- aca va el codigo para la foto -->
-
                 <div class="row" style="margin:0%;">
                   <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
@@ -248,7 +214,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -269,14 +234,12 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="col" align=center>
                   <mat-radio-group formControlName="Gender" class="form-field w-100">
                     <mat-radio-button value="Masculino" name="Gender">Masculino</mat-radio-button>
                     <mat-radio-button value="Femenino" name="Gender" style="margin: 0 20px;">Femenino</mat-radio-button>
                   </mat-radio-group>
                 </div>
-
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput [matDatepicker]="dpp" placeholder="Fecha de Nacimiento" formControlName="DOB">
@@ -284,7 +247,6 @@
                     <mat-datepicker #dpp></mat-datepicker>
                   </mat-form-field>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -305,24 +267,20 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Piso" formControlName="Floor" type="text" autocomplete="off"
                         accept="Floor">
-
                     </mat-form-field>
                   </div>
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Departamento" formControlName="Dpto" type="text" autocomplete="off"
                         accept="Dpto">
-
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -343,7 +301,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100" style="text-align: center">
@@ -358,7 +315,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="row" style="margin:0;">
                   <div class="col-6" align="right">
                     <mat-form-field appearance="fill">
@@ -405,7 +361,6 @@
                     </mat-form-field>
                   </div>
                 </div>
-
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput placeholder="Correo electronico" formControlName="Email" type="email" required>
@@ -418,7 +373,6 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-
                 <div class="col">
                   <mat-form-field class="form-field w-100">
                     <input matInput placeholder="Contraseña" formControlName="Password" type="password" required>
@@ -428,13 +382,10 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
-
               </div>
             </form>
           </mat-tab>
-
         </mat-tab-group>
-
       </mat-card-content>
       <mat-card-actions>
         <div style="margin:0 0 15px 15px;">
