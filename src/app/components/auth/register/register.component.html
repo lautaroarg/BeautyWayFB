@@ -34,7 +34,7 @@
                   <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
                       <mat-label>Tipo de documento</mat-label>
-                      <mat-select [(value)]="TipoDocumentoSeleccionado" required>
+                      <mat-select [(value)]="TipoDocumentoSeleccionado" formControlName="TipoDocumento" required>
                         <mat-option value="DNI">
                           DNI
                         </mat-option>
@@ -46,12 +46,14 @@
                   </div>
                   <div class="col-6" style="margin-top:2.4%;">
                     <mat-form-field class="form-field w-100">
-                      <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text"
+
+                      <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text" maxlength="11"
                         autocomplete="off" accept="nroDocumento" required>
                       <mat-error *ngIf="FormRegisterUsuario.controls.nroDocumento.hasError('required')">
-                        Su número de documento es <strong>obligatorio</strong>
+                        Su número de documento / pasaporte es <strong>obligatorio</strong>
                       </mat-error>
                     </mat-form-field>
+                    <div class="alert alert-danger" *ngIf="dniTooLong">El DNI o el pasaporte no tienen la cantidad de caracteres correctos</div>
                   </div>
                 </div>
                 <div class="row" style="margin:0;">
@@ -82,10 +84,11 @@
                 </div>
                 <div class="col">
                   <mat-form-field class="form-field w-100">
-                    <input matInput [matDatepicker]="dp" placeholder="Fecha de Nacimiento" formControlName="DOB">
+                    <input matInput [matDatepicker]="dp" placeholder="Fecha de Nacimiento" formControlName="DOB" required>
                     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                     <mat-datepicker #dp></mat-datepicker>
                   </mat-form-field>
+                  <div class="alert alert-danger" *ngIf="menor">No te puedes registrar, eres menor de edad</div>
                 </div>
                 <div class="row" style="margin:0;">
                   <div class="col-6">
@@ -194,7 +197,7 @@
                   <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
                       <mat-label>Tipo de documento</mat-label>
-                      <mat-select [(value)]="TipoDocumentoProfesionalSeleccionado" required>
+                      <mat-select [(value)]="TipoDocumentoProfesionalSeleccionado" formControlName="TipoDocumentoProfesionalSeleccionado" required>
                         <mat-option value="DNI">
                           DNI
                         </mat-option>
@@ -212,6 +215,7 @@
                         Su número de documento es <strong>obligatorio</strong>
                       </mat-error>
                     </mat-form-field>
+                    <div class="alert alert-danger" *ngIf="dniTooLong">El DNI o el pasaporte no tienen la cantidad de caracteres correctos</div>
                   </div>
                 </div>
                 <div class="row" style="margin:0;">
@@ -246,6 +250,7 @@
                     <mat-datepicker-toggle matSuffix [for]="dpp"></mat-datepicker-toggle>
                     <mat-datepicker #dpp></mat-datepicker>
                   </mat-form-field>
+                  <div class="alert alert-danger" *ngIf="menor">No te puedes registrar, eres menor de edad</div>
                 </div>
                 <div class="row" style="margin:0;">
                   <div class="col-6">
@@ -319,7 +324,7 @@
                   <div class="col-6" align="right">
                     <mat-form-field appearance="fill">
                       <mat-label>Modalidad de trabajo</mat-label>
-                      <mat-select [(value)]="TipoModalidadTrabajoProfesionalSeleccionado">
+                      <mat-select [(value)]="TipoModalidadTrabajoProfesionalSeleccionado" required>
                         <mat-option value="Domicilio">
                           Domicilio
                         </mat-option>
@@ -335,7 +340,7 @@
                   <div class="col-3" align=right>
                     <mat-form-field appearance="fill">
                       <mat-label>Tipo de servicio</mat-label>
-                      <mat-select [(value)]="TipoDeServicioSeleccionado">
+                      <mat-select [(value)]="TipoDeServicioSeleccionado" required>
                         <mat-option value="Peluqueria">
                           Peluqueria
                         </mat-option>
