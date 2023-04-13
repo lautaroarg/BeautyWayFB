@@ -24,7 +24,7 @@
                   <div mat-dialog-actions>
                     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
                     </mat-progress-bar>
-                    <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
+                    <button mat-raised-button type="reset" [routerLink]="['/Auth/Login']" >Cancelar</button>
                     <button mat-raised-button color="primary" (click)="InputFile.click()"
                       [disabled]="!UpdatePPForm.valid || !processingImageComplete"
                       [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
@@ -187,7 +187,7 @@
                   <div mat-dialog-actions>
                     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
                     </mat-progress-bar>
-                    <button mat-raised-button type="reset" (click)="onNoClick()">Cancelar</button>
+                    <button mat-raised-button type="reset" [routerLink]="['/Auth/Login']" >Cancelar</button>
                     <button mat-raised-button color="primary" (click)="InputFileProfesional.click()"
                       [disabled]="!UpdateProProPicForm.valid || !processingImageCompleteProfesional"
                       [attr.cdkFocusInitial]="processingImageCompleteProfesional ? '' : null">Actualizar</button>
