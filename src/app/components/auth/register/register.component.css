@@ -17,3 +17,33 @@
     color: rgb(88, 3, 88);
   }
   
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-preview {
+    top: 0; 
+    left: 0;
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    width: 150px; /* Cambia el ancho de la imagen si es necesario */
+    height: 150px; /* Cambia la altura de la imagen si es necesario */
+  }

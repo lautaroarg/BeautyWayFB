@@ -9,29 +9,40 @@
           <mat-tab label="Soy usuario" (model)="isUsuario">
             <form class="example-form" [formGroup]="FormRegisterUsuario">
               <div class="controls-container">
+
+                <br><br>
+
+                <!-- -FOTO -->
                 <form [formGroup]="UpdatePPForm" (submit)="OnSubmit()">
                   <div mat-dialog-content>
                     <input type="file" style="display:none;" formControlName="InputImage" accept="image/*" #InputFile
                       (change)="onChange($event)" required>
-                    <button mat-icon-button type="button" (click)="InputFile.click()" *ngIf="OutputImage == undefined">
-                      <i class="fal fa-paperclip fa-lg"></i>
-                    </button>
-                    <div>
-                      <img src="{{OutputImage.compressedImage.imageDataUrl}}" width="150" height="150" *ngIf="showImage"
-                        class="responsive-img" />
+                    <div class="icon-wrapper">
+                      <button mat-icon-button type="button" (click)="InputFile.click()" *ngIf="OutputImage == undefined">
+                        <i class="fas fa-user-circle fa-3x"></i>
+                      </button>
+                      <div *ngIf="showImage" class="image-preview">
+                        <img src="{{OutputImage.compressedImage.imageDataUrl}}" width="150" height="150" class="responsive-img" />
+                      </div>
                     </div>
                   </div>
                   <div mat-dialog-actions>
                     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
                     </mat-progress-bar>
-                    <button mat-raised-button type="reset" [routerLink]="['/Auth/Login']" >Cancelar</button>
-                    <button mat-raised-button color="primary" (click)="InputFile.click()"
-                      [disabled]="!UpdatePPForm.valid || !processingImageComplete"
-                      [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
+                    <div class="buttons-wrapper">
+                      <button mat-raised-button type="reset" [routerLink]="['/Auth/Login']" >Cancelar</button>
+                      <button mat-raised-button color="primary" (click)="InputFile.click()"
+                        [disabled]="!UpdatePPForm.valid || !processingImageComplete"
+                        [attr.cdkFocusInitial]="processingImageComplete ? '' : null">Actualizar</button>
+                    </div>
                   </div>
                 </form>
+                
+                <br><br>
+
+                <!-- -2nd Fila -->
                 <div class="row" style="margin:0%;">
-                  <div class="col-6" align=right style="margin-top: 1%;">
+                  <div class="col-6" align=end style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
                       <mat-label>Tipo de documento</mat-label>
                       <mat-select [(value)]="TipoDocumentoSeleccionado" required>
@@ -44,7 +55,7 @@
                       </mat-select>
                     </mat-form-field>
                   </div>
-                  <div class="col-6" style="margin-top:2.4%;">
+                  <div class="col-6" style="margin-top:1;">
                     <mat-form-field class="form-field w-100">
                       <input matInput placeholder="Nro documento" formControlName="nroDocumento" type="text"
                         autocomplete="off" accept="nroDocumento" required>
@@ -54,6 +65,8 @@
                     </mat-form-field>
                   </div>
                 </div>
+
+                <!-- -3th fila -->
                 <div class="row" style="margin:0;">
                   <div class="col-6">
                     <mat-form-field class="form-field w-100">
@@ -165,31 +178,42 @@
               </div>
             </form>
           </mat-tab>
+
+          <!-- !USUARIO PROFESIONAL -->
+
           <mat-tab label="Soy profesional" (model)="isUsuario!">
             <form class="example-form" [formGroup]="FormRegisterProfesional">
               <div class="controls-container">
+
+                <!-- -FOTO -->
+
+                <br><br>
                 <form [formGroup]="UpdateProProPicForm" (submit)="OnSubmit()">
                   <div mat-dialog-content>
                     <input type="file" style="display:none;" formControlName="InputImage" accept="image/*"
                       #InputFileProfesional (change)="onChange($event)" required>
-                    <button mat-icon-button type="button" (click)="InputFileProfesional.click()"
-                      *ngIf="OutputImageProfesional== undefined">
-                      <i class="fal fa-paperclip fa-lg"></i>
-                    </button>
-                    <div>
-                      <img src="{{OutputImageProfesional.compressedImage.imageDataUrl}}" width="100px" height="100px"
-                        *ngIf="showImageProfesional" class="responsive-img" />
+                    <div Class="icon-wrapper">
+                      <button mat-icon-button type="button" (click)="InputFileProfesional.click()" *ngIf="OutputImageProfesional== undefined">
+                        <i class="fas fa-user-circle fa-3x"></i>
+                      </button>
+                      <div *ngIf="showImageProfesional" class="image-preview">
+                        <img src="{{OutputImageProfesional.compressedImage.imageDataUrl}}" width="150px" height="150px" class="responsive-img"/>
+                      </div>
                     </div>
                   </div>
                   <div mat-dialog-actions>
                     <mat-progress-bar *ngIf="Uploading" mode="determinate" [value]="(uploadPercent$ | async)">
                     </mat-progress-bar>
-                    <button mat-raised-button type="reset" [routerLink]="['/Auth/Login']" >Cancelar</button>
-                    <button mat-raised-button color="primary" (click)="InputFileProfesional.click()"
-                      [disabled]="!UpdateProProPicForm.valid || !processingImageCompleteProfesional"
-                      [attr.cdkFocusInitial]="processingImageCompleteProfesional ? '' : null">Actualizar</button>
+                    <div class="buttons-wrapper">
+                      <button mat-raised-button type="reset" [routerLink]="['/Auth/Login']" >Cancelar</button>
+                      <button mat-raised-button color="primary" (click)="InputFileProfesional.click()"
+                        [disabled]="!UpdateProProPicForm.valid || !processingImageCompleteProfesional"
+                        [attr.cdkFocusInitial]="processingImageCompleteProfesional ? '' : null">Actualizar</button>
+                    </div>
                   </div>
                 </form>
+                <br><br>
+
                 <div class="row" style="margin:0%;">
                   <div class="col-6" align=right style="margin-top: 1%;">
                     <mat-form-field appearance="fill">
