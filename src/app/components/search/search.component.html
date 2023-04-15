@@ -7,11 +7,21 @@
           <i class="fal fa-search"></i>
         </button>
       </mat-form-field>
+
+      <input type="radio" id="profesional" formControlName="tipo" value="profesional" (change)="filterByUserType()">
+      <label for="profesional">Profesionales</label>
+
+      <input type="radio" id="usuario" formControlName="tipo" value="usuario" (change)="filterByUserType()" >
+      <label for="usuario">Clientes</label>
+
+      <input type="radio" id="ambos" formControlName="tipo" value="ambos" (change)="filterByUserType()" >
+      <label for="ambos">Ambos</label>
+
     </form>
   </mat-card>
 
   <mat-card id="people-card" style="background: #efe7ff; color: #5c4ca2">
-    <ng-container *ngIf="PeopleResults$ | async; else PeopleLoading">
+    <ng-container *ngIf="PeopleResults$ | async;  else PeopleLoading">
       <mat-card-header>
         <mat-card-title>Profesionales:</mat-card-title>
         <mat-card-subtitle style="color: #5c4ca2">Encontrados: {{FilteredResults?.length || PeopleResults?.length}} items</mat-card-subtitle>

@@ -15,19 +15,45 @@ export class SearchComponent implements OnInit {
   PeopleResults: IUser[];
   FilteredResults: IUser[];
   QueryForm: FormGroup;
+  userTypeFilter: string = 'Ambos';
+
 
   constructor(
     public MyAuth: MyAuthService,
     private fb: FormBuilder,
+    
   ) { }
+
+  
+
+  filterByUserType() {
+    debugger;
+    const tipoControl= this.QueryForm.get("tipo");
+    const FormValues = tipoControl.value;
+    
+      switch (FormValues) {
+        case 'profesional':
+          this.FilteredResults = this.FilteredResults.filter(user => user.TipoDeUsuario == 'profesional');
+          break;
+        case 'usuario':
+          this.FilteredResults = this.FilteredResults.filter(user => user.TipoDeUsuario == 'usuario');
+          break;
+        default:
+          this.FilteredResults = this.PeopleResults.filter(user => {
+            return user.Id != this.MyAuth.LoggedUser.Id;
+          });
+          break;
+      }
+  }
 
   ngOnInit() {
     this.QueryForm = this.fb.group({
-      Query: ''
+      Query: '',
+      tipo:''
       //  ['', [Validators.minLength(3), Validators.required]]
     })
-
-    this.PeopleResults$ = this.MyAuth.GetAllProfesionalsFromStore()
+    debugger;
+    this.PeopleResults$ = this.MyAuth.GetAllUsersFromStore()
       .pipe(
         map(r => {
           return r.filter(user => {
@@ -43,15 +69,20 @@ export class SearchComponent implements OnInit {
 
     this.QueryForm.controls.Query.valueChanges.subscribe((q: string) => {
       if (q == '') {
-        this.FilteredResults = this.PeopleResults;
+        this.filterByUserType();
       }
       else {
+        this.filterByUserType();
         this.FilteredResults = this.PeopleResults.filter(users => {
           const DisplayName = users.DisplayName.toLowerCase()
 
           return DisplayName.includes(q.toLowerCase())
+
+          
         });
+        
       }
     })
   }
+  
 }

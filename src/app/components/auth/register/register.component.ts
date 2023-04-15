@@ -28,7 +28,9 @@ import { finalize, take } from "rxjs/operators";
 export class RegisterComponent implements OnInit, OnDestroy {
   FormRegisterUsuario: FormGroup;
   FormRegisterProfesional: FormGroup;
-
+  pasTooLong=false;
+  dniTooLong=false;
+  menor=false;
   file;
   fileProfesional;
   thumbImage;
@@ -58,7 +60,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   TipoDeServicioSeleccionado = "";
   FormValueChangesSub: Subscription;
 
-  constructor(
+  constructor(  
     public MyAuth: MyAuthService,
     public storage: AngularFireStorage,
     private fbUsuario: FormBuilder,
@@ -184,6 +186,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   OnSubmit() {
     this.Loading = true;
+    const FormValues = this.FormRegisterUsuario.value;
+
+    if(this.calcularEdad(FormValues.DOB) == true){
+      debugger;
+      console.log("No es wachin");
+    }
+    else{
+      console.log("Es wachin");
+    }
+    if (validateCaracteres(this.TipoDocumentoSeleccionado,FormValues.nroDocumento) ==true)
+    {
+
     this.MyAuth.Register(
       this.FormRegisterUsuario.value.Email,
       this.FormRegisterUsuario.value.Password
@@ -191,7 +205,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       .then(async (user) => {
         console.log(user);
 
-        const FormValues = this.FormRegisterUsuario.value;
         const UserInfo: IUser = {
           Id: user.user.uid,
           DisplayName: FormValues.FirstName + " " + FormValues.LastName,
@@ -220,7 +233,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
           Activo: true,
           
         };
-        debugger;
+
+
+
         if(this.calcularEdad(UserInfo.DOB)==true)
         {
         
@@ -299,7 +314,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
             break;
         }
       });
+    }
+    else
+    {
+      debugger;
+      this.Loading = false;
+      this.dniTooLong = true;
+      this.menor = true;
+    }
   }
+
+
+
 
   cambiarEstado(event: any) {
     if (event.tab.textLabel == "Soy usuario") {
@@ -309,6 +335,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   }
   calcularEdad(dob: number){
+    debugger;
     var hoy = Date.now();
     var fechaNacimiento = dob
     var edadMilisegundos = hoy - dob
@@ -322,6 +349,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return false;
     }
   }
+
+
+  
 
   OnSubmitProfesional() {
     this.Loading = true;
@@ -397,7 +427,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           .subscribe();
 
         //  aca mismo agregar la funcion de this.MyAuth para enviar email de verificacion
-
+        this.MyAuth;
         this.Loading = false;
         this.MyAuth.NavTo("Home");
       })
@@ -432,5 +462,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
             break;
         }
       });
+  }
+}
+
+function validateCaracteres(tipodni, nrodoc){
+if(tipodni == 'DNI' && nrodoc.length != 8 || tipodni =="Pasaporte" && nrodoc.length != 11 || tipodni==''){
+  // if(nrodoc.length != 8){
+    //Generar alerta, y que no se guarde el cliente.}
+    return false;
+  }
+  else{
+    return true;
   }
 }
