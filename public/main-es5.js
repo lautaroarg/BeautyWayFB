@@ -2250,6 +2250,7 @@
 
                 _this6.Notify.openSnackBar("Bienvenido, ".concat(_this6.LoggedUser.DisplayName), '');
 
+
                 if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
                   _this6.NavTo('Auth/AdditionInfo');
                 } else {

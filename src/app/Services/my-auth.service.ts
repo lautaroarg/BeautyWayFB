@@ -40,7 +40,7 @@ export class MyAuthService {
     this.LoggedUserLoading = true;
     afAuth.onAuthStateChanged((user: firebase.User) => {
       // console.log('onAuthStateChanged: ', user);
-     
+
       if (user) {
         // if(!user.emailVerified){
         //   //debugger;
@@ -56,7 +56,10 @@ export class MyAuthService {
         this.GetAUserInfoFromStore(user.uid).subscribe(UserInfoFromStore => {
           this.LoggedUser = UserInfoFromStore;
           this.LoggedUserLoading = false;
-          this.Notify.openSnackBar(`Bienvenido, ${this.LoggedUser.DisplayName}`, '');
+
+          // -Mensaje al desloguear
+          // this.Notify.openSnackBar(`Hola, ${this.LoggedUser.DisplayName}`, '');
+
           if (UserInfoFromStore.DisplayName == null || UserInfoFromStore.DisplayName === '') {
             this.NavTo('Auth/AdditionInfo');
           } else {
